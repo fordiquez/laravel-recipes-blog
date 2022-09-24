@@ -37,15 +37,10 @@
                                 <input type="text" name="title" value="{{ $category->title }}"
                                        class="form-control @error('title') is-invalid @enderror"
                                        placeholder="Category title">
+                                @error('title')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
-                            @error('title')
-                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                <span>{{ $message }}</span>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            @enderror
                             <a href="{{ route('admin.category.index') }}" class="btn btn-primary">
                                 <i class="fas fa-th-list mr-2"></i>Categories
                             </a>

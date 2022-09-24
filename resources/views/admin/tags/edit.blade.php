@@ -7,7 +7,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Category Editing</h1>
+                        <h1 class="m-0">Tag Editing</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -36,18 +36,13 @@
                                 </div>
                                 <input type="text" name="title" value="{{ $tag->title }}"
                                        class="form-control @error('title') is-invalid @enderror"
-                                       placeholder="Category title">
+                                       placeholder="Tag title">
+                                @error('title')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
-                            @error('title')
-                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                <span>{{ $message }}</span>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            @enderror
                             <a href="{{ route('admin.tag.index') }}" class="btn btn-primary">
-                                <i class="fas fa-th-list mr-2"></i>Categories
+                                <i class="fas fa-th-list mr-2"></i>Tags
                             </a>
                             <button type="submit" class="btn btn-success float-right">
                                 <i class="fas fa-pencil-alt mr-2"></i>Update

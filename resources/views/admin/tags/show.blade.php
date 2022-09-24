@@ -34,7 +34,7 @@
                             <li class="list-group-item"><strong>Updated at:</strong> <i>{{ $tag->updated_at }}</i></li>
                         </ul>
                         <div class="mt-3">
-                            <a href="{{ route('admin.tag.index') }}" class="btn btn-primary"><i class="fas fa-th-list mr-2"></i>Categories</a>
+                            <a href="{{ route('admin.tag.index') }}" class="btn btn-primary"><i class="fas fa-th-list mr-2"></i>Posts</a>
                             <div class="d-flex float-right">
                                 <a href="{{ route('admin.tag.edit', $tag) }}" class="btn btn-success mr-2">
                                     <i class="fas fa-pencil-alt"></i>

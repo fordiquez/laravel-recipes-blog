@@ -39,4 +39,13 @@ Route::prefix('admin')->group(function () {
         Route::patch('/{tag}', 'update')->name('admin.tag.update');
         Route::delete('/{tag}', 'destroy')->name('admin.tag.destroy');
     });
+    Route::prefix('posts')->controller(\App\Http\Controllers\Admin\PostController::class)->group(function () {
+        Route::get('/', 'index')->name('admin.post.index');
+        Route::get('/create', 'create')->name('admin.post.create');
+        Route::post('/', 'store')->name('admin.post.store');
+        Route::get('/{post}', 'show')->name('admin.post.show');
+        Route::get('/{post}/edit', 'edit')->name('admin.post.edit');
+        Route::patch('/{post}', 'update')->name('admin.post.update');
+        Route::delete('/{post}', 'destroy')->name('admin.post.destroy');
+    });
 });
