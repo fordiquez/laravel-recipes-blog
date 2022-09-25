@@ -24,7 +24,7 @@
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
-                <form action="{{ route('admin.user.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.user.store') }}" method="POST">
                     @csrf
                     <div class="input-group col-12 col-md-6 col-xl-4 mb-3">
                         <div class="input-group-prepend">
@@ -53,6 +53,19 @@
                         <input type="password" name="password" value="{{ old('password') }}"
                                class="form-control @error('password') is-invalid @enderror" placeholder="User password">
                         @error('password')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group d-flex align-items-center">
+                        <strong class="mr-3">Role</strong>
+                        @foreach($roles as $id => $role)
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="role" id="{{ $id }}"
+                                       value="{{ $id }}" @checked($id == old('role'))>
+                                <label class="form-check-label" for="{{ $id }}">{{ $role }}</label>
+                            </div>
+                        @endforeach
+                        @error('role')
                         <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>

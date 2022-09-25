@@ -47,6 +47,7 @@
                                             <th>ID</th>
                                             <th>Name</th>
                                             <th>Email</th>
+                                            <th>Role</th>
                                             <th>Created</th>
                                             <th>Updated</th>
                                             <th class="text-center">Actions</th>
@@ -58,6 +59,7 @@
                                                 <td>{{ $user->id }}</td>
                                                 <td>{{ $user->name }}</td>
                                                 <td>{{ $user->email }}</td>
+                                                <td>{{ $user->getRole($user->role) }}</td>
                                                 <td>{{ $user->created_at }}</td>
                                                 <td>{{ $user->updated_at }}</td>
                                                 <td class="text-center">

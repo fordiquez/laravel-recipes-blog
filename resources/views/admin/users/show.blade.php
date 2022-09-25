@@ -29,8 +29,9 @@
                     <div class="col-12">
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item"><strong>ID:</strong> <i>{{ $user->id }}</i></li>
-                            <li class="list-group-item"><strong>Title:</strong> <i>{{ $user->name }}</i></li>
-                            <li class="list-group-item"><strong>Category:</strong> <i>{{ $user->email }}</i></li>
+                            <li class="list-group-item"><strong>Name:</strong> <i>{{ $user->name }}</i></li>
+                            <li class="list-group-item"><strong>Email:</strong> <i>{{ $user->email }}</i></li>
+                            <li class="list-group-item"><strong>Role:</strong> <i>{{ $user->getRole($user->role) }}</i></li>
                             <li class="list-group-item"><strong>Created at:</strong> <i>{{ $user->created_at }}</i></li>
                             <li class="list-group-item"><strong>Updated at:</strong> <i>{{ $user->updated_at }}</i></li>
                         </ul>
