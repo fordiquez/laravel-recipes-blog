@@ -26,7 +26,7 @@ class User extends Authenticatable
 
     public static function getRole($role): string
     {
-        return $role == 0 ? 'User' : 'Admin';
+        return $role == self::ROLE_USER ? 'User' : 'Admin';
     }
 
     /**
