@@ -21,6 +21,15 @@ Route::name('main.')->group(function () {
 
 Route::prefix('admin')->group(function () {
     Route::get('/', [\App\Http\Controllers\Admin\IndexController::class, 'index'])->name('admin.index');
+    Route::prefix('users')->controller(\App\Http\Controllers\Admin\UserController::class)->group(function () {
+        Route::get('/', 'index')->name('admin.user.index');
+        Route::get('/create', 'create')->name('admin.user.create');
+        Route::post('/', 'store')->name('admin.user.store');
+        Route::get('/{user}', 'show')->name('admin.user.show');
+        Route::get('/{user}/edit', 'edit')->name('admin.user.edit');
+        Route::patch('/{user}', 'update')->name('admin.user.update');
+        Route::delete('/{user}', 'destroy')->name('admin.user.destroy');
+    });
     Route::prefix('categories')->controller(\App\Http\Controllers\Admin\CategoryController::class)->group(function () {
         Route::get('/', 'index')->name('admin.category.index');
         Route::get('/create', 'create')->name('admin.category.create');

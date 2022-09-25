@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Requests\Admin\Post;
+namespace App\Http\Requests\Admin\User;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateRequest extends FormRequest
 {
@@ -24,13 +25,9 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => ['required', 'string', 'unique:tags'],
-            'content' => ['required', 'string', 'min:5'],
-            'preview_image' => ['nullable', 'file'],
-            'main_image' => ['nullable', 'file'],
-            'category_id' => ['required', 'exists:categories,id'],
-            'tag_ids' => ['nullable', 'array'],
-            'tag_ids.*' => ['nullable', 'integer', 'exists:tags,id']
+            'name' => ['required', 'string'],
+            'email' => ['required', 'string', 'email', Rule::unique('users')->ignore($this->user->id)],
+            'password' => ['string', 'min:6']
         ];
     }
 }
