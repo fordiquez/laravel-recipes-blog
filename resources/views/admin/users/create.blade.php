@@ -46,16 +46,6 @@
                         <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
-                    <div class="input-group col-12 col-md-6 col-xl-4 mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><strong>Password</strong></span>
-                        </div>
-                        <input type="password" name="password" value="{{ old('password') }}"
-                               class="form-control @error('password') is-invalid @enderror" placeholder="User password">
-                        @error('password')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
                     <div class="form-group d-flex align-items-center">
                         <strong class="mr-3">Role</strong>
                         @foreach($roles as $id => $role)

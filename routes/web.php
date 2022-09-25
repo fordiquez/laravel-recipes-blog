@@ -13,13 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::name('main.')->group(function () {
     Route::get('/', [\App\Http\Controllers\Main\IndexController::class, 'index'])->name('main.index');
 });
 
-Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
+Route::prefix('admin')->middleware(['auth', 'admin', 'verified'])->group(function () {
     Route::get('/', [\App\Http\Controllers\Admin\IndexController::class, 'index'])->name('admin.index');
     Route::prefix('users')->controller(\App\Http\Controllers\Admin\UserController::class)->group(function () {
         Route::get('/', 'index')->name('admin.user.index');
