@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\User\StoreRequest;
 use App\Http\Requests\Admin\User\UpdateRequest;
+use App\Jobs\StoreUserJob;
 use App\Mail\User\PasswordMail;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
@@ -26,11 +27,7 @@ class UserController extends Controller
 
     public function store(StoreRequest $request) {
         $data = $request->validated();
-        $password = Str::random(10);
-        $data['password'] = Hash::make($password);
-        $user = User::create($data);
-        Mail::to($data['email'])->send(new PasswordMail($password));
-        event(new Registered($user));
+        StoreUserJob::dispatch($data);
 
         return redirect()->route('admin.user.index');
     }
