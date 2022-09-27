@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Main\PersonalController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,8 +16,14 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes(['verify' => true]);
 
-Route::name('main.')->group(function () {
-    Route::get('/', [\App\Http\Controllers\Main\IndexController::class, 'index'])->name('main.index');
+Route::get('/', [\App\Http\Controllers\Main\IndexController::class, 'index'])->name('main.index');
+Route::prefix('blog')->controller(\App\Http\Controllers\Main\BlogController::class)->group(function () {
+    Route::get('/', 'index')->name('main.blog.index');
+    Route::get('/{post}', 'show')->name('main.blog.show');
+});
+Route::prefix('personal')->middleware(['auth', 'verified'])->controller(PersonalController::class)->group(function () {
+    Route::get('/liked-posts', 'likedPosts')->name('main.personal.liked-posts');
+    Route::delete('/{post}', 'dislikePost')->name('main.personal.dislike-post');
 });
 
 Route::prefix('admin')->middleware(['auth', 'admin', 'verified'])->group(function () {

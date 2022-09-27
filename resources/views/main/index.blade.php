@@ -1,9 +1,5 @@
 @extends('layouts.main')
 
-@pushonce('styles')
-    <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
-@endpushonce
-
 @section('content')
     <!-- Slider Area Start Here -->
     <section class="ranna-slider-area">
@@ -18,9 +14,39 @@
                  data-r-large-dots="false" data-r-extra-large="1" data-r-extra-large-nav="true"
                  data-r-extra-large-dots="false">
                 <div class="ranna-slider-content-layout1">
-                    <figure class="item-figure"><a href="single-recipe1.html"><img
-                                src="{{ asset('assets/img/slider/slide1-1.jpg') }}"
-                                alt="Product"></a></figure>
+                    <figure class="item-figure">
+                        <a href="single-recipe1.html">
+                            <img src="{{ asset('assets/img/slider/slide1-1.jpg') }}" alt="Product">
+                        </a>
+                    </figure>
+                    <div class="item-content">
+                        <span class="sub-title">SALAD</span>
+                        <h2 class="item-title">
+                            <a href="single-recipe1.html">Italiano Salad Mixed</a>
+                        </h2>
+                        <ul class="item-rating">
+                            <li class="star-fill"><i class="fas fa-star"></i></li>
+                            <li class="star-fill"><i class="fas fa-star"></i></li>
+                            <li class="star-fill"><i class="fas fa-star"></i></li>
+                            <li class="star-fill"><i class="fas fa-star"></i></li>
+                            <li class="star-empty"><i class="fas fa-star"></i></li>
+                            <li><span>9<span> / 10</span></span></li>
+                        </ul>
+                        <p>More off this less hello salamander lied porpoise much over tightly circa
+                            outside crud mightily rigorouse. </p>
+                        <ul class="entry-meta">
+                            <li><a href="#"><i class="fas fa-clock"></i>15 Mins</a></li>
+                            <li><a href="#"><i class="fas fa-user"></i>by <span>John Martin</span></a></li>
+                            <li><a href="#"><i class="fas fa-heart"></i><span>02</span> Likes</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="ranna-slider-content-layout1">
+                    <figure class="item-figure">
+                        <a href="single-recipe1.html">
+                            <img src="{{ asset('assets/img/slider/slide1-2.jpg') }}" alt="Product">
+                        </a>
+                    </figure>
                     <div class="item-content">
                         <span class="sub-title">SALAD</span>
                         <h2 class="item-title"><a href="single-recipe1.html">Italiano Salad Mixed</a></h2>
@@ -42,33 +68,11 @@
                     </div>
                 </div>
                 <div class="ranna-slider-content-layout1">
-                    <figure class="item-figure"><a href="single-recipe1.html"><img
-                                src="{{ asset('assets/img/slider/slide1-2.jpg') }}"
-                                alt="Product"></a></figure>
-                    <div class="item-content">
-                        <span class="sub-title">SALAD</span>
-                        <h2 class="item-title"><a href="single-recipe1.html">Italiano Salad Mixed</a></h2>
-                        <ul class="item-rating">
-                            <li class="star-fill"><i class="fas fa-star"></i></li>
-                            <li class="star-fill"><i class="fas fa-star"></i></li>
-                            <li class="star-fill"><i class="fas fa-star"></i></li>
-                            <li class="star-fill"><i class="fas fa-star"></i></li>
-                            <li class="star-empty"><i class="fas fa-star"></i></li>
-                            <li><span>9<span> / 10</span></span></li>
-                        </ul>
-                        <p>More off this less hello salamander lied porpoise much over tightly circa
-                            outside crud mightily rigorouse. </p>
-                        <ul class="entry-meta">
-                            <li><a href="#"><i class="fas fa-clock"></i>15 Mins</a></li>
-                            <li><a href="#"><i class="fas fa-user"></i>by <span>John Martin</span></a></li>
-                            <li><a href="#"><i class="fas fa-heart"></i><span>02</span> Likes</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="ranna-slider-content-layout1">
-                    <figure class="item-figure"><a href="single-recipe1.html"><img
-                                src="{{ asset('assets/img/slider/slide1-3.jpg') }}"
-                                alt="Product"></a></figure>
+                    <figure class="item-figure">
+                        <a href="single-recipe1.html">
+                            <img src="{{ asset('assets/img/slider/slide1-3.jpg') }}" alt="Product">
+                        </a>
+                    </figure>
                     <div class="item-content">
                         <span class="sub-title">SALAD</span>
                         <h2 class="item-title"><a href="single-recipe1.html">Italiano Salad Mixed</a></h2>
@@ -99,13 +103,16 @@
             <div class="row">
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="product-box-layout1">
-                        <figure class="item-figure"><a href="single-recipe1.html"><img
-                                    src="{{ asset('assets/img/product/product1.jpg') }}"
-                                    alt="Product"></a></figure>
+                        <figure class="item-figure">
+                            <a href="single-recipe1.html">
+                                <img src="{{ asset('assets/img/product/product1.jpg') }}" alt="Product">
+                            </a>
+                        </figure>
                         <div class="item-content">
                             <span class="sub-title">BREAKFAST</span>
-                            <h3 class="item-title"><a href="single-recipe1.html">Tomatoes Stuffed with Foie and
-                                    Chanterelles</a></h3>
+                            <h3 class="item-title">
+                                <a href="single-recipe1.html">Tomatoes Stuffed with Foie and Chanterelles</a>
+                            </h3>
                             <ul class="item-rating">
                                 <li class="star-fill"><i class="fas fa-star"></i></li>
                                 <li class="star-fill"><i class="fas fa-star"></i></li>
@@ -887,36 +894,44 @@
         <div class="instagram-feed-title"><a href="#"><i class="fab fa-instagram"></i>Follow On Instagram</a></div>
         <ul class="instagram-feed-figure">
             <li>
-                <a href="single-recipe1.html"><img src="{{ asset('assets/img/social-figure/social-figure1.jpg') }}"
-                                                   alt="Social"></a>
+                <a href="single-recipe1.html">
+                    <img src="{{ asset('assets/img/social-figure/social-figure1.jpg') }}" alt="Social">
+                </a>
             </li>
             <li>
-                <a href="single-recipe1.html"><img src="{{ asset('assets/img/social-figure/social-figure2.jpg') }}"
-                                                   alt="Social"></a>
+                <a href="single-recipe1.html">
+                    <img src="{{ asset('assets/img/social-figure/social-figure2.jpg') }}" alt="Social">
+                </a>
             </li>
             <li>
-                <a href="single-recipe1.html"><img src="{{ asset('assets/img/social-figure/social-figure3.jpg') }}"
-                                                   alt="Social"></a>
+                <a href="single-recipe1.html">
+                    <img src="{{ asset('assets/img/social-figure/social-figure3.jpg') }}" alt="Social">
+                </a>
             </li>
             <li>
-                <a href="single-recipe1.html"><img src="{{ asset('assets/img/social-figure/social-figure4.jpg') }}"
-                                                   alt="Social"></a>
+                <a href="single-recipe1.html">
+                    <img src="{{ asset('assets/img/social-figure/social-figure4.jpg') }}" alt="Social">
+                </a>
             </li>
             <li>
-                <a href="single-recipe1.html"><img src="{{ asset('assets/img/social-figure/social-figure5.jpg') }}"
-                                                   alt="Social"></a>
+                <a href="single-recipe1.html">
+                    <img src="{{ asset('assets/img/social-figure/social-figure5.jpg') }}" alt="Social">
+                </a>
             </li>
             <li>
-                <a href="single-recipe1.html"><img src="{{ asset('assets/img/social-figure/social-figure6.jpg') }}"
-                                                   alt="Social"></a>
+                <a href="single-recipe1.html">
+                    <img src="{{ asset('assets/img/social-figure/social-figure6.jpg') }}" alt="Social">
+                </a>
             </li>
             <li>
-                <a href="single-recipe1.html"><img src="{{ asset('assets/img/social-figure/social-figure7.jpg') }}"
-                                                   alt="Social"></a>
+                <a href="single-recipe1.html">
+                    <img src="{{ asset('assets/img/social-figure/social-figure7.jpg') }}" alt="Social">
+                </a>
             </li>
             <li>
-                <a href="single-recipe1.html"><img src="{{ asset('assets/img/social-figure/social-figure8.jpg') }}"
-                                                   alt="Social"></a>
+                <a href="single-recipe1.html">
+                    <img src="{{ asset('assets/img/social-figure/social-figure8.jpg') }}" alt="Social">
+                </a>
             </li>
         </ul>
     </section>

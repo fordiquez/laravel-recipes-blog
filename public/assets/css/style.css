@@ -2191,7 +2191,7 @@ ul {
 
 .inner-page-banner {
 	display: block;
-	padding: 9.2rem 0;
+	padding: 2rem 0;
 	position: relative;
 }
 
@@ -2633,9 +2633,9 @@ ul {
 	-webkit-box-align: center;
 	-ms-flex-align: center;
 	align-items: center;
-	-webkit-box-pack: start;
-	-ms-flex-pack: start;
-	justify-content: flex-start;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
 }
 
 .site-menu {
@@ -11786,7 +11786,7 @@ ul {
 15. Footer Css
 =========================================================================*/
 footer {
-	padding: 10rem 0;
+	padding: 5rem 0;
 	background-color: #111111;
 	text-align: center;
 	color: #989898;
@@ -11822,9 +11822,9 @@ footer.ranna-bg-dark {
 
 .footer-menu ul li:after {
 	position: absolute;
-	content: ".";
+	content: "—";
 	right: -7.5px;
-	bottom: 0;
+	bottom: 5px;
 }
 
 .footer-menu ul li a {
