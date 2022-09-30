@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Admin\Category;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 
 class UpdateRequest extends FormRequest
@@ -18,6 +19,18 @@ class UpdateRequest extends FormRequest
     }
 
     /**
+     * Prepare the data for validation.
+     *
+     * @return void
+     */
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'slug' => Str::slug($this->title),
+        ]);
+    }
+
+    /**
      * Get the validation rules that apply to the request.
      *
      * @return array<string, mixed>
@@ -25,7 +38,21 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => ['required', 'string', Rule::unique('categories')->ignore($this->category->id)]
+            'title' => ['required', 'string', 'max:50'],
+            'slug' => ['required', 'string', 'max:50', Rule::unique('categories')->ignore($this->category->id)],
+            'parent_id' => ['integer', 'nullable']
+        ];
+    }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'slug.unique' => 'The title has already been taken.',
         ];
     }
 }

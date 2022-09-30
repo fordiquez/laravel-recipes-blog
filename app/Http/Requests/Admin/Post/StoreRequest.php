@@ -24,13 +24,9 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => ['required', 'string', 'unique:tags'],
+            'title' => ['required', 'string', 'unique:posts', 'max:255'],
             'content' => ['required', 'string', 'min:5'],
-            'preview_image' => ['required', 'file'],
-            'main_image' => ['required', 'file'],
-            'category_id' => ['required', 'exists:categories,id'],
-            'tag_ids' => ['nullable', 'array'],
-            'tag_ids.*' => ['nullable', 'integer', 'exists:tags,id']
+            'photo' => ['required', 'file'],
         ];
     }
 }

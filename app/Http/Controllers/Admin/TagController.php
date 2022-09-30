@@ -11,6 +11,7 @@ class TagController extends Controller
 {
     public function index() {
         $tags = Tag::all();
+
         return view('admin.tags.index', compact('tags'));
     }
 
@@ -22,7 +23,7 @@ class TagController extends Controller
         $data = $request->validated();
         Tag::create($data);
 
-        return redirect()->route('admin.tag.index');
+        return redirect()->route('admin.tags.index');
     }
 
     public function show(Tag $tag) {
@@ -46,6 +47,6 @@ class TagController extends Controller
     public function destroy(Tag $tag) {
         $tag->forceDelete();
 
-        return redirect()->route('admin.tag.index');
+        return redirect()->route('admin.tags.index');
     }
 }

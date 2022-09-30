@@ -1,115 +1,69 @@
-@extends('layouts.admin')
+@extends('layouts.argon')
 
-@pushonce('styles')
-    <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
-@endpushonce
+@section('title', 'Admin – Posts – Create')
 
 @section('content')
-    <div class="content-wrapper">
-        @include('admin.components.content-header', [
-            'title' => 'Posts',
-            'breadcrumbs' => [
-                ['title' => 'Posts', 'route' => route('admin.post.index')],
-                ['title' => 'Create']
-            ]
-        ])
-
-        <!-- Main content -->
-        <section class="content">
-            <div class="container-fluid">
-                <form action="{{ route('admin.post.store') }}" method="POST" enctype="multipart/form-data">
+    <div class="container-fluid py-4">
+        <div class="row">
+            <div class="col-12">
+                <form action="{{ route('admin.posts.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
-                    <div class="input-group col-12 col-md-6 col-xl-4 mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><strong>Title</strong></span>
-                        </div>
-                        <input type="text" name="title" value="{{ old('title') }}"
-                               class="form-control @error('title') is-invalid @enderror" placeholder="Post title">
-                        @error('title')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    @if(count($categories))
-                        <div class="input-group col-12 col-md-6 col-xl-4 mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><strong>Category</strong></span>
+                    <div class="card">
+                        <div class="card-header pb-0">
+                            <div class="d-flex align-items-center">
+                                <p class="mb-0">Create Post</p>
+                                <a href="{{ route('admin.posts.index') }}" class="btn btn-primary btn-sm ms-auto mb-0">
+                                    <i class="fa-solid fa-table-list"></i>
+                                    <span class="ms-1 d-none d-sm-inline-block">Posts</span>
+                                </a>
+                                <button class="btn btn-success btn-sm ms-2 mb-0" type="submit">
+                                    <i class="fa-solid fa-check"></i>
+                                    <span class="ms-1 d-none d-sm-inline-block">Create</span>
+                                </button>
                             </div>
-                            <select name="category_id" class="form-control @error('category_id') is-invalid @enderror">
-                                <option selected disabled>Choose the category</option>
-                                @foreach($categories as $category)
-                                    <option @selected(old('category_id') == $category->id) value="{{ $category->id }}">
-                                        {{ $category->title }}
-                                    </option>
-                                @endforeach
-                            </select>
-                            @error('category_id')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
                         </div>
-                    @endif
-                    <div class="form-group col-12 col-md-6 col-xl-4">
-                        <label>Tags</label>
-                        <select class="select2" name="tag_ids[]" multiple="multiple" data-placeholder="Choose tag(s)" style="width: 100%">
-                            @foreach($tags as $tag)
-                                <option @selected(is_array(old('tag_ids')) && in_array($tag->id, old('tag_ids'))) value="{{ $tag->id }}">{{ $tag->title }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <textarea id="summernote" name="content">{{ old('content') }}</textarea>
-                        @error('title')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    <div class="form-group col-12 col-md-6 col-xl-4 mb-3">
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input @error('preview_image') is-invalid @enderror"
-                                   id="previewImage" name="preview_image">
-                            <label class="custom-file-label" for="previewImage">Choose preview image</label>
-                            @error('preview_image')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
+                        <div class="card-body">
+                            <p class="text-uppercase text-sm">Post Information</p>
+                            <div class="row">
+                                <div class="col-sm-8 col-md-6 col-lg-4">
+                                    <div class="form-group @error('title') mb-0 @enderror">
+                                        <label for="title" class="form-control-label">Title</label>
+                                        <input class="form-control @error('title') is-invalid @enderror" type="text" name="title" id="title" value="{{ old('title') }}" placeholder="Post title">
+                                    </div>
+                                    @error('title')
+                                    <div class="invalid-feedback d-inline-block" role="alert">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div>
+                                    <div class="form-group @error('content') mb-0 @enderror">
+                                        <label for="content" class="form-control-label">Content</label>
+                                        <textarea id="content" name="content">{{ old('content') }}</textarea>
+                                    </div>
+                                    @error('content')
+                                    <div class="invalid-feedback d-inline-block" role="alert">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-sm-8 col-md-6 col-lg-4">
+                                    <div class="form-group @error('photo') mb-0 @enderror">
+                                        <label class="form-label" for="photo">Photo</label>
+                                        <input class="form-control @error('photo') is-invalid @enderror" type="file" name="photo" id="photo" accept="image/*">
+                                    </div>
+                                    @error('photo')
+                                    <div class="invalid-feedback d-inline-block" role="alert">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group col-12 col-md-6 col-xl-4 mb-3">
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input @error('preview_image') is-invalid @enderror"
-                                   id="previewImage" name="main_image">
-                            <label class="custom-file-label" for="mainImage">Choose main image</label>
-                            @error('main_image')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" class="btn btn-primary" value="Submit">
                     </div>
                 </form>
-            </div><!-- /.container-fluid -->
-        </section><!-- /.content -->
+            </div>
+        </div>
     </div>
 @endsection
 
 @pushonce('scripts')
-    <script src="{{ asset('plugins/select2/js/select2.full.min.js') }}"></script>
-    <script src="{{ asset('plugins/summernote/summernote-bs4.min.js') }}"></script>
-    <script src="{{ asset('plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/35.1.0/classic/ckeditor.js"></script>
     <script>
-        $(document).ready(function () {
-            $('#summernote').summernote({
-                toolbar: [
-                    ['style', ['bold', 'italic', 'underline', 'clear']],
-                    ['font', ['strikethrough', 'superscript', 'subscript']],
-                    ['fontsize', ['fontsize']],
-                    ['color', ['color']],
-                    ['para', ['ul', 'ol', 'paragraph']],
-                    ['height', ['height']]
-                ]
-            });
-        });
-        $(function () {
-            bsCustomFileInput.init();
-        });
-        $('.select2').select2();
+        ClassicEditor.create(document.querySelector('#content')).catch(error => console.log(error));
     </script>
 @endpushonce

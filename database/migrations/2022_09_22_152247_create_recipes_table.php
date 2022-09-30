@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Recipe;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -18,11 +19,12 @@ return new class extends Migration
             $table->string('title', 255);
             $table->string('slug')->unique();
             $table->foreignId('cuisine_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
-            $table->string('preparation_time');
+            $table->string('cooking_time');
             $table->float('servings')->default(1);
-            $table->set('level', ['easily', 'moderately', 'difficultly']);
+            $table->set('level', Recipe::LEVELS);
             $table->string('photo');
             $table->text('description');
+            $table->boolean('is_published')->default(false);
             $table->timestamps();
         });
     }

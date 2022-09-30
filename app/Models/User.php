@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Storage;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable implements MustVerifyEmail
@@ -31,16 +32,34 @@ class User extends Authenticatable implements MustVerifyEmail
         return $role == self::ROLE_USER ? 'User' : 'Admin';
     }
 
+    public function getFullName($user = null): string
+    {
+        return $user !== null ? $user->first_name . ' ' . $user->last_name : auth()->user()->first_name . ' ' . auth()->user()->last_name;
+    }
+
+    public function getPhoto($user): string
+    {
+        return $user->photo ? 'storage/' . $user->photo : 'assets/img/team-2.jpg';
+    }
+
+    public static function setPhoto(array $data): array
+    {
+        if (isset($data['photo'])) $data['photo'] = Storage::disk('public')->put('/users', $data['photo']);
+        return $data;
+    }
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
         'email',
         'password',
-        'role'
+        'role',
+        'photo'
     ];
 
     /**
@@ -67,11 +86,13 @@ class User extends Authenticatable implements MustVerifyEmail
         $this->notify(new SendVerifyWithQueueNotification());
     }
 
-    public function likedPosts() {
+    public function likedPosts()
+    {
         return $this->belongsToMany(Post::class, 'post_users', 'user_id', 'post_id');
     }
 
-    public function comments() {
+    public function comments()
+    {
         return $this->hasMany(Comment::class, 'user_id', 'id');
     }
 }

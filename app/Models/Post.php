@@ -4,19 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Storage;
 
 class Post extends Model
 {
     use HasFactory;
-    use SoftDeletes;
 
     protected $fillable = [
         'title',
         'content',
-        'preview_image',
-        'main_image',
-        'category_id'
+        'photo'
     ];
 
     public function category() {
@@ -29,5 +26,16 @@ class Post extends Model
 
     public function likedUsers() {
         return $this->belongsToMany(User::class, 'post_users', 'post_id', 'user_id');
+    }
+
+    public function getPhoto($post): string
+    {
+        return $post->photo ? 'storage/' . $post->photo : 'assets/img/team-2.jpg';
+    }
+
+    public static function setPhoto(array $data): array
+    {
+        if (isset($data['photo'])) $data['photo'] = Storage::disk('public')->put('/posts', $data['photo']);
+        return $data;
     }
 }

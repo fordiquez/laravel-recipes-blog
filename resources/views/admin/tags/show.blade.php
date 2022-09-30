@@ -1,49 +1,54 @@
-@extends('layouts.admin')
+@extends('layouts.argon')
+
+@section('title', 'Admin – Tags – ' . $tag->title)
 
 @section('content')
-    <div class="content-wrapper">
-        @include('admin.components.content-header', [
-            'title' => $tag->title,
-            'breadcrumbs' => [
-                ['title' => 'Tags', 'route' => route('admin.tag.index')],
-                ['title' => $tag->title]
-            ]
-        ])
-
-        <!-- Main content -->
-        <section class="content">
-            <div class="container-fluid">
-                <!-- Small boxes (Stat box) -->
+    <div class="mx-3 mx-lg-5 my-7">
+        <div class="card card-profile">
+            <div class="card-header text-center border-0 pt-0 pt-lg-2 pb-4 pb-lg-3">
+                <div class="d-flex justify-content-between">
+                    <a href="{{ route('admin.tags.index') }}" class="btn btn-sm btn-primary mb-0 d-flex align-items-center">
+                        <i class="fa-solid fa-table-list"></i>
+                        <span class="ms-1 d-none d-sm-inline-block">Tags</span>
+                    </a>
+                    <a href="{{ route('admin.tags.edit', $tag) }}" class="btn btn-sm btn-success mb-0 d-flex align-items-center">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        <span class="ms-1 d-none d-sm-inline-block">Edit</span>
+                    </a>
+                </div>
+            </div>
+            <div class="card-body pt-0">
                 <div class="row">
-                    <div class="col-12 col-lg-4 col-md-6">
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item"><strong>ID:</strong> <i>{{ $tag->id }}</i></li>
-                            <li class="list-group-item"><strong>Title:</strong> <i>{{ $tag->title }}</i></li>
-                            <li class="list-group-item"><strong>Created at:</strong> <i>{{ $tag->created_at }}</i></li>
-                            <li class="list-group-item"><strong>Updated at:</strong> <i>{{ $tag->updated_at }}</i></li>
-                        </ul>
-                        <div class="mt-3">
-                            <a href="{{ route('admin.tag.index') }}" class="btn btn-primary"><i class="fas fa-th-list mr-2"></i>Posts</a>
-                            <div class="d-flex float-right">
-                                <a href="{{ route('admin.tag.edit', $tag) }}" class="btn btn-success mr-2">
-                                    <i class="fas fa-pencil-alt"></i>
-                                </a>
-                                <form action="{{ route('admin.tag.destroy', $tag) }}" method="POST" class="d-inline-flex">
-                                    @csrf
-                                    @method('delete')
-                                    <button type="submit" class="btn btn-danger">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </form>
+                    <div class="text-center">
+                        <h5>{{ $tag->title }}</h5>
+                        <div class="h6 font-weight-300">{{ $tag->slug }}</div>
+                    </div>
+                    <div class="col">
+                        <div class="d-flex justify-content-center">
+                            <div class="d-grid text-center">
+                                <span class="text-lg font-weight-bolder">22</span>
+                                <span class="text-sm opacity-8">Friends</span>
+                            </div>
+                            <div class="d-grid text-center mx-4">
+                                <span class="text-lg font-weight-bolder">10</span>
+                                <span class="text-sm opacity-8">Photos</span>
+                            </div>
+                            <div class="d-grid text-center">
+                                <span class="text-lg font-weight-bolder">89</span>
+                                <span class="text-sm opacity-8">Comments</span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- /.row -->
-                <!-- Main row -->
-                <!-- /.row (main row) -->
-            </div><!-- /.container-fluid -->
-        </section>
-        <!-- /.content -->
+                <div class="text-center mt-4">
+                    <div class="mt-4 d-flex justify-content-center">
+                        Created: <span class="badge bg-gradient-primary ms-1">{{ $tag->created_at }}</span>
+                    </div>
+                    <div class="mt-1 d-flex justify-content-center">
+                        Updated: <span class="badge bg-gradient-success ms-1">{{ $tag->updated_at }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection

@@ -25,10 +25,11 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'string'],
-            'email' => ['required', 'string', 'email', Rule::unique('users')->ignore($this->user->id)],
-            'password' => ['string', 'min:6'],
-            'role' => ['required', 'integer']
+            'first_name' => ['required', 'string', 'max:50'],
+            'last_name' => ['required', 'string', 'max:50'],
+            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($this->user->id)],
+            'password' => ['string', 'min:8'],
+            'photo' => ['file']
         ];
     }
 }

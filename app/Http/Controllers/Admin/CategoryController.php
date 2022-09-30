@@ -15,14 +15,15 @@ class CategoryController extends Controller
     }
 
     public function create() {
-        return view('admin.categories.create');
+        $categories = Category::all();
+        return view('admin.categories.create', compact('categories'));
     }
 
     public function store(StoreRequest $request) {
         $data = $request->validated();
         Category::create($data);
 
-        return redirect()->route('admin.category.index');
+        return redirect()->route('admin.categories.index');
     }
 
     public function show(Category $category) {
@@ -30,7 +31,8 @@ class CategoryController extends Controller
     }
 
     public function edit(Category $category) {
-        return view('admin.categories.edit', compact('category'));
+        $categories = Category::where('slug', '!=', $category->slug)->get();
+        return view('admin.categories.edit', compact('category', 'categories'));
     }
 
     /**
@@ -46,6 +48,6 @@ class CategoryController extends Controller
     public function destroy(Category $category) {
         $category->forceDelete();
 
-        return redirect()->route('admin.category.index');
+        return redirect()->route('admin.categories.index');
     }
 }

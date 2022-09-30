@@ -6,12 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\User\StoreRequest;
 use App\Http\Requests\Admin\User\UpdateRequest;
 use App\Jobs\StoreUserJob;
-use App\Mail\User\PasswordMail;
 use App\Models\User;
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -27,9 +22,9 @@ class UserController extends Controller
 
     public function store(StoreRequest $request) {
         $data = $request->validated();
-        StoreUserJob::dispatch($data);
+        StoreUserJob::dispatch(User::setPhoto($data));
 
-        return redirect()->route('admin.user.index');
+        return redirect()->route('admin.users.index');
     }
 
     public function show(User $user) {
@@ -46,7 +41,7 @@ class UserController extends Controller
      */
     public function update(UpdateRequest $request, User $user) {
         $data = $request->validated();
-        $user->update($data);
+        $user->update(User::setPhoto($data));
 
         return view('admin.users.show', compact('user'));
     }
@@ -54,6 +49,6 @@ class UserController extends Controller
     public function destroy(User $user) {
         $user->forceDelete();
 
-        return redirect()->route('admin.user.index');
+        return redirect()->route('admin.users.index');
     }
 }
