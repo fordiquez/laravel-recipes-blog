@@ -30,7 +30,7 @@ class Post extends Model
 
     public function getPhoto($post): string
     {
-        return $post->photo ? 'storage/' . $post->photo : 'assets/img/team-2.jpg';
+        return $post->photo ? 'storage/' . $post->photo : 'storage/users/photo_2022-10-01_23-08-23.jpg';
     }
 
     public static function setPhoto(array $data): array

@@ -38,6 +38,11 @@ class Recipe extends Model
         return $this->belongsToMany(Category::class, 'recipe_categories', 'recipe_id', 'category_id');
     }
 
+    public function ingredients()
+    {
+        return $this->hasMany(Ingredient::class, 'recipe_id', 'id');
+    }
+
     public static function getLevels(): array
     {
         return [
@@ -49,7 +54,7 @@ class Recipe extends Model
 
     public function getPhoto($recipe): string
     {
-        return $recipe->photo ? 'storage/' . $recipe->photo : 'assets/img/team-2.jpg';
+        return $recipe->photo ? 'storage/' . $recipe->photo : 'storage/users/photo_2022-10-01_23-08-23.jpg';
     }
 
     public static function setPhoto(array $data): array

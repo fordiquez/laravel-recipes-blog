@@ -161,6 +161,16 @@
                                 </div>
                             </div>
                             <hr class="horizontal dark">
+                            <p class="text-uppercase text-sm">Ingredients information</p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="updated_at" class="form-control-label">Updated at</label>
+                                        <input class="form-control" type="text" name="updated_at" id="updated_at" value="{{ old('updated_at', $recipe->updated_at) }}" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="horizontal dark">
                             <p class="text-uppercase text-sm">Additional Information</p>
                             <div class="row">
                                 <div class="col-md-6">

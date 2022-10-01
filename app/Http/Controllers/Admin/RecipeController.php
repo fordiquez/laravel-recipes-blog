@@ -49,6 +49,7 @@ class RecipeController extends Controller
         $categories = Category::all();
         $tags = Tag::all();
         $levels = Recipe::getLevels();
+        dd($recipe->ingredients);
         return view('admin.recipes.edit', compact('recipe', 'cuisines', 'categories', 'tags', 'levels'));
     }
 

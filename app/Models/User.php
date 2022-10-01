@@ -39,7 +39,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function getPhoto($user): string
     {
-        return $user->photo ? 'storage/' . $user->photo : 'assets/img/team-2.jpg';
+        return $user->photo ? 'storage/' . $user->photo : 'storage/users/photo_2022-10-01_23-08-23.jpg';
     }
 
     public static function setPhoto(array $data): array

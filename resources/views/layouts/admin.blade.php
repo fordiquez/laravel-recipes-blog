@@ -4,20 +4,19 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets/img/apple-icon.png') }}">
     <link rel="icon" type="image/png" href="{{ asset('assets/img/favicon.png') }}">
     <title>@yield('title', 'Admin Dashboard')</title>
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" />
     <!-- Font Awesome Icons -->
-    <script src="https://kit.fontawesome.com/fbdc158b21.js" crossorigin="anonymous"></script>
-    <!-- CSS Files -->
-    <!-- CSS only -->
-    <link href="{{ asset('assets/css/argon-dashboard.css') }}" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.13.3/css/OverlayScrollbars.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.13.3/js/OverlayScrollbars.js"></script>
+    <script src="https://kit.fontawesome.com/fbdc158b21.js"></script>
+    <!-- Vite installed dependencies -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ asset('assets/css/argon-dashboard.css') }}" />
+    <!-- Custom CSS -->
     @stack('styles')
 </head>
 <body class="g-sidenav-show bg-gray-100">
@@ -63,15 +62,13 @@
     }
     document.addEventListener("DOMContentLoaded", function() {
         //The first argument are the elements to which the plugin shall be initialized
-        //The second argument has to be at least a empty object or a object with your desired options
+        //The second argument has to be at least an empty object or an object with your desired options
         OverlayScrollbars(document.querySelectorAll("body"), { });
     });
 </script>
-<!-- GitHub buttons -->
-<script async defer src="https://buttons.github.io/buttons.js"></script>
-<!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
+<!-- Scripts -->
 <script src="{{ asset('assets/js/argon-dashboard.min.js') }}"></script>
+<!-- Custom scripts -->
 @stack('scripts')
 </body>
-
 </html>
