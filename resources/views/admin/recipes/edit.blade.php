@@ -1,4 +1,4 @@
-@extends('layouts.argon')
+@extends('layouts.admin')
 
 @section('title', 'Admin – Recipes – ' . $recipe->title . ' – Edit')
 

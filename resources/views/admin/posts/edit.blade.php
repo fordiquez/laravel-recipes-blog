@@ -1,10 +1,6 @@
-@extends('layouts.argon')
+@extends('layouts.admin')
 
 @section('title', 'Admin – Posts – ' . $post->title . ' – Edit')
-
-@pushonce('styles')
-    <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
-@endpushonce
 
 @section('content')
     <div class="card shadow-lg mx-4 card-profile-bottom">
