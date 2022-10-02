@@ -10,7 +10,7 @@ use App\Models\Cuisine;
 class CuisineController extends Controller
 {
     public function index() {
-        $cuisines = Cuisine::all();
+        $cuisines = Cuisine::paginate(10);
         return view('admin.cuisines.index', compact('cuisines'));
     }
 

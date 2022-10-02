@@ -22,7 +22,7 @@
                     <h5 class="text-center">{{ $recipe->title }}</h5>
                     <hr class="horizontal dark">
                     <div class="row justify-content-center">
-                        <div class="col-10">
+                        <div class="col-10 d-flex flex-column justify-content-center">
                             <div class="d-flex align-items-center justify-content-between">
                                 <div class="d-flex align-items-center">
                                     Created: <span class="badge bg-gradient-primary ms-1">{{ $recipe->created_at }}</span>
@@ -34,7 +34,7 @@
                                     Updated: <span class="badge bg-gradient-success ms-1">{{ $recipe->updated_at }}</span>
                                 </div>
                             </div>
-                            <img src="{{ asset($recipe->getPhoto($recipe)) }}" alt="{{ $recipe->title }}" title="{{ $recipe->title }}"
+                            <img src="{{ asset($recipe->getPhoto()) }}" alt="{{ $recipe->title }}" title="{{ $recipe->title }}"
                                  class="img-fluid border border-2 border-white mt-3">
                             <div class="d-flex justify-content-center mt-3">
                                 <ul class="list-group list-group-horizontal">
@@ -63,7 +63,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="text-left">{!! $recipe->description !!}</div>
+                    <div class="text-left mt-3">{!! $recipe->description !!}</div>
                 </div>
             </div>
         </div>

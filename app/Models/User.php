@@ -27,19 +27,19 @@ class User extends Authenticatable implements MustVerifyEmail
         ];
     }
 
-    public static function getRole($role): string
+    public function getRole(): string
     {
-        return $role == self::ROLE_USER ? 'User' : 'Admin';
+        return $this->role == self::ROLE_USER ? 'User' : 'Admin';
     }
 
-    public function getFullName($user = null): string
+    public function getFullName(): string
     {
-        return $user !== null ? $user->first_name . ' ' . $user->last_name : auth()->user()->first_name . ' ' . auth()->user()->last_name;
+        return $this->first_name . ' ' . $this->last_name;
     }
 
-    public function getPhoto($user): string
+    public function getPhoto(): string
     {
-        return $user->photo ? 'storage/' . $user->photo : 'storage/users/photo_2022-10-01_23-08-23.jpg';
+        return $this->photo ? 'storage/' . $this->photo : 'storage/users/photo_2022-10-01_23-08-23.jpg';
     }
 
     public static function setPhoto(array $data): array

@@ -18,8 +18,7 @@ class Recipe extends Model
         'servings',
         'level',
         'photo',
-        'description',
-        'tags'
+        'description'
     ];
 
     public const LEVELS = ['easily', 'moderately', 'difficultly'];
@@ -52,9 +51,9 @@ class Recipe extends Model
         ];
     }
 
-    public function getPhoto($recipe): string
+    public function getPhoto(): string
     {
-        return $recipe->photo ? 'storage/' . $recipe->photo : 'storage/users/photo_2022-10-01_23-08-23.jpg';
+        return $this->photo ? 'storage/' . $this->photo : 'storage/users/photo_2022-10-01_23-08-23.jpg';
     }
 
     public static function setPhoto(array $data): array

@@ -35,7 +35,7 @@
                                             <td>
                                                 <div class="d-flex px-2 py-1">
                                                     <div>
-                                                        <img src="{{ asset($post->getPhoto($post)) }}" class="avatar avatar-sm me-3"
+                                                        <img src="{{ asset($post->getPhoto()) }}" class="avatar avatar-sm me-3"
                                                              alt="{{ $post->title }}" title="{{ $post->title }}">
                                                     </div>
                                                     <div class="d-flex flex-column justify-content-center">
@@ -69,6 +69,7 @@
                                     </tbody>
                                 </table>
                             </div>
+                            <div class="m-3">{{ $posts->links() }}</div>
                         @endif
                     </div>
                 </div>

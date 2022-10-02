@@ -70,6 +70,7 @@
                                     </tbody>
                                 </table>
                             </div>
+                            <div class="m-3">{{ $categories->links() }}</div>
                         @endif
                     </div>
                 </div>

@@ -28,9 +28,9 @@ class Post extends Model
         return $this->belongsToMany(User::class, 'post_users', 'post_id', 'user_id');
     }
 
-    public function getPhoto($post): string
+    public function getPhoto(): string
     {
-        return $post->photo ? 'storage/' . $post->photo : 'storage/users/photo_2022-10-01_23-08-23.jpg';
+        return $this->photo ? 'storage/' . $this->photo : 'storage/users/photo_2022-10-01_23-08-23.jpg';
     }
 
     public static function setPhoto(array $data): array

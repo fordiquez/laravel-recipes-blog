@@ -46,7 +46,7 @@ class StoreRequest extends FormRequest
             'servings' => ['required', 'numeric'],
             'level' => ['required', 'string', Rule::in(Recipe::LEVELS)],
             'photo' => ['required', 'file'],
-            'description' => ['required', 'string', 'max:1000'],
+            'description' => ['required', 'string', 'max:65535'],
             'categories' => ['nullable', 'array'],
             'categories.*' => ['nullable', 'integer', 'exists:categories,id'],
             'tags' => ['nullable', 'array'],

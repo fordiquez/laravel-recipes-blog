@@ -8,7 +8,7 @@
             <div class="row gx-4">
                 <div class="col-auto">
                     <div class="avatar avatar-xl position-relative">
-                        <img src="{{ asset($post->getPhoto($post)) }}" class="w-100 border-radius-lg shadow-sm"
+                        <img src="{{ asset($post->getPhoto()) }}" class="w-100 border-radius-lg shadow-sm"
                              alt="{{ $post->title }}" title="{{ $post->title }}">
                     </div>
                 </div>

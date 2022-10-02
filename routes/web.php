@@ -34,4 +34,5 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin', 'verified']
     Route::prefix('tags')->resource('tags', \App\Http\Controllers\Admin\TagController::class);
     Route::prefix('recipes')->resource('recipes', \App\Http\Controllers\Admin\RecipeController::class);
     Route::prefix('posts')->resource('posts', \App\Http\Controllers\Admin\PostController::class);
+    Route::prefix('ingredients')->resource('ingredients', \App\Http\Controllers\Admin\IngredientController::class);
 });

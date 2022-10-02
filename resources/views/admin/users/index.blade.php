@@ -36,16 +36,20 @@
                                             <td>
                                                 <div class="d-flex px-2 py-1">
                                                     <div>
-                                                        <img src="{{ asset($user->getPhoto($user)) }}" class="avatar avatar-sm me-3" alt="{{ $user->getFullName($user) }}" title="{{ $user->getFullName($user) }}">
+                                                        <img src="{{ asset($user->getPhoto()) }}" class="avatar avatar-sm me-3" alt="{{ $user->getFullName() }}" title="{{ $user->getFullName() }}">
                                                     </div>
                                                     <div class="d-flex flex-column justify-content-center">
-                                                        <h6 class="mb-0 text-sm">{{ $user->getFullName($user) }}</h6>
+                                                        <h6 class="mb-0 text-sm">{{ $user->getFullName() }}</h6>
                                                         <p class="text-xs text-secondary mb-0">{{ $user->email }}</p>
                                                     </div>
                                                 </div>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <p class="text-xs font-weight-bold mb-0">{{ $user->getRole($user->role) }}</p>
+                                                <p class="text-xs font-weight-bold mb-0">
+                                                    <span class="badge {{ $user->getRole() == 'Admin' ? 'bg-gradient-primary' : 'bg-info' }}">
+                                                        {{ $user->getRole() }}
+                                                    </span>
+                                                </p>
                                             </td>
                                             <td class="align-middle text-center">
                                                 <p class="text-xs font-weight-bold mb-0">{{ $user->created_at }}</p>
@@ -73,6 +77,7 @@
                                     </tbody>
                                 </table>
                             </div>
+                            <div class="m-3">{{ $users->links() }}</div>
                         @endif
                     </div>
                 </div>

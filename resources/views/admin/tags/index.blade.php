@@ -66,6 +66,7 @@
                                     </tbody>
                                 </table>
                             </div>
+                            <div class="m-3">{{ $tags->links() }}</div>
                         @endif
                     </div>
                 </div>

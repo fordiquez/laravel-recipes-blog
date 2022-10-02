@@ -8,7 +8,7 @@
             <div class="row justify-content-center">
                 <div class="col-4 col-lg-4 order-lg-2">
                     <div class="mt-n4 mt-lg-n6 mb-4 mb-lg-0">
-                        <img src="{{ asset($post->getPhoto($post)) }}"
+                        <img src="{{ asset($post->getPhoto()) }}"
                              class="rounded-circle img-fluid border border-2 border-white"
                              alt="{{ $post->title }}" title="{{ $post->title }}">
                     </div>

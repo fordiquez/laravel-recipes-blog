@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Admin – Users – ' . $user->getFullName($user))
+@section('title', 'Admin – Users – ' . $user->getFullName())
 
 @section('content')
     <div class="mx-3 mx-lg-5 my-7">
@@ -8,9 +8,9 @@
             <div class="row justify-content-center">
                 <div class="col-4 col-lg-4 order-lg-2">
                     <div class="mt-n4 mt-lg-n6 mb-4 mb-lg-0">
-                        <img src="{{ asset($user->getPhoto($user)) }}"
+                        <img src="{{ asset($user->getPhoto()) }}"
                              class="rounded-circle img-fluid border border-2 border-white"
-                             alt="{{ $user->getFullName($user) }}" title="{{ $user->getFullName($user) }}">
+                             alt="{{ $user->getFullName() }}" title="{{ $user->getFullName() }}">
                     </div>
                 </div>
             </div>
@@ -46,10 +46,12 @@
                     </div>
                 </div>
                 <div class="text-center mt-4">
-                    <h5>{{ $user->getFullName($user) }}</h5>
+                    <h5>{{ $user->getFullName() }}</h5>
                     <div class="h6 font-weight-300">{{ $user->email }}</div>
                     <div>
-                        <span class="badge bg-gradient-primary">{{ $user->getRole($user->role) }}</span>
+                        <span class="badge {{ $user->getRole() == 'Admin' ? 'bg-gradient-primary' : 'bg-info' }}">
+                            {{ $user->getRole() }}
+                        </span>
                     </div>
                     <div class="mt-4 d-flex justify-content-center">
                         Created: <span class="badge bg-gradient-primary ms-1">{{ $user->created_at }}</span>

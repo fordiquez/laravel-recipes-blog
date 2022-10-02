@@ -39,7 +39,7 @@ class StoreRequest extends FormRequest
         return [
             'title' => ['required', 'string', 'max:50'],
             'slug' => ['required', 'string', 'max:50', 'unique:cuisines'],
-            'description' => ['string', 'nullable'],
+            'description' => ['string', 'nullable', 'max:255'],
             'photo' => ['file']
         ];
     }

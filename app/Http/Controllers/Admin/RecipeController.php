@@ -21,7 +21,7 @@ class RecipeController extends Controller
     }
 
     public function index() {
-        $recipes = Recipe::all();
+        $recipes = Recipe::paginate(10);
         return view('admin.recipes.index', compact('recipes'));
     }
 
@@ -49,7 +49,6 @@ class RecipeController extends Controller
         $categories = Category::all();
         $tags = Tag::all();
         $levels = Recipe::getLevels();
-        dd($recipe->ingredients);
         return view('admin.recipes.edit', compact('recipe', 'cuisines', 'categories', 'tags', 'levels'));
     }
 

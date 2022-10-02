@@ -36,12 +36,16 @@
                                             <td>
                                                 <div class="d-flex px-2 py-1">
                                                     <div>
-                                                        <img src="{{ asset($recipe->getPhoto($recipe)) }}" class="avatar avatar-sm me-3"
+                                                        <img src="{{ asset($recipe->getPhoto()) }}" class="avatar avatar-sm me-3"
                                                              alt="{{ $recipe->title }}" title="{{ $recipe->title }}">
                                                     </div>
                                                     <div class="d-flex flex-column justify-content-center">
-                                                        <h6 class="mb-0 text-sm">{{ $recipe->title }}</h6>
-                                                        <p class="text-xs text-secondary mb-0">{{ $recipe->slug }}</p>
+                                                        <h6 class="mb-0 text-sm" style="white-space: normal">
+                                                            {{ \Illuminate\Support\Str::limit($recipe->title) }}
+                                                        </h6>
+                                                        <p class="text-xs text-secondary mb-0" style="white-space: normal">
+                                                            {{ \Illuminate\Support\Str::limit($recipe->title) }}
+                                                        </p>
                                                     </div>
                                                 </div>
                                             </td>
@@ -80,6 +84,7 @@
                                     </tbody>
                                 </table>
                             </div>
+                            <div class="m-3">{{ $recipes->links() }}</div>
                         @endif
                     </div>
                 </div>

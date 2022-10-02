@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Admin – Users – ' . $user->getFullName($user) . ' – Edit')
+@section('title', 'Admin – Users – ' . $user->getFullName() . ' – Edit')
 
 @section('content')
     <div class="card shadow-lg mx-4 card-profile-bottom">
@@ -8,13 +8,13 @@
             <div class="row gx-4">
                 <div class="col-auto">
                     <div class="avatar avatar-xl position-relative">
-                        <img src="{{ asset($user->getPhoto($user)) }}" class="w-100 border-radius-lg shadow-sm"
-                             alt="{{ $user->getFullName($user) }}" title="{{ $user->getFullName($user) }}">
+                        <img src="{{ asset($user->getPhoto()) }}" class="w-100 border-radius-lg shadow-sm"
+                             alt="{{ $user->getFullName() }}" title="{{ $user->getFullName() }}">
                     </div>
                 </div>
                 <div class="col-auto my-auto">
                     <div class="h-100">
-                        <h5 class="mb-1">{{ $user->getFullName($user) }}</h5>
+                        <h5 class="mb-1">{{ $user->getFullName() }}</h5>
                         <p class="mb-0 font-weight-bold text-sm">{{ $user->email }}</p>
                     </div>
                 </div>

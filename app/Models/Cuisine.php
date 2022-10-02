@@ -17,9 +17,9 @@ class Cuisine extends Model
         'photo'
     ];
 
-    public function getPhoto($cuisine): string
+    public function getPhoto(): string
     {
-        return $cuisine->photo ? 'storage/' . $cuisine->photo : 'storage/users/photo_2022-10-01_23-08-23.jpg';
+        return $this->photo ? 'storage/' . $this->photo : 'storage/users/photo_2022-10-01_23-08-23.jpg';
     }
 
     public static function setPhoto(array $data): array

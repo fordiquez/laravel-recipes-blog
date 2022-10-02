@@ -36,7 +36,7 @@
                                             <td>
                                                 <div class="d-flex px-2 py-1">
                                                     <div>
-                                                        <img src="{{ asset($cuisine->getPhoto($cuisine)) }}" class="avatar avatar-sm me-3" alt="{{ $cuisine->title }}" title="{{ $cuisine->title }}">
+                                                        <img src="{{ asset($cuisine->getPhoto()) }}" class="avatar avatar-sm me-3" alt="{{ $cuisine->title }}" title="{{ $cuisine->title }}">
                                                     </div>
                                                     <div class="d-flex flex-column justify-content-center">
                                                         <h6 class="mb-0 text-sm">{{ $cuisine->title }}</h6>
@@ -73,6 +73,7 @@
                                     </tbody>
                                 </table>
                             </div>
+                            <div class="m-3">{{ $cuisines->links() }}</div>
                         @endif
                     </div>
                 </div>

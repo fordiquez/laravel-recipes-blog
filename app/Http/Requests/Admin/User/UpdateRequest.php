@@ -28,6 +28,7 @@ class UpdateRequest extends FormRequest
             'first_name' => ['required', 'string', 'max:50'],
             'last_name' => ['required', 'string', 'max:50'],
             'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($this->user->id)],
+            'role' => ['required', 'integer'],
             'password' => ['string', 'min:8'],
             'photo' => ['file']
         ];
