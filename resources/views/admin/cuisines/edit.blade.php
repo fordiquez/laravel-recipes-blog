@@ -2,6 +2,14 @@
 
 @section('title', 'Admin – Cuisines – ' . $cuisine->title . ' – Edit')
 
+@pushonce('styles')
+    <style>
+        .ck-editor__editable[role="textbox"] {
+            min-height: 200px;
+        }
+    </style>
+@endpushonce
+
 @section('content')
     <div class="card shadow-lg mx-4 card-profile-bottom">
         <div class="card-body p-3">
@@ -98,3 +106,8 @@
         </div>
     </div>
 @endsection
+
+@pushonce('scripts')
+    <script src="{{ asset('assets/js/ckeditor.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/ckeditor.js') }}"></script>
+@endpushonce

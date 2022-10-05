@@ -28,11 +28,12 @@ Route::prefix('personal')->middleware(['auth', 'verified'])->controller(Personal
 
 Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin', 'verified'])->group(function () {
     Route::get('/', [\App\Http\Controllers\Admin\IndexController::class, 'index'])->name('index');
-    Route::prefix('users')->resource('users', \App\Http\Controllers\Admin\UserController::class);
-    Route::prefix('cuisines')->resource('cuisines', \App\Http\Controllers\Admin\CuisineController::class);
-    Route::prefix('categories')->resource('categories', \App\Http\Controllers\Admin\CategoryController::class);
-    Route::prefix('tags')->resource('tags', \App\Http\Controllers\Admin\TagController::class);
-    Route::prefix('recipes')->resource('recipes', \App\Http\Controllers\Admin\RecipeController::class);
-    Route::prefix('posts')->resource('posts', \App\Http\Controllers\Admin\PostController::class);
-    Route::prefix('ingredients')->resource('ingredients', \App\Http\Controllers\Admin\IngredientController::class);
+    Route::resources([
+        'users' => \App\Http\Controllers\Admin\UserController::class,
+        'cuisines' => \App\Http\Controllers\Admin\CuisineController::class,
+        'categories' => \App\Http\Controllers\Admin\CategoryController::class,
+        'tags' => \App\Http\Controllers\Admin\TagController::class,
+        'recipes' => \App\Http\Controllers\Admin\RecipeController::class,
+        'posts' => \App\Http\Controllers\Admin\PostController::class,
+    ]);
 });

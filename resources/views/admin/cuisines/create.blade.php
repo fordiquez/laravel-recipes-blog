@@ -2,6 +2,14 @@
 
 @section('title', 'Admin – Cuisines – Create')
 
+@pushonce('styles')
+    <style>
+        .ck-editor__editable[role="textbox"] {
+            min-height: 200px;
+        }
+    </style>
+@endpushonce
+
 @section('content')
     <div class="container-fluid py-4">
         <div class="row">
@@ -63,3 +71,8 @@
         </div>
     </div>
 @endsection
+
+@pushonce('scripts')
+    <script src="{{ asset('assets/js/ckeditor.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/ckeditor.js') }}"></script>
+@endpushonce

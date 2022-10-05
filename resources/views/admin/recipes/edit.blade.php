@@ -3,7 +3,7 @@
 @section('title', 'Admin – Recipes – ' . $recipe->title . ' – Edit')
 
 @pushonce('styles')
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ asset('assets/css/select2.min.css') }}" />
     <style>
         .ck-editor__editable[role="textbox"] {
             min-height: 200px;
@@ -110,7 +110,7 @@
                                     <div class="invalid-feedback d-inline-block" role="alert">{{ $message }}</div>
                                     @enderror
                                 </div>
-                                <div class="col-sm-8 col-md-6 col-lg-4">
+                                <div class="col-md-6">
                                     <div class="form-group @error('photo') mb-0 @enderror">
                                         <label class="form-label" for="photo">Photo</label>
                                         <input class="form-control @error('photo') is-invalid @enderror" type="file" name="photo" id="photo" accept="image/*">
@@ -183,7 +183,7 @@
                                                 <div class="ms-2 me-auto">
                                                     <div>{{ $ingredient->title }}</div>
                                                 </div>
-                                                <span class="badge bg-danger rounded-pill cursor-pointer" id="remove-item">
+                                                <span class="badge bg-danger rounded-pill cursor-pointer" data-id="{{ $ingredient->id }}" id="remove-icon">
                                                     <i class="fa-solid fa-trash-can"></i>
                                                 </span>
                                             </li>
@@ -216,179 +216,64 @@
 @endsection
 
 @pushonce('scripts')
-{{--    <script src="https://cdn.ckeditor.com/ckeditor5/35.1.0/classic/ckeditor.js"></script>--}}
-    <script src="https://cdn.ckeditor.com/ckeditor5/35.1.0/super-build/ckeditor.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="{{ asset('assets/js/select2.min.js') }}"></script>
+    <script src="{{ asset('assets/js/ckeditor.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/ckeditor.js') }}"></script>
     <script>
-        CKEDITOR.ClassicEditor.create(document.getElementById("description"), {
-            // https://ckeditor.com/docs/ckeditor5/latest/features/toolbar/toolbar.html#extended-toolbar-configuration-format
-            toolbar: {
-                items: [
-                    'exportPDF','exportWord', '|',
-                    'findAndReplace', 'selectAll', '|',
-                    'heading', '|',
-                    'bold', 'italic', 'strikethrough', 'underline', 'code', 'subscript', 'superscript', 'removeFormat', '|',
-                    'bulletedList', 'numberedList', 'todoList', '|',
-                    'outdent', 'indent', '|',
-                    'undo', 'redo',
-                    '-',
-                    'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor', 'highlight', '|',
-                    'alignment', '|',
-                    'link', 'blockQuote', 'insertTable', 'codeBlock', 'htmlEmbed', '|',
-                    'specialCharacters', 'horizontalLine', 'pageBreak', '|',
-                    'textPartLanguage', '|',
-                    'sourceEditing'
-                ],
-                shouldNotGroupWhenFull: true
-            },
-            // Changing the language of the interface requires loading the language file using the <script> tag.
-            // language: 'es',
-            list: {
-                properties: {
-                    styles: true,
-                    startIndex: true,
-                    reversed: true
-                }
-            },
-            // https://ckeditor.com/docs/ckeditor5/latest/features/headings.html#configuration
-            heading: {
-                options: [
-                    { model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
-                    { model: 'heading1', view: 'h1', title: 'Heading 1', class: 'ck-heading_heading1' },
-                    { model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2' },
-                    { model: 'heading3', view: 'h3', title: 'Heading 3', class: 'ck-heading_heading3' },
-                    { model: 'heading4', view: 'h4', title: 'Heading 4', class: 'ck-heading_heading4' },
-                    { model: 'heading5', view: 'h5', title: 'Heading 5', class: 'ck-heading_heading5' },
-                    { model: 'heading6', view: 'h6', title: 'Heading 6', class: 'ck-heading_heading6' }
-                ]
-            },
-            // https://ckeditor.com/docs/ckeditor5/latest/features/editor-placeholder.html#using-the-editor-configuration
-            placeholder: 'Welcome to CKEditor 5!',
-            // https://ckeditor.com/docs/ckeditor5/latest/features/font.html#configuring-the-font-family-feature
-            fontFamily: {
-                options: [
-                    'default',
-                    'Arial, Helvetica, sans-serif',
-                    'Courier New, Courier, monospace',
-                    'Georgia, serif',
-                    'Lucida Sans Unicode, Lucida Grande, sans-serif',
-                    'Tahoma, Geneva, sans-serif',
-                    'Times New Roman, Times, serif',
-                    'Trebuchet MS, Helvetica, sans-serif',
-                    'Verdana, Geneva, sans-serif'
-                ],
-                supportAllValues: true
-            },
-            // https://ckeditor.com/docs/ckeditor5/latest/features/font.html#configuring-the-font-size-feature
-            fontSize: {
-                options: [ 10, 12, 14, 'default', 18, 20, 22 ],
-                supportAllValues: true
-            },
-            // Be careful with the setting below. It instructs CKEditor to accept ALL HTML markup.
-            // https://ckeditor.com/docs/ckeditor5/latest/features/general-html-support.html#enabling-all-html-features
-            htmlSupport: {
-                allow: [
-                    {
-                        name: /.*/,
-                        attributes: true,
-                        classes: true,
-                        styles: true
-                    }
-                ]
-            },
-            // Be careful with enabling previews
-            // https://ckeditor.com/docs/ckeditor5/latest/features/html-embed.html#content-previews
-            htmlEmbed: {
-                showPreviews: true
-            },
-            // https://ckeditor.com/docs/ckeditor5/latest/features/link.html#custom-link-attributes-decorators
-            link: {
-                decorators: {
-                    addTargetToExternalLinks: true,
-                    defaultProtocol: 'https://',
-                    toggleDownloadable: {
-                        mode: 'manual',
-                        label: 'Downloadable',
-                        attributes: {
-                            download: 'file'
-                        }
-                    }
-                }
-            },
-            // https://ckeditor.com/docs/ckeditor5/latest/features/mentions.html#configuration
-            mention: {
-                feeds: [
-                    {
-                        marker: '@',
-                        feed: [
-                            '@apple', '@bears', '@brownie', '@cake', '@cake', '@candy', '@canes', '@chocolate', '@cookie', '@cotton', '@cream',
-                            '@cupcake', '@danish', '@donut', '@dragée', '@fruitcake', '@gingerbread', '@gummi', '@ice', '@jelly-o',
-                            '@liquorice', '@macaroon', '@marzipan', '@oat', '@pie', '@plum', '@pudding', '@sesame', '@snaps', '@soufflé',
-                            '@sugar', '@sweet', '@topping', '@wafer'
-                        ],
-                        minimumCharacters: 1
-                    }
-                ]
-            },
-            // The "super-build" contains more premium features that require additional configuration, disable them below.
-            // Do not turn them on unless you read the documentation and know how to configure them and setup the editor.
-            removePlugins: [
-                // These two are commercial, but you can try them out without registering to a trial.
-                // 'ExportPdf',
-                // 'ExportWord',
-                'CKBox',
-                'CKFinder',
-                'EasyImage',
-                // This sample uses the Base64UploadAdapter to handle image uploads as it requires no configuration.
-                // https://ckeditor.com/docs/ckeditor5/latest/features/images/image-upload/base64-upload-adapter.html
-                // Storing images as Base64 is usually a very bad idea.
-                // Replace it on production website with other solutions:
-                // https://ckeditor.com/docs/ckeditor5/latest/features/images/image-upload/image-upload.html
-                // 'Base64UploadAdapter',
-                'RealTimeCollaborativeComments',
-                'RealTimeCollaborativeTrackChanges',
-                'RealTimeCollaborativeRevisionHistory',
-                'PresenceList',
-                'Comments',
-                'TrackChanges',
-                'TrackChangesData',
-                'RevisionHistory',
-                'Pagination',
-                'WProofreader',
-                // Careful, with the Mathtype plugin CKEditor will not load when loading this sample
-                // from a local file system (file://) - load this site via HTTP server if you enable MathType
-                'MathType'
-            ]
-        })
-        $(document).ready(function() {
+        $(document).ready(function () {
+            // Init select2
             $('.select2').select2({
                 width: '100%'
             });
-        });
-        $(document).ready(function () {
-            const todoListItem = $('#ingredients');
-            const todoListInput = $('#ingredient-input');
-            $('#ingredient-submit').on("click", function(event) {
-                event.preventDefault();
 
-                const item = $(this).prevAll('#ingredient-input').val();
+            const ingredientsList = $('#ingredients');
+            const ingredientInput = $('#ingredient-input');
+            const _token = $('input[name="_token"]').attr('value');
+            const recipe = {!! json_encode($recipe) !!};
 
-                if (item) {
-                    todoListItem.append(`<li class="list-group-item d-flex justify-content-between align-items-start">
+            ingredientsList.on('click', '#remove-icon', function() {
+                const removedItem = $(this);
+                const id = removedItem.data('id');
+                $.ajax({
+                    url: "{{ url('/api/ingredients/') }}" + `/${id}`,
+                    type: 'DELETE',
+                    data: {
+                        _token,
+                        id,
+                    },
+                    success: function({ data }) {
+                        console.log(data);
+                        removedItem.parent().remove();
+                    }
+                });
+            });
+
+            $('#ingredient-submit').click(function(e) {
+                e.preventDefault();
+                const title = $(this).prevAll('#ingredient-input').val();
+
+                $.ajax({
+                    url: "{{ url('/api/ingredients') }}",
+                    method: 'post',
+                    data: {
+                        _token,
+                        recipe_id: recipe.id,
+                        title,
+                    },
+                    success: function({ data }) {
+                        console.log(data);
+                        ingredientsList.append(`<li class="list-group-item d-flex justify-content-between align-items-start">
                                             <div class="ms-2 me-auto">
-                                                <div>${item}</div>
+                                                <div>${data.title}</div>
                                             </div>
-                                            <span class="badge bg-danger rounded-pill cursor-pointer" id="remove-item">
+                                            <span class="badge bg-danger rounded-pill cursor-pointer" data-id="${data.id}" id="remove-icon">
                                                 <i class="fa-solid fa-trash-can"></i>
                                             </span>
                                         </li>`);
-                    todoListInput.val("");
-                }
 
-            });
-
-            todoListItem.on('click', '#remove-item', function() {
-                $(this).parent().remove();
+                        ingredientInput.val("");
+                    }
+                });
             });
         })
     </script>
