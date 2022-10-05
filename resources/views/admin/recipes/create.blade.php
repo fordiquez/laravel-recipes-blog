@@ -142,6 +142,7 @@
 
 @pushonce('scripts')
     <script src="{{ asset('assets/js/select2.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/select2.js') }}"></script>
     <script src="{{ asset('assets/js/ckeditor.js') }}"></script>
     <script src="{{ asset('assets/js/plugins/ckeditor.js') }}"></script>
 @endpushonce

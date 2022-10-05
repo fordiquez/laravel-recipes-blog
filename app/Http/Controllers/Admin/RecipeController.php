@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Actions\Recipe\StoreAction;
+use App\Actions\Recipe\UpdateAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Recipe\StoreRequest;
 use App\Http\Requests\Admin\Recipe\UpdateRequest;
@@ -9,17 +11,9 @@ use App\Models\Category;
 use App\Models\Cuisine;
 use App\Models\Recipe;
 use App\Models\Tag;
-use App\Services\RecipeService;
 
 class RecipeController extends Controller
 {
-    public $recipeService;
-
-    public function __construct(RecipeService $recipeService)
-    {
-        $this->recipeService = $recipeService;
-    }
-
     public function index() {
         $recipes = Recipe::paginate(10);
         return view('admin.recipes.index', compact('recipes'));
@@ -33,9 +27,9 @@ class RecipeController extends Controller
         return view('admin.recipes.create', compact('cuisines', 'categories', 'tags', 'levels'));
     }
 
-    public function store(StoreRequest $request) {
+    public function store(StoreRequest $request, StoreAction $action) {
         $data = $request->validated();
-        $this->recipeService->store($data);
+        $action->handle($data);
 
         return redirect()->route('admin.recipes.index');
     }
@@ -55,9 +49,9 @@ class RecipeController extends Controller
     /**
      * @throws \Throwable
      */
-    public function update(UpdateRequest $request, Recipe $recipe) {
+    public function update(UpdateRequest $request, Recipe $recipe, UpdateAction $action) {
         $data = $request->validated();
-        $recipe = $this->recipeService->update($data, $recipe);
+        $recipe = $action->handle($data, $recipe);
 
         return view('admin.recipes.show', compact('recipe'));
     }

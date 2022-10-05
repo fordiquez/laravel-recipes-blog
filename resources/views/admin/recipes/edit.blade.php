@@ -217,15 +217,11 @@
 
 @pushonce('scripts')
     <script src="{{ asset('assets/js/select2.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/select2.js') }}"></script>
     <script src="{{ asset('assets/js/ckeditor.js') }}"></script>
     <script src="{{ asset('assets/js/plugins/ckeditor.js') }}"></script>
     <script>
         $(document).ready(function () {
-            // Init select2
-            $('.select2').select2({
-                width: '100%'
-            });
-
             const ingredientsList = $('#ingredients');
             const ingredientInput = $('#ingredient-input');
             const _token = $('input[name="_token"]').attr('value');

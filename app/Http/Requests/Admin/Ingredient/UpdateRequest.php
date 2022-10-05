@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Admin\Recipe;
+namespace App\Http\Requests\Admin\Ingredient;
 
 use App\Models\Recipe;
 use Illuminate\Foundation\Http\FormRequest;
