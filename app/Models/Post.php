@@ -13,8 +13,13 @@ class Post extends Model
     protected $fillable = [
         'title',
         'content',
-        'photo'
+        'photo',
+        'user_id',
     ];
+
+    public function user() {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
 
     public function category() {
         return $this->belongsTo(Category::class, 'category_id', 'id');
@@ -30,7 +35,7 @@ class Post extends Model
 
     public function getPhoto(): string
     {
-        return $this->photo ? 'storage/' . $this->photo : 'storage/users/photo_2022-10-01_23-08-23.jpg';
+        return $this->photo ? 'storage/' . $this->photo : 'assets/img/admin.jpg';
     }
 
     public static function setPhoto(array $data): array

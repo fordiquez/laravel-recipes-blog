@@ -26,27 +26,19 @@
                     <div class="col">
                         <div class="d-flex justify-content-center">
                             <div class="d-grid text-center">
-                                <span class="text-lg font-weight-bolder">22</span>
-                                <span class="text-sm opacity-8">Friends</span>
-                            </div>
-                            <div class="d-grid text-center mx-4">
-                                <span class="text-lg font-weight-bolder">10</span>
-                                <span class="text-sm opacity-8">Photos</span>
-                            </div>
-                            <div class="d-grid text-center">
-                                <span class="text-lg font-weight-bolder">89</span>
-                                <span class="text-sm opacity-8">Comments</span>
+                                <span class="text-lg font-weight-bolder">{{ $tag->recipes()->count() }}</span>
+                                <span class="text-sm opacity-8">Recipes</span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="text-center mt-4">
-                    <div class="mt-4 d-flex justify-content-center">
-                        Created: <span class="badge bg-gradient-primary ms-1">{{ $tag->created_at }}</span>
-                    </div>
-                    <div class="mt-1 d-flex justify-content-center">
-                        Updated: <span class="badge bg-gradient-success ms-1">{{ $tag->updated_at }}</span>
-                    </div>
+            </div>
+            <div class="card-footer text-center">
+                <div class="mt-4 d-flex justify-content-center">
+                    Created: <span class="badge bg-gradient-primary ms-1">{{ $tag->created_at }}</span>
+                </div>
+                <div class="mt-1 d-flex justify-content-center">
+                    Updated: <span class="badge bg-gradient-success ms-1">{{ $tag->updated_at }}</span>
                 </div>
             </div>
         </div>

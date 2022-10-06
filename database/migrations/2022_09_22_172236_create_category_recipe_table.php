@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('recipe_tags', function (Blueprint $table) {
+        Schema::create('category_recipe', function (Blueprint $table) {
             $table->id();
             $table->foreignId('recipe_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreignId('tag_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('category_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('recipe_tags');
+        Schema::dropIfExists('category_recipe');
     }
 };

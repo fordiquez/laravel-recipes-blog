@@ -26,6 +26,7 @@ class UpdateRequest extends FormRequest
     {
         return [
             'title' => ['required', 'string', 'max:255', Rule::unique('posts')->ignore($this->post->id)],
+            'user_id' => ['required', 'exists:users,id'],
             'content' => ['required', 'string', 'min:5'],
             'photo' => ['nullable', 'file']
         ];

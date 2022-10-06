@@ -38,11 +38,9 @@
                         <div class="card-body">
                             <p class="text-uppercase text-sm">Tag Information</p>
                             <div class="row">
-                                <div>
-                                    <div class="form-group @error('title') mb-0 @enderror @error('slug') mb-0 @enderror">
-                                        <label for="title" class="form-control-label">Title</label>
-                                        <input class="form-control @error('title') is-invalid @enderror @error('slug') is-invalid @enderror" type="text" name="title" id="title" value="{{ old('title', $tag->title) }}" placeholder="Tag title">
-                                    </div>
+                                <div class="col-sm-6 col-lg-4 col-xl-3">
+                                    <label for="title" class="form-control-label">Title</label>
+                                    <input class="form-control @error('title') is-invalid @enderror @error('slug') is-invalid @enderror" type="text" name="title" id="title" value="{{ old('title', $tag->title) }}" placeholder="Tag title">
                                     @error('title')
                                     <div class="invalid-feedback d-inline-block" role="alert">{{ $message }}</div>
                                     @enderror
@@ -51,20 +49,18 @@
                                     @enderror
                                 </div>
                             </div>
-                            <hr class="horizontal dark">
+                        </div>
+                        <hr class="horizontal dark">
+                        <div class="card-footer">
                             <p class="text-uppercase text-sm">Additional Information</p>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="created_at" class="form-control-label">Created at</label>
-                                        <input class="form-control" type="text" name="created_at" id="created_at" value="{{ old('created_at', $tag->created_at) }}" disabled>
-                                    </div>
+                                    <label for="created_at" class="form-control-label">Created at</label>
+                                    <input class="form-control" type="text" name="created_at" id="created_at" value="{{ old('created_at', $tag->created_at) }}" disabled>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="updated_at" class="form-control-label">Updated at</label>
-                                        <input class="form-control" type="text" name="updated_at" id="updated_at" value="{{ old('updated_at', $tag->updated_at) }}" disabled>
-                                    </div>
+                                    <label for="updated_at" class="form-control-label">Updated at</label>
+                                    <input class="form-control" type="text" name="updated_at" id="updated_at" value="{{ old('updated_at', $tag->updated_at) }}" disabled>
                                 </div>
                             </div>
                         </div>

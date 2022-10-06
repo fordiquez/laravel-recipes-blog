@@ -27,14 +27,18 @@ class Recipe extends Model
         return $this->belongsTo(Cuisine::class, 'cuisine_id', 'id');
     }
 
+    public function user() {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
     public function categories()
     {
-        return $this->belongsToMany(Category::class, 'recipe_categories', 'recipe_id', 'category_id');
+        return $this->belongsToMany(Category::class, 'category_recipe', 'recipe_id', 'category_id');
     }
 
     public function tags()
     {
-        return $this->belongsToMany(Tag::class, 'recipe_tags', 'recipe_id', 'tag_id');
+        return $this->belongsToMany(Tag::class, 'recipe_tag', 'recipe_id', 'tag_id');
     }
 
     public function ingredients()
@@ -53,7 +57,7 @@ class Recipe extends Model
 
     public function getPhoto(): string
     {
-        return $this->photo ? 'storage/' . $this->photo : 'storage/users/photo_2022-10-01_23-08-23.jpg';
+        return $this->photo ? 'storage/' . $this->photo : 'assets/img/admin.jpg';
     }
 
     public static function setPhoto(array $data): array

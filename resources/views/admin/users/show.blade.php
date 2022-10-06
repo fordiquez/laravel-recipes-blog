@@ -31,16 +31,12 @@
                     <div class="col">
                         <div class="d-flex justify-content-center">
                             <div class="d-grid text-center">
-                                <span class="text-lg font-weight-bolder">22</span>
-                                <span class="text-sm opacity-8">Friends</span>
+                                <span class="text-lg font-weight-bolder">{{ $user->recipes()->count() }}</span>
+                                <span class="text-sm opacity-8">Recipes</span>
                             </div>
                             <div class="d-grid text-center mx-4">
-                                <span class="text-lg font-weight-bolder">10</span>
-                                <span class="text-sm opacity-8">Photos</span>
-                            </div>
-                            <div class="d-grid text-center">
-                                <span class="text-lg font-weight-bolder">89</span>
-                                <span class="text-sm opacity-8">Comments</span>
+                                <span class="text-lg font-weight-bolder">{{ $user->posts()->count() }}</span>
+                                <span class="text-sm opacity-8">Posts</span>
                             </div>
                         </div>
                     </div>

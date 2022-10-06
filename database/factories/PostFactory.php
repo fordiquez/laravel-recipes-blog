@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -23,6 +24,7 @@ class PostFactory extends Factory
             'photo' => function (array $attributes) {
                 return $this->faker->loremflickr('posts', Str::slug($attributes['title']));
             },
+            'user_id' => User::query()->inRandomOrder()->value('id')
         ];
     }
 }

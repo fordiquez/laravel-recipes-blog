@@ -21,6 +21,7 @@
                                     <tr>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ID</th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Post Info</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">User</th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Created</th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Updated</th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Actions</th>
@@ -32,8 +33,8 @@
                                             <td class="align-middle">
                                                 <p class="text-xs font-weight-bold mb-0 ms-3">{{ $post->id }}</p>
                                             </td>
-                                            <td>
-                                                <div class="d-flex px-2 py-1">
+                                            <td class="d-flex">
+                                                <a href="{{ route('admin.posts.show', $post) }}" class="d-flex px-2 py-1">
                                                     <div>
                                                         <img src="{{ asset($post->getPhoto()) }}" class="avatar avatar-sm me-3"
                                                              alt="{{ $post->title }}" title="{{ $post->title }}">
@@ -41,7 +42,12 @@
                                                     <div class="d-flex flex-column justify-content-center">
                                                         <h6 class="mb-0 text-sm">{{ $post->title }}</h6>
                                                     </div>
-                                                </div>
+                                                </a>
+                                            </td>
+                                            <td class="align-middle text-center">
+                                                <a href="{{ route('admin.users.show', $post->user) }}" class="text-sm">
+                                                    <span class="badge bg-gradient-dark">{{ $post->user->getFullName() }}</span>
+                                                </a>
                                             </td>
                                             <td class="align-middle text-center">
                                                 <p class="text-xs font-weight-bold mb-0">{{ $post->created_at }}</p>

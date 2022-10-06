@@ -23,7 +23,7 @@ class UserFactory extends Factory
             'last_name' => fake()->lastName(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'role' => random_int(0, 1),
+            'role' => fake()->numberBetween(0, 1),
             'photo' => function (array $attributes) {
                 return $this->faker->loremflickr('users', Str::slug($attributes['first_name'] . ' ' . $attributes['last_name']));
             },

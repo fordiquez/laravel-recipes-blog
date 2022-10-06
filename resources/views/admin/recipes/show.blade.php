@@ -34,8 +34,10 @@
                                     Updated: <span class="badge bg-gradient-success ms-1">{{ $recipe->updated_at }}</span>
                                 </div>
                             </div>
-                            <img src="{{ asset($recipe->getPhoto()) }}" alt="{{ $recipe->title }}" title="{{ $recipe->title }}"
-                                 class="img-fluid border border-2 border-white mt-3">
+                            <div class="image d-flex justify-content-center">
+                                <img src="{{ asset($recipe->getPhoto()) }}" alt="{{ $recipe->title }}" title="{{ $recipe->title }}"
+                                     class="img-fluid border border-2 border-white mt-3" />
+                            </div>
                             <div class="d-flex justify-content-center mt-3">
                                 <ul class="list-group list-group-horizontal">
                                     <li class="list-inline-item d-flex flex-column align-items-center">

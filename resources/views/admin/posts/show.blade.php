@@ -5,15 +5,6 @@
 @section('content')
     <div class="mx-3 mx-lg-5 my-7">
         <div class="card card-profile">
-            <div class="row justify-content-center">
-                <div class="col-4 col-lg-4 order-lg-2">
-                    <div class="mt-n4 mt-lg-n6 mb-4 mb-lg-0">
-                        <img src="{{ asset($post->getPhoto()) }}"
-                             class="rounded-circle img-fluid border border-2 border-white"
-                             alt="{{ $post->title }}" title="{{ $post->title }}">
-                    </div>
-                </div>
-            </div>
             <div class="card-header text-center border-0 pt-0 pt-lg-2 pb-4 pb-lg-3">
                 <div class="d-flex justify-content-between">
                     <a href="{{ route('admin.posts.index') }}" class="btn btn-sm btn-primary mb-0 d-flex align-items-center">
@@ -27,15 +18,29 @@
                 </div>
             </div>
             <div class="card-body pt-0">
-                <div class="mt-4">
+                <div class="mt-2">
                     <h5 class="text-center">{{ $post->title }}</h5>
-                    <div class="text-left">{!! $post->content !!}</div>
-                    <div class="mt-4 d-flex justify-content-center">
-                        Created: <span class="badge bg-gradient-primary ms-1">{{ $post->created_at }}</span>
+                    <hr class="horizontal dark">
+                    <div class="row justify-content-center">
+                        <div class="col-10 d-flex flex-column justify-content-center">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div class="d-flex align-items-center">
+                                    Created: <span class="badge bg-gradient-primary ms-1">{{ $post->created_at }}</span>
+                                </div>
+                                <a href="{{ route('admin.users.show', $post->user) }}" class="btn bg-gradient-danger btn-xs text-uppercase">
+                                    {{ $post->user->getFullName() }}
+                                </a>
+                                <div class="d-flex align-items-center">
+                                    Updated: <span class="badge bg-gradient-success ms-1">{{ $post->updated_at }}</span>
+                                </div>
+                            </div>
+                            <div class="image d-flex justify-content-center">
+                                <img src="{{ asset($post->getPhoto()) }}" alt="{{ $post->title }}" title="{{ $post->title }}"
+                                     class="img-fluid border border-2 border-white mt-3">
+                            </div>
+                        </div>
                     </div>
-                    <div class="mt-1 d-flex justify-content-center">
-                        Updated: <span class="badge bg-gradient-success ms-1">{{ $post->updated_at }}</span>
-                    </div>
+                    <div class="text-left mt-3">{!! $post->content !!}</div>
                 </div>
             </div>
         </div>

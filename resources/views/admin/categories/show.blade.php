@@ -5,7 +5,7 @@
 @section('content')
     <div class="mx-3 mx-lg-5 my-7">
         <div class="card card-profile">
-            <div class="card-header text-center border-0 pt-0 pt-lg-2 pb-4 pb-lg-3">
+            <div class="card-header text-center py-3">
                 <div class="d-flex justify-content-between">
                     <a href="{{ route('admin.categories.index') }}" class="btn btn-sm btn-primary mb-0 d-flex align-items-center">
                         <i class="fa-solid fa-table-list"></i>
@@ -31,16 +31,8 @@
                     <div class="col">
                         <div class="d-flex justify-content-center">
                             <div class="d-grid text-center">
-                                <span class="text-lg font-weight-bolder">22</span>
-                                <span class="text-sm opacity-8">Friends</span>
-                            </div>
-                            <div class="d-grid text-center mx-4">
-                                <span class="text-lg font-weight-bolder">10</span>
-                                <span class="text-sm opacity-8">Photos</span>
-                            </div>
-                            <div class="d-grid text-center">
-                                <span class="text-lg font-weight-bolder">89</span>
-                                <span class="text-sm opacity-8">Comments</span>
+                                <span class="text-lg font-weight-bolder">{{ $category->recipes()->count() }}</span>
+                                <span class="text-sm opacity-8">Recipes</span>
                             </div>
                         </div>
                     </div>

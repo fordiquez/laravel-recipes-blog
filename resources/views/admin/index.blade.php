@@ -3,94 +3,12 @@
 @section('content')
     <div class="container-fluid py-4">
         <div class="row">
-            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-                <div class="card">
-                    <div class="card-body p-3">
-                        <div class="row">
-                            <div class="col-8">
-                                <div class="numbers">
-                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Users</p>
-                                    <h5 class="font-weight-bolder">{{ $data['usersCount'] }}</h5>
-                                </div>
-                                <a href="{{ route('admin.users.index') }}" class="text-primary icon-move-right">Users dashboard
-                                    <i class="fas fa-arrow-right text-xs ms-1"></i>
-                                </a>
-                            </div>
-                            <div class="col-4 d-flex justify-content-end">
-                                <div class="icon icon-shape bg-gradient-info shadow-primary text-center rounded-circle">
-                                    <i class="fa-solid fa-users-gear text-lg opacity-10"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-                <div class="card">
-                    <div class="card-body p-3">
-                        <div class="row">
-                            <div class="col-8">
-                                <div class="numbers">
-                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Cuisines</p>
-                                    <h5 class="font-weight-bolder">{{ $data['cuisinesCount'] }}</h5>
-                                </div>
-                                <a href="{{ route('admin.cuisines.index') }}" class="text-primary icon-move-right">Cuisines dashboard
-                                    <i class="fas fa-arrow-right text-xs ms-1"></i>
-                                </a>
-                            </div>
-                            <div class="col-4 d-flex justify-content-end">
-                                <div class="icon icon-shape bg-gradient-success shadow-primary text-center rounded-circle">
-                                    <i class="fa-solid fa-utensils text-lg opacity-10"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-                <div class="card">
-                    <div class="card-body p-3">
-                        <div class="row">
-                            <div class="col-8">
-                                <div class="numbers">
-                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Categories</p>
-                                    <h5 class="font-weight-bolder">{{ $data['categoriesCount'] }}</h5>
-                                </div>
-                                <a href="{{ route('admin.categories.index') }}" class="text-primary icon-move-right">Categories dashboard
-                                    <i class="fas fa-arrow-right text-xs ms-1"></i>
-                                </a>
-                            </div>
-                            <div class="col-4 d-flex justify-content-end">
-                                <div class="icon icon-shape bg-gradient-warning shadow-primary text-center rounded-circle">
-                                    <i class="fa-regular fa-rectangle-list text-lg opacity-10"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-                <div class="card">
-                    <div class="card-body p-3">
-                        <div class="row">
-                            <div class="col-8">
-                                <div class="numbers">
-                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Recipes</p>
-                                    <h5 class="font-weight-bolder">{{ $data['recipesCount'] }}</h5>
-                                </div>
-                                <a href="{{ route('admin.recipes.index') }}" class="text-primary icon-move-right">Recipes dashboard
-                                    <i class="fas fa-arrow-right text-xs ms-1"></i>
-                                </a>
-                            </div>
-                            <div class="col-4 d-flex justify-content-end">
-                                <div class="icon icon-shape bg-gradient-danger shadow-primary text-center rounded-circle">
-                                    <i class="fa-solid fa-kitchen-set text-lg opacity-10"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <x-count-card count="{{ $data['usersCount'] }}" bg-icon="bg-gradient-info" icon="fa-solid fa-users-gear">users</x-count-card>
+            <x-count-card count="{{ $data['cuisinesCount'] }}" bg-icon="bg-gradient-success" icon="fa-solid fa-utensils">cuisines</x-count-card>
+            <x-count-card count="{{ $data['categoriesCount'] }}" bg-icon="bg-gradient-warning" icon="fa-regular fa-rectangle-list">categories</x-count-card>
+            <x-count-card count="{{ $data['recipesCount'] }}" bg-icon="bg-gradient-danger" icon="fa-solid fa-kitchen-set">recipes</x-count-card>
+            <x-count-card count="{{ $data['recipesCount'] }}" bg-icon="bg-gradient-secondary" icon="fa-solid fa-bookmark">tags</x-count-card>
+            <x-count-card count="{{ $data['recipesCount'] }}" bg-icon="bg-gradient-dark" icon="fa-solid fa-clipboard">posts</x-count-card>
         </div>
         <div class="row mt-4">
             <div class="col-12">

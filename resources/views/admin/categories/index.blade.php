@@ -33,16 +33,18 @@
                                             <td class="align-middle">
                                                 <p class="text-xs font-weight-bold mb-0 ms-3">{{ $category->id }}</p>
                                             </td>
-                                            <td>
-                                                <div class="d-flex px-2 py-1">
+                                            <td class="d-flex">
+                                                <a href="{{ route('admin.categories.show', $category) }}" class="d-flex px-2 py-1">
                                                     <div class="d-flex flex-column justify-content-center">
                                                         <h6 class="mb-0 text-sm">{{ $category->title }}</h6>
                                                         <p class="text-xs text-secondary mb-0">{{ $category->slug }}</p>
                                                     </div>
-                                                </div>
+                                                </a>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <p class="text-xs font-weight-bold mb-0">{{ $category->parent->title ?? '' }}</p>
+                                                <a href="{{ route('admin.categories.show', $category->parent) }}" class="text-sm">
+                                                    <span class="badge bg-gradient-dark">{{ $category->parent->title ?? '' }}</span>
+                                                </a>
                                             </td>
                                             <td class="align-middle text-center">
                                                 <p class="text-xs font-weight-bold mb-0">{{ $category->created_at }}</p>

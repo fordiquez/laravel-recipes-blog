@@ -21,6 +21,7 @@
                                     <tr>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ID</th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Recipe Info</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">User</th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Published</th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Created</th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Updated</th>
@@ -33,29 +34,32 @@
                                             <td class="align-middle">
                                                 <p class="text-xs font-weight-bold mb-0 ms-3">{{ $recipe->id }}</p>
                                             </td>
-                                            <td>
-                                                <div class="d-flex px-2 py-1">
+                                            <td class="d-flex">
+                                                <a href="{{ route('admin.recipes.show', $recipe) }}" class="d-flex px-2 py-1">
                                                     <div>
                                                         <img src="{{ asset($recipe->getPhoto()) }}" class="avatar avatar-sm me-3"
                                                              alt="{{ $recipe->title }}" title="{{ $recipe->title }}">
                                                     </div>
                                                     <div class="d-flex flex-column justify-content-center">
                                                         <h6 class="mb-0 text-sm" style="white-space: normal">
-                                                            {{ \Illuminate\Support\Str::limit($recipe->title) }}
+                                                            {{ substr($recipe->title, 0, 50) }}
                                                         </h6>
                                                         <p class="text-xs text-secondary mb-0" style="white-space: normal">
-                                                            {{ \Illuminate\Support\Str::limit($recipe->title) }}
+                                                            {{ substr($recipe->slug, 0, 50) }}
                                                         </p>
                                                     </div>
-                                                </div>
+                                                </a>
+                                            </td>
+                                            <td class="align-middle text-center">
+                                                <a href="{{ route('admin.users.show', $recipe->user) }}" class="text-xs">
+                                                    <span class="badge bg-gradient-dark">{{ $recipe->user->getFullName() }}</span>
+                                                </a>
                                             </td>
                                             <td class="align-middle text-center">
                                                 <p class="text-xs font-weight-bold mb-0">
-                                                    @if($recipe->is_published)
-                                                        <span class="badge bg-gradient-success">Published</span>
-                                                    @else
-                                                        <span class="badge bg-gradient-danger">Not published</span>
-                                                    @endif
+                                                    <span @class(['badge', 'bg-gradient-success' => $recipe->is_published, 'bg-gradient-danger' => !$recipe->is_published])>
+                                                        {{ $recipe->is_published ? 'Published' : 'Not published' }}
+                                                    </span>
                                                 </p>
                                             </td>
                                             <td class="align-middle text-center">

@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Cuisine;
 use App\Models\Recipe;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -19,18 +20,18 @@ class RecipeFactory extends Factory
      */
     public function definition()
     {
-        $cuisinesCount = Cuisine::all()->count();
         return [
             'title' => fake()->unique()->text(50),
             'slug' => function (array $attributes) {
                 return Str::slug($attributes['title']);
             },
-            'cuisine_id' => rand(1, $cuisinesCount),
-            'cooking_time' => rand(1, 60) . ' minutes',
-            'servings' => rand(1, 10),
-            'level' => Recipe::LEVELS[rand(0, 2)],
+            'cuisine_id' => Cuisine::query()->inRandomOrder()->value('id'),
+            'user_id' => User::query()->inRandomOrder()->value('id'),
+            'cooking_time' => fake()->numberBetween(10, 60) . ' minutes',
+            'servings' => fake()->numberBetween(1, 10),
+            'level' => Recipe::LEVELS[fake()->numberBetween(0, 2)],
             'photo' => function (array $attributes) {
-                return $this->faker->loremflickr('posts', Str::slug($attributes['title']));
+                return $this->faker->loremflickr('recipes', Str::slug($attributes['title']));
             },
             'description' => fake()->paragraph(10)
         ];

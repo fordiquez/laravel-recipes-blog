@@ -11,6 +11,7 @@ use App\Models\Category;
 use App\Models\Cuisine;
 use App\Models\Recipe;
 use App\Models\Tag;
+use App\Models\User;
 
 class RecipeController extends Controller
 {
@@ -21,10 +22,11 @@ class RecipeController extends Controller
 
     public function create() {
         $cuisines = Cuisine::all();
+        $users = User::all();
         $categories = Category::all();
         $tags = Tag::all();
         $levels = Recipe::getLevels();
-        return view('admin.recipes.create', compact('cuisines', 'categories', 'tags', 'levels'));
+        return view('admin.recipes.create', compact('cuisines', 'categories', 'tags', 'levels', 'users'));
     }
 
     public function store(StoreRequest $request, StoreAction $action) {
@@ -40,10 +42,11 @@ class RecipeController extends Controller
 
     public function edit(Recipe $recipe) {
         $cuisines = Cuisine::all();
+        $users = User::all();
         $categories = Category::all();
         $tags = Tag::all();
         $levels = Recipe::getLevels();
-        return view('admin.recipes.edit', compact('recipe', 'cuisines', 'categories', 'tags', 'levels'));
+        return view('admin.recipes.edit', compact('recipe', 'cuisines', 'categories', 'tags', 'levels', 'users'));
     }
 
     /**

@@ -4,6 +4,13 @@
 
 @pushonce('styles')
     <link rel="stylesheet" href="{{ asset('assets/css/select2.min.css') }}" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.0/css/fileinput.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.min.css" />
+    <style>
+        .ck-editor__editable[role="textbox"] {
+            min-height: 200px;
+        }
+    </style>
     <style>
         .ck-editor__editable[role="textbox"] {
             min-height: 200px;
@@ -54,113 +61,107 @@
                             <p class="text-uppercase text-sm">Recipe Information</p>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="form-group @error('title') mb-0 @enderror">
-                                        <label for="title" class="form-control-label">Title</label>
-                                        <input class="form-control @error('title') is-invalid @enderror" type="text" name="title" id="title" value="{{ old('title', $recipe->title) }}" placeholder="Recipe title">
-                                    </div>
+                                    <label for="title" class="form-control-label">Title</label>
+                                    <input class="form-control @error('title') is-invalid @enderror" type="text" name="title" id="title" value="{{ old('title', $recipe->title) }}" placeholder="Recipe title">
                                     @error('title')
                                     <div class="invalid-feedback d-inline-block" role="alert">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-group @error('cuisine_id') mb-0 @enderror">
-                                        <label for="cuisine_id">Cuisine</label>
-                                        <select class="form-control @error('cuisine_id') is-invalid @enderror" id="cuisine_id" name="cuisine_id">
-                                            <option disabled selected>Select the cuisine</option>
-                                            @foreach($cuisines as $cuisine)
-                                                <option @selected(old('cuisine_id', $recipe->cuisine_id) == $cuisine->id) value="{{ $cuisine->id }}">{{ $cuisine->title }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
+                                    <label for="cuisine_id">Cuisine</label>
+                                    <select class="form-control @error('cuisine_id') is-invalid @enderror" id="cuisine_id" name="cuisine_id">
+                                        <option disabled selected>Select the cuisine</option>
+                                        @foreach($cuisines as $cuisine)
+                                            <option @selected(old('cuisine_id', $recipe->cuisine_id) == $cuisine->id) value="{{ $cuisine->id }}">{{ $cuisine->title }}</option>
+                                        @endforeach
+                                    </select>
                                     @error('cuisine_id')
                                     <div class="invalid-feedback d-inline-block" role="alert">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-group @error('cooking_time') mb-0 @enderror">
-                                        <label for="cooking_time" class="form-control-label">Cooking time</label>
-                                        <input class="form-control @error('cooking_time') is-invalid @enderror" type="text" name="cooking_time" id="cooking_time" value="{{ old('cooking_time', $recipe->cooking_time) }}" placeholder="Recipe cooking time">
-                                    </div>
+                                    <label for="cuisine_id">User</label>
+                                    <select class="form-control @error('user_id') is-invalid @enderror" id="user_id" name="user_id">
+                                        <option disabled selected>Select the cuisine</option>
+                                        @foreach($users as $user)
+                                            <option @selected(old('user_id', $recipe->user_id) == $user->id) value="{{ $user->id }}">{{ $user->getFullName() }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('user_id')
+                                    <div class="invalid-feedback d-inline-block" role="alert">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="cooking_time" class="form-control-label">Cooking time</label>
+                                    <input class="form-control @error('cooking_time') is-invalid @enderror" type="text" name="cooking_time" id="cooking_time" value="{{ old('cooking_time', $recipe->cooking_time) }}" placeholder="Recipe cooking time">
                                     @error('cooking_time')
                                     <div class="invalid-feedback d-inline-block" role="alert">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-group @error('servings') mb-0 @enderror">
-                                        <label for="servings" class="form-control-label">Servings</label>
-                                        <input class="form-control @error('servings') is-invalid @enderror" type="text" name="servings" id="servings" value="{{ old('servings', $recipe->servings) }}" placeholder="Recipe servings">
-                                    </div>
+                                    <label for="servings" class="form-control-label">Servings</label>
+                                    <input class="form-control @error('servings') is-invalid @enderror" type="text" name="servings" id="servings" value="{{ old('servings', $recipe->servings) }}" placeholder="Recipe servings">
                                     @error('servings')
                                     <div class="invalid-feedback d-inline-block" role="alert">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-group @error('level') mb-0 @enderror">
-                                        <label for="example-text-input" class="form-control-label">Level</label>
-                                        <div>
-                                            @foreach($levels as $key => $level)
-                                                <div class="form-check form-check-inline">
-                                                    <label class="custom-control-label" for="{{ $key }}">{{ $level }}</label>
-                                                    <input class="form-check-input" type="radio" name="level" id="{{ $key }}" value="{{ $key }}" @checked($key == old('level', $recipe->level))>
-                                                </div>
-                                            @endforeach
-                                        </div>
+                                    <label for="example-text-input" class="form-control-label">Level</label>
+                                    <div>
+                                        @foreach($levels as $key => $level)
+                                            <div class="form-check form-check-inline">
+                                                <label class="custom-control-label" for="{{ $key }}">{{ $level }}</label>
+                                                <input class="form-check-input" type="radio" name="level" id="{{ $key }}" value="{{ $key }}" @checked($key == old('level', $recipe->level))>
+                                            </div>
+                                        @endforeach
                                     </div>
                                     @error('level')
                                     <div class="invalid-feedback d-inline-block" role="alert">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-group @error('photo') mb-0 @enderror">
-                                        <label class="form-label" for="photo">Photo</label>
-                                        <input class="form-control @error('photo') is-invalid @enderror" type="file" name="photo" id="photo" accept="image/*">
-                                    </div>
-                                    @error('photo')
-                                    <div class="invalid-feedback d-inline-block" role="alert">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group @error('categories') mb-0 @enderror">
-                                        <label for="categories" class="form-control-label">Categories</label>
-                                        <select class="form-control select2 @error('categories') is-invalid @enderror" id="categories" name="categories[]" multiple="multiple" data-placeholder="Choose one or more category">
-                                            @foreach($categories as $category)
-                                                <option
-                                                    @selected(is_array($recipe->categories->pluck('id')->toArray()) && in_array($category->id, $recipe->categories->pluck('id')->toArray()))
-                                                    value="{{ $category->id }}"
-                                                >
-                                                    {{ $category->title }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    </div>
+                                    <label for="categories" class="form-control-label">Categories</label>
+                                    <select class="form-control select2 @error('categories') is-invalid @enderror" id="categories" name="categories[]" multiple="multiple" data-placeholder="Choose one or more category">
+                                        @foreach($categories as $category)
+                                            <option
+                                                @selected(is_array($recipe->categories->pluck('id')->toArray()) && in_array($category->id, $recipe->categories->pluck('id')->toArray()))
+                                                value="{{ $category->id }}"
+                                            >
+                                                {{ $category->title }}
+                                            </option>
+                                        @endforeach
+                                    </select>
                                     @error('categories')
                                     <div class="invalid-feedback d-inline-block" role="alert">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-group @error('tags') mb-0 @enderror">
-                                        <label for="tags" class="form-control-label">Tags</label>
-                                        <select class="form-control select2 @error('tags') is-invalid @enderror" id="tags" name="tags[]" multiple="multiple" data-placeholder="Choose one or more category">
-                                            @foreach($tags as $tag)
-                                                <option
-                                                    @selected(is_array($recipe->tags->pluck('id')->toArray()) && in_array($tag->id, $recipe->tags->pluck('id')->toArray()))
-                                                    value="{{ $tag->id }}"
-                                                >
-                                                    {{ $tag->title }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    </div>
+                                    <label for="tags" class="form-control-label">Tags</label>
+                                    <select class="form-control select2 @error('tags') is-invalid @enderror" id="tags" name="tags[]" multiple="multiple" data-placeholder="Choose one or more category">
+                                        @foreach($tags as $tag)
+                                            <option
+                                                @selected(is_array($recipe->tags->pluck('id')->toArray()) && in_array($tag->id, $recipe->tags->pluck('id')->toArray()))
+                                                value="{{ $tag->id }}"
+                                            >
+                                                {{ $tag->title }}
+                                            </option>
+                                        @endforeach
+                                    </select>
                                     @error('tags')
                                     <div class="invalid-feedback d-inline-block" role="alert">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div>
-                                    <div class="form-group @error('description') mb-0 @enderror">
-                                        <label for="description" class="form-control-label">Content</label>
-                                        <textarea id="description" name="description">{{ old('description', $recipe->description) }}</textarea>
-                                    </div>
+                                    <label for="description" class="form-control-label">Content</label>
+                                    <textarea id="description" name="description">{{ old('description', $recipe->description) }}</textarea>
                                     @error('description')
+                                    <div class="invalid-feedback d-inline-block" role="alert">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label" for="photo">Photo</label>
+                                    <input class="form-control @error('photo') is-invalid @enderror" type="file" name="photo" id="photo" accept="image/*" data-browse-on-zone-click="true">
+                                    @error('photo')
                                     <div class="invalid-feedback d-inline-block" role="alert">{{ $message }}</div>
                                     @enderror
                                 </div>
@@ -169,12 +170,10 @@
                             <p class="text-uppercase text-sm">Ingredients information</p>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="ingredient" class="form-control-label h6">Add ingredient</label>
-                                        <div class="d-flex align-items-center">
-                                            <input class="form-control" type="text" id="ingredient-input" placeholder="Enter the ingredient information">
-                                            <button type="button" id="ingredient-submit" class="btn btn-outline-primary ms-2">Add</button>
-                                        </div>
+                                    <label for="ingredient" class="form-control-label h6">Add ingredient</label>
+                                    <div class="d-flex align-items-center">
+                                        <input class="form-control" type="text" id="ingredient-input" placeholder="Enter the ingredient information">
+                                        <button type="button" id="ingredient-submit" class="btn btn-outline-primary ms-2">Add</button>
                                     </div>
                                     <h6>Ingredients list</h6>
                                     <ol class="list-group list-group-numbered mt-3" id="ingredients">
@@ -191,20 +190,18 @@
                                     </ol>
                                 </div>
                             </div>
-                            <hr class="horizontal dark">
+                        </div>
+                        <hr class="horizontal dark">
+                        <div class="card-footer">
                             <p class="text-uppercase text-sm">Additional Information</p>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="created_at" class="form-control-label">Created at</label>
-                                        <input class="form-control" type="text" name="created_at" id="created_at" value="{{ old('created_at', $recipe->created_at) }}" disabled>
-                                    </div>
+                                    <label for="created_at" class="form-control-label">Created at</label>
+                                    <input class="form-control" type="text" name="created_at" id="created_at" value="{{ old('created_at', $recipe->created_at) }}" disabled>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="updated_at" class="form-control-label">Updated at</label>
-                                        <input class="form-control" type="text" name="updated_at" id="updated_at" value="{{ old('updated_at', $recipe->updated_at) }}" disabled>
-                                    </div>
+                                    <label for="updated_at" class="form-control-label">Updated at</label>
+                                    <input class="form-control" type="text" name="updated_at" id="updated_at" value="{{ old('updated_at', $recipe->updated_at) }}" disabled>
                                 </div>
                             </div>
                         </div>
@@ -220,6 +217,13 @@
     <script src="{{ asset('assets/js/plugins/select2.js') }}"></script>
     <script src="{{ asset('assets/js/ckeditor.js') }}"></script>
     <script src="{{ asset('assets/js/plugins/ckeditor.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.0/js/plugins/buffer.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.0/js/plugins/filetype.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.0/js/plugins/piexif.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.0/js/fileinput.min.js"></script>
+    <script>
+        $("#photo").fileinput({ 'showUpload': false,  }).attr('name', 'photo');
+    </script>
     <script>
         $(document).ready(function () {
             const ingredientsList = $('#ingredients');

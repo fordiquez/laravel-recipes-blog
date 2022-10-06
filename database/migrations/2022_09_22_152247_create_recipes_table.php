@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('title', 255);
             $table->string('slug')->unique();
             $table->foreignId('cuisine_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('user_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('cooking_time');
             $table->float('servings')->default(1);
             $table->set('level', Recipe::LEVELS);

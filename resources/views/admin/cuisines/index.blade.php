@@ -21,7 +21,6 @@
                                     <tr>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ID</th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Cuisine Info</th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Description</th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Created</th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Updated</th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Actions</th>
@@ -33,8 +32,8 @@
                                             <td class="align-middle">
                                                 <p class="text-xs font-weight-bold mb-0 ms-3">{{ $cuisine->id }}</p>
                                             </td>
-                                            <td>
-                                                <div class="d-flex px-2 py-1">
+                                            <td class="d-flex">
+                                                <a href="{{ route('admin.cuisines.show', $cuisine) }}" class="d-flex px-2 py-1">
                                                     <div>
                                                         <img src="{{ asset($cuisine->getPhoto()) }}" class="avatar avatar-sm me-3" alt="{{ $cuisine->title }}" title="{{ $cuisine->title }}">
                                                     </div>
@@ -42,10 +41,7 @@
                                                         <h6 class="mb-0 text-sm">{{ $cuisine->title }}</h6>
                                                         <p class="text-xs text-secondary mb-0">{{ $cuisine->slug }}</p>
                                                     </div>
-                                                </div>
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                <p class="text-xs font-weight-bold mb-0">{{ \Illuminate\Support\Str::limit($cuisine->description, 50) }}</p>
+                                                </a>
                                             </td>
                                             <td class="align-middle text-center">
                                                 <p class="text-xs font-weight-bold mb-0">{{ $cuisine->created_at }}</p>

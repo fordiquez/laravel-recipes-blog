@@ -26,15 +26,13 @@
                             <p class="text-uppercase text-sm">Tag Information</p>
                             <div class="row">
                                 <div class="col-sm-6 col-lg-4 col-xl-3">
-                                    <div class="form-group @error('title') mb-0 @enderror @error('slug') mb-0 @enderror">
-                                        <label for="title" class="form-control-label">Title</label>
-                                        <input class="form-control @error('title') is-invalid @enderror @error('slug') is-invalid @enderror" type="text" name="title" id="title" value="{{ old('title') }}" placeholder="Tag title">
-                                    </div>
+                                    <label for="title" class="form-control-label">Title</label>
+                                    <input class="form-control @error('title') is-invalid @enderror @error('slug') is-invalid @enderror" type="text" name="title" id="title" value="{{ old('title') }}" placeholder="Tag title">
                                     @error('title')
-                                    <div class="invalid-feedback d-inline-block" role="alert">{{ $message }}</div>
+                                        <div class="invalid-feedback d-inline-block" role="alert">{{ $message }}</div>
                                     @enderror
                                     @error('slug')
-                                    <div class="invalid-feedback d-inline-block" role="alert">{{ $message }}</div>
+                                        <div class="invalid-feedback d-inline-block" role="alert">{{ $message }}</div>
                                     @enderror
                                 </div>
                             </div>

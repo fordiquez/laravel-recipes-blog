@@ -32,13 +32,13 @@
                                             <td class="align-middle">
                                                 <p class="text-xs font-weight-bold mb-0 ms-3">{{ $tag->id }}</p>
                                             </td>
-                                            <td>
-                                                <div class="d-flex px-2 py-1">
+                                            <td class="d-flex">
+                                                <a href="{{ route('admin.tags.show', $tag) }}" class="d-flex px-2 py-1">
                                                     <div class="d-flex flex-column justify-content-center">
                                                         <h6 class="mb-0 text-sm">{{ $tag->title }}</h6>
                                                         <p class="text-xs text-secondary mb-0">{{ $tag->slug }}</p>
                                                     </div>
-                                                </div>
+                                                </a>
                                             </td>
                                             <td class="align-middle text-center">
                                                 <p class="text-xs font-weight-bold mb-0">{{ $tag->created_at }}</p>

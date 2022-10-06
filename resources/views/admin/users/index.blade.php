@@ -33,8 +33,8 @@
                                             <td class="align-middle">
                                                 <p class="text-xs font-weight-bold mb-0 ms-3">{{ $user->id }}</p>
                                             </td>
-                                            <td>
-                                                <div class="d-flex px-2 py-1">
+                                            <td class="d-flex">
+                                                <a href="{{ route('admin.users.show', $user) }}" class="d-flex px-2 py-1">
                                                     <div>
                                                         <img src="{{ asset($user->getPhoto()) }}" class="avatar avatar-sm me-3" alt="{{ $user->getFullName() }}" title="{{ $user->getFullName() }}">
                                                     </div>
@@ -42,7 +42,7 @@
                                                         <h6 class="mb-0 text-sm">{{ $user->getFullName() }}</h6>
                                                         <p class="text-xs text-secondary mb-0">{{ $user->email }}</p>
                                                     </div>
-                                                </div>
+                                                </a>
                                             </td>
                                             <td class="align-middle text-center">
                                                 <p class="text-xs font-weight-bold mb-0">

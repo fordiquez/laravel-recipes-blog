@@ -389,7 +389,7 @@
 </div>
 <!-- Modal End-->
 <!-- Jquery Js -->
-<script src="{{ asset('assets/js/jquery-3.3.1.min.js') }}"></script>
+<script src="{{ asset('assets/js/jquery-3.6.1.js') }}"></script>
 <!-- Bootstrap Js -->
 <script src="{{ asset('assets/js/popper.min.js') }}"></script>
 <!-- Bootstrap Js -->
