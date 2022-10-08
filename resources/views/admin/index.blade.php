@@ -7,8 +7,8 @@
             <x-count-card count="{{ $data['cuisinesCount'] }}" bg-icon="bg-gradient-success" icon="fa-solid fa-utensils">cuisines</x-count-card>
             <x-count-card count="{{ $data['categoriesCount'] }}" bg-icon="bg-gradient-warning" icon="fa-regular fa-rectangle-list">categories</x-count-card>
             <x-count-card count="{{ $data['recipesCount'] }}" bg-icon="bg-gradient-danger" icon="fa-solid fa-kitchen-set">recipes</x-count-card>
-            <x-count-card count="{{ $data['recipesCount'] }}" bg-icon="bg-gradient-secondary" icon="fa-solid fa-bookmark">tags</x-count-card>
-            <x-count-card count="{{ $data['recipesCount'] }}" bg-icon="bg-gradient-dark" icon="fa-solid fa-clipboard">posts</x-count-card>
+            <x-count-card count="{{ $data['tagsCount'] }}" bg-icon="bg-gradient-secondary" icon="fa-solid fa-bookmark">tags</x-count-card>
+            <x-count-card count="{{ $data['postsCount'] }}" bg-icon="bg-gradient-dark" icon="fa-solid fa-clipboard">posts</x-count-card>
         </div>
         <div class="row mt-4">
             <div class="col-12">

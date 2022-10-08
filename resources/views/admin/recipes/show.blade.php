@@ -34,7 +34,7 @@
                                     Updated: <span class="badge bg-gradient-success ms-1">{{ $recipe->updated_at }}</span>
                                 </div>
                             </div>
-                            <div class="image d-flex justify-content-center">
+                            <div class="recipe__image d-flex justify-content-center">
                                 <img src="{{ asset($recipe->getPhoto()) }}" alt="{{ $recipe->title }}" title="{{ $recipe->title }}"
                                      class="img-fluid border border-2 border-white mt-3" />
                             </div>

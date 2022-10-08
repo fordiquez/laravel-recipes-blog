@@ -34,7 +34,7 @@
                                     Updated: <span class="badge bg-gradient-success ms-1">{{ $post->updated_at }}</span>
                                 </div>
                             </div>
-                            <div class="image d-flex justify-content-center">
+                            <div class="post-image d-flex justify-content-center">
                                 <img src="{{ asset($post->getPhoto()) }}" alt="{{ $post->title }}" title="{{ $post->title }}"
                                      class="img-fluid border border-2 border-white mt-3">
                             </div>

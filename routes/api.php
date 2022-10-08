@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\IngredientController;
+use App\Http\Controllers\API\StepController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,4 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware('auth:sanctum')->resource('ingredients', IngredientController::class);
+Route::name('api.')->middleware('auth:sanctum')->group(function () {
+    Route::apiResource('ingredients', IngredientController::class);
+    Route::apiResource('steps', StepController::class);
+});

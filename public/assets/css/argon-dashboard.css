@@ -26931,8 +26931,3 @@ pre[class*="language-"] {
     overflow: auto !important;
   }
 }
-
-.image img {
-    max-width: 800px;
-    max-height: 480px;
-}

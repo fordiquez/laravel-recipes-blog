@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/select2.min.css') }}" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.0/css/fileinput.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}" />
     <style>
         .ck-editor__editable[role="textbox"] {
             min-height: 200px;
@@ -40,10 +41,10 @@
     <div class="container-fluid py-4">
         <div class="row">
             <div class="col-12">
-                <form action="{{ route('admin.recipes.update', $recipe) }}" method="post" enctype="multipart/form-data">
-                    @csrf
-                    @method('patch')
-                    <div class="card">
+                <div class="card">
+                    <form action="{{ route('admin.recipes.update', $recipe) }}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        @method('patch')
                         <div class="card-header pb-0">
                             <div class="d-flex align-items-center">
                                 <p class="mb-0">Edit Recipe</p>
@@ -152,7 +153,7 @@
                                     @enderror
                                 </div>
                                 <div>
-                                    <label for="description" class="form-control-label">Content</label>
+                                    <label for="description" class="form-control-label">Description</label>
                                     <textarea id="description" name="description">{{ old('description', $recipe->description) }}</textarea>
                                     @error('description')
                                     <div class="invalid-feedback d-inline-block" role="alert">{{ $message }}</div>
@@ -166,47 +167,101 @@
                                     @enderror
                                 </div>
                             </div>
-                            <hr class="horizontal dark">
-                            <p class="text-uppercase text-sm">Ingredients information</p>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label for="ingredient" class="form-control-label h6">Add ingredient</label>
-                                    <div class="d-flex align-items-center">
-                                        <input class="form-control" type="text" id="ingredient-input" placeholder="Enter the ingredient information">
-                                        <button type="button" id="ingredient-submit" class="btn btn-outline-primary ms-2">Add</button>
-                                    </div>
-                                    <h6>Ingredients list</h6>
-                                    <ol class="list-group list-group-numbered mt-3" id="ingredients">
-                                        @foreach($recipe->ingredients as $ingredient)
-                                            <li class="list-group-item d-flex justify-content-between align-items-start">
-                                                <div class="ms-2 me-auto">
-                                                    <div>{{ $ingredient->title }}</div>
-                                                </div>
-                                                <span class="badge bg-danger rounded-pill cursor-pointer" data-id="{{ $ingredient->id }}" id="remove-icon">
+                        </div>
+                    </form>
+                    <hr class="horizontal dark">
+                    <div class="card-body">
+                        <p class="text-uppercase text-sm">Ingredients information</p>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="ingredient" class="form-control-label h6">Add ingredient</label>
+                                <div class="d-flex align-items-center">
+                                    <input class="form-control bg-transparent" type="text" data-recipe-id="{{ $recipe->id }}" id="ingredient-input" placeholder="Enter the ingredient information">
+                                    <button type="button" id="ingredient-submit" class="btn btn-outline-primary ms-2" data-url="{{ url('/api/ingredients') }}">Add</button>
+                                </div>
+                                <h6 @class(['d-none' => !count($recipe->ingredients)]) id="ingredients-title">Ingredients list</h6>
+                                <ol class="list-group list-group-numbered mt-3" id="ingredients">
+                                    @foreach($recipe->ingredients as $ingredient)
+                                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                                            <div class="ms-2 me-auto">
+                                                <div>{{ $ingredient->title }}</div>
+                                            </div>
+                                            <span class="badge bg-danger rounded-pill cursor-pointer" data-id="{{ $ingredient->id }}" id="remove-icon">
                                                     <i class="fa-solid fa-trash-can"></i>
                                                 </span>
-                                            </li>
-                                        @endforeach
-                                    </ol>
-                                </div>
-                            </div>
-                        </div>
-                        <hr class="horizontal dark">
-                        <div class="card-footer">
-                            <p class="text-uppercase text-sm">Additional Information</p>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label for="created_at" class="form-control-label">Created at</label>
-                                    <input class="form-control" type="text" name="created_at" id="created_at" value="{{ old('created_at', $recipe->created_at) }}" disabled>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="updated_at" class="form-control-label">Updated at</label>
-                                    <input class="form-control" type="text" name="updated_at" id="updated_at" value="{{ old('updated_at', $recipe->updated_at) }}" disabled>
-                                </div>
+                                        </li>
+                                    @endforeach
+                                </ol>
                             </div>
                         </div>
                     </div>
-                </form>
+                    <hr class="horizontal dark">
+                    <div class="card-body">
+                        <p class="text-uppercase text-sm">Steps information</p>
+                        <form action="{{ route('api.steps.store') }}" method="post" enctype="multipart/form-data" class="row">
+                            @csrf
+                            <input type="hidden" name="recipe_id" value="{{ $recipe->id }}">
+                            <input type="hidden" name="step" value="{{ $recipe->steps()->count() + 1 }}">
+                            <div class="col-md-6">
+                                <label for="description">Description</label>
+                                <textarea class="form-control" id="description" name="description" rows="15"></textarea>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label" for="step-photo">Photo</label>
+                                <input class="form-control" type="file" name="photo" id="step-photo" accept="image/*" data-browse-on-zone-click="true">
+                            </div>
+                            <div class="my-3">
+                                <button type="submit" class="btn btn-outline-primary">Add step</button>
+                            </div>
+                        </form>
+                        <div class="d-flex align-items-center justify-content-center mb-3">
+                            <img src="{{ asset('assets/icons/cooking.svg') }}">
+                            <h5 class="mb-0 ms-2">{{ $recipe->title }}: step by step recipe</h5>
+                        </div>
+                        <div id="steps">
+                            @foreach($recipe->steps as $step)
+                                <div id="step-{{ $step->step }}" class="row mb-3">
+                                    <div class="offset-lg-1 col-sm-2 d-flex flex-row-reverse flex-sm-column align-items-center">
+                                        <div class="step-number bg-gradient-primary">Step {{ $step->step }}</div>
+                                        <div class="step-actions">
+                                            <span class="badge bg-success rounded-pill cursor-pointer" data-id="{{ $step->id }}" id="update-step">
+                                                <i class="fa-solid fa-pen-to-square"></i>
+                                            </span>
+                                            <span class="badge bg-danger rounded-pill cursor-pointer" data-id="{{ $step->id }}" id="remove-step">
+                                                <i class="fa-solid fa-trash-can"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-8 col-sm-9">
+                                        <div class="step-description">
+                                            <p>{!! $step->description !!}</p>
+                                        </div>
+                                        @if($step->photo)
+                                            <div class="d-flex align-items-center justify-content-center step-image">
+                                                <img src="{{ asset($step->getPhoto()) }}" alt="Step {{ $step->step }}" title="Step {{ $step->step }}">
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+
+                    </div>
+                    <hr class="horizontal dark">
+                    <div class="card-footer">
+                        <p class="text-uppercase text-sm">Additional Information</p>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="created_at" class="form-control-label">Created at</label>
+                                <input class="form-control" type="text" name="created_at" id="created_at" value="{{ old('created_at', $recipe->created_at) }}" disabled>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="updated_at" class="form-control-label">Updated at</label>
+                                <input class="form-control" type="text" name="updated_at" id="updated_at" value="{{ old('updated_at', $recipe->updated_at) }}" disabled>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -217,64 +272,14 @@
     <script src="{{ asset('assets/js/plugins/select2.js') }}"></script>
     <script src="{{ asset('assets/js/ckeditor.js') }}"></script>
     <script src="{{ asset('assets/js/plugins/ckeditor.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/recipe-ingredients.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/recipe-steps.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.0/js/plugins/buffer.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.0/js/plugins/filetype.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.0/js/plugins/piexif.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.0/js/fileinput.min.js"></script>
     <script>
         $("#photo").fileinput({ 'showUpload': false,  }).attr('name', 'photo');
-    </script>
-    <script>
-        $(document).ready(function () {
-            const ingredientsList = $('#ingredients');
-            const ingredientInput = $('#ingredient-input');
-            const _token = $('input[name="_token"]').attr('value');
-            const recipe = {!! json_encode($recipe) !!};
-
-            ingredientsList.on('click', '#remove-icon', function() {
-                const removedItem = $(this);
-                const id = removedItem.data('id');
-                $.ajax({
-                    url: "{{ url('/api/ingredients/') }}" + `/${id}`,
-                    type: 'DELETE',
-                    data: {
-                        _token,
-                        id,
-                    },
-                    success: function({ data }) {
-                        console.log(data);
-                        removedItem.parent().remove();
-                    }
-                });
-            });
-
-            $('#ingredient-submit').click(function(e) {
-                e.preventDefault();
-                const title = $(this).prevAll('#ingredient-input').val();
-
-                $.ajax({
-                    url: "{{ url('/api/ingredients') }}",
-                    method: 'post',
-                    data: {
-                        _token,
-                        recipe_id: recipe.id,
-                        title,
-                    },
-                    success: function({ data }) {
-                        console.log(data);
-                        ingredientsList.append(`<li class="list-group-item d-flex justify-content-between align-items-start">
-                                            <div class="ms-2 me-auto">
-                                                <div>${data.title}</div>
-                                            </div>
-                                            <span class="badge bg-danger rounded-pill cursor-pointer" data-id="${data.id}" id="remove-icon">
-                                                <i class="fa-solid fa-trash-can"></i>
-                                            </span>
-                                        </li>`);
-
-                        ingredientInput.val("");
-                    }
-                });
-            });
-        })
+        $("#step-photo").fileinput({ 'showUpload': false,  }).attr('name', 'photo');
     </script>
 @endpushonce

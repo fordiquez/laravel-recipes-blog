@@ -42,9 +42,11 @@
                                                 </a>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <a href="{{ route('admin.categories.show', $category->parent) }}" class="text-sm">
-                                                    <span class="badge bg-gradient-dark">{{ $category->parent->title ?? '' }}</span>
-                                                </a>
+                                                @isset($category->parent)
+                                                    <a href="{{ route('admin.categories.show', $category->parent->id) }}" class="text-sm">
+                                                        <span class="badge bg-gradient-dark">{{ $category->parent->title }}</span>
+                                                    </a>
+                                                @endisset
                                             </td>
                                             <td class="align-middle text-center">
                                                 <p class="text-xs font-weight-bold mb-0">{{ $category->created_at }}</p>

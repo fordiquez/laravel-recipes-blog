@@ -37,3 +37,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin', 'verified']
         'posts' => \App\Http\Controllers\Admin\PostController::class,
     ]);
 });
+
+Route::fallback(function () {
+    dd(404);
+});

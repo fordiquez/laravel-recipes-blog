@@ -46,6 +46,10 @@ class Recipe extends Model
         return $this->hasMany(Ingredient::class, 'recipe_id', 'id');
     }
 
+    public function steps() {
+        return $this->hasMany(Step::class, 'recipe_id', 'id');
+    }
+
     public static function getLevels(): array
     {
         return [
