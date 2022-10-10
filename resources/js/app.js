@@ -1,2 +1,1 @@
-import './bootstrap';
-import 'overlayscrollbars';
+import './bootstrap'

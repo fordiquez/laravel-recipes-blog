@@ -102,8 +102,8 @@
 @endsection
 
 @pushonce('scripts')
-    <script src="{{ asset('assets/js/ckeditor.js') }}"></script>
-    <script src="{{ asset('assets/js/plugins/ckeditor.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/ckeditor.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/plugins/ckeditor.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.0/js/plugins/buffer.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.0/js/plugins/filetype.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.0/js/plugins/piexif.min.js"></script>

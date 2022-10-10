@@ -3,10 +3,10 @@
 @section('title', 'Admin – Recipes – ' . $recipe->title . ' – Edit')
 
 @pushonce('styles')
-    <link rel="stylesheet" href="{{ asset('assets/css/select2.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/admin/css/select2.min.css') }}" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.0/css/fileinput.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.min.css" />
-    <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/admin/css/custom.css') }}" />
     <style>
         .ck-editor__editable[role="textbox"] {
             min-height: 200px;
@@ -215,7 +215,7 @@
                             </div>
                         </form>
                         <div class="d-flex align-items-center justify-content-center mb-3">
-                            <img src="{{ asset('assets/icons/cooking.svg') }}">
+                            <img src="{{ asset('assets/main/icons/cooking.svg') }}">
                             <h5 class="mb-0 ms-2">{{ $recipe->title }}: step by step recipe</h5>
                         </div>
                         <div id="steps">
@@ -268,12 +268,12 @@
 @endsection
 
 @pushonce('scripts')
-    <script src="{{ asset('assets/js/select2.min.js') }}"></script>
-    <script src="{{ asset('assets/js/plugins/select2.js') }}"></script>
-    <script src="{{ asset('assets/js/ckeditor.js') }}"></script>
-    <script src="{{ asset('assets/js/plugins/ckeditor.js') }}"></script>
-    <script src="{{ asset('assets/js/plugins/recipe-ingredients.js') }}"></script>
-    <script src="{{ asset('assets/js/plugins/recipe-steps.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/select2.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/plugins/select2.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/ckeditor.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/plugins/ckeditor.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/plugins/recipe-ingredients.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/plugins/recipe-steps.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.0/js/plugins/buffer.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.0/js/plugins/filetype.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.0/js/plugins/piexif.min.js"></script>

@@ -122,6 +122,6 @@
     <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.0/js/plugins/piexif.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.0/js/fileinput.min.js"></script>
     <script>
-        $("#photo").fileinput({ 'showUpload': false,  }).attr('name', 'photo');
+        $("#photo").fileinput({ 'showUpload': false }).attr('name', 'photo');
     </script>
 @endpushonce

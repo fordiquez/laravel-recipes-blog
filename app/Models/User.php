@@ -39,7 +39,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function getPhoto(): string
     {
-        return $this->photo && $this->id != 1 ? 'storage/' . $this->photo : 'assets/img/admin.jpg';
+        return $this->photo && $this->id != 1 ? 'storage/' . $this->photo : 'assets/admin/img/admin.jpg';
     }
 
     public static function setPhoto(array $data): array

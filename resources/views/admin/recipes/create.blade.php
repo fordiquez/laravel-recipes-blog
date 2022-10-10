@@ -3,7 +3,7 @@
 @section('title', 'Admin – Recipes – Create')
 
 @pushonce('styles')
-    <link rel="stylesheet" href="{{ asset('assets/css/select2.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/admin/css/select2.min.css') }}" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.0/css/fileinput.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.min.css" />
     <style>
@@ -139,10 +139,10 @@
 @endsection
 
 @pushonce('scripts')
-    <script src="{{ asset('assets/js/select2.min.js') }}"></script>
-    <script src="{{ asset('assets/js/plugins/select2.js') }}"></script>
-    <script src="{{ asset('assets/js/ckeditor.js') }}"></script>
-    <script src="{{ asset('assets/js/plugins/ckeditor.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/select2.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/plugins/select2.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/ckeditor.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/plugins/ckeditor.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.0/js/plugins/buffer.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.0/js/plugins/filetype.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.0/js/plugins/piexif.min.js"></script>
