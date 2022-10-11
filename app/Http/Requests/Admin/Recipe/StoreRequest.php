@@ -42,6 +42,7 @@ class StoreRequest extends FormRequest
             'title' => ['required', 'string', 'max:255'],
             'slug' => ['required', 'string', 'unique:recipes', 'max:255'],
             'cuisine_id' => ['required', 'exists:cuisines,id'],
+            'user_id' => ['required', 'exists:users,id'],
             'cooking_time' => ['required', 'string'],
             'servings' => ['required', 'numeric'],
             'level' => ['required', 'string', Rule::in(Recipe::LEVELS)],

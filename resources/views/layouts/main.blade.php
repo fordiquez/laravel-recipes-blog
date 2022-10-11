@@ -32,10 +32,9 @@
     <!-- Custom styles -->
     @stack('styles')
 </head>
-<body class="home page-template page theme-ranna header-style-2 footer-style-1 no-banner no-sidebar right-sidebar">
+<body class="home page header-style-2 no-banner no-sidebar right-sidebar">
 <div id="preloader" style="background-image: url({{ asset('assets/main/images/preloader.gif') }})"></div>
 <div id="page" class="site">
-    <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
     <header class="site-header">
         <div id="header-2" class="header-area header-fixed">
             <div class="masthead-container header-controll">
@@ -45,10 +44,14 @@
                         <div class="col-lg-3 d-flex justify-content-center">
                             <div class="site-branding">
                                 <a class="dark-logo" href="{{ route('main.index') }}">
-                                    <img src="{{ asset('assets/main/images/logo-dark.png') }}" alt="{{ config('app.name') }}" title="{{ config('app.name') }}" width="199" height="58">
+                                    <img src="{{ asset('assets/main/images/logo-dark.png') }}"
+                                         alt="{{ config('app.name') }}" title="{{ config('app.name') }}" width="199"
+                                         height="58">
                                 </a>
                                 <a class="light-logo" href="{{ route('main.index') }}">
-                                    <img src="{{ asset('assets/main/images/logo-light.png') }}" alt="{{ config('app.name') }}" title="{{ config('app.name') }}" width="199" height="58">
+                                    <img src="{{ asset('assets/main/images/logo-light.png') }}"
+                                         alt="{{ config('app.name') }}" title="{{ config('app.name') }}" width="199"
+                                         height="58">
                                 </a>
                             </div>
                         </div>
@@ -117,9 +120,11 @@
     <div class="rt-header-menu mean-container" id="meanmenu">
         <div class="mean-bar">
             <a class="dark-logo" href="{{ route('main.index') }}">
-                <img src="{{ asset('assets/main/images/logo-dark.png') }}" alt="{{ config('app.name') }}" title="{{ config('app.name') }}" class="logo-small" height="58">
+                <img src="{{ asset('assets/main/images/logo-dark.png') }}" alt="{{ config('app.name') }}"
+                     title="{{ config('app.name') }}" class="logo-small" height="58">
             </a>
-            <a class="header-submit-icon-mobile" href="https://radiustheme.com/demo/wordpress/themes/ranna/submit-recipe"><span>Add Recipe</span></a>
+            <a class="header-submit-icon-mobile"
+               href="https://radiustheme.com/demo/wordpress/themes/ranna/submit-recipe"><span>Add Recipe</span></a>
             <a class="header-login-icon header-login-icon-mobile"
                href="https://radiustheme.com/demo/wordpress/themes/ranna/login-page">
                 <i class="fa fa-user-o" aria-hidden="true"></i>
@@ -176,122 +181,98 @@
         </div>
     </div>
 
-    <div id="header-area-space"></div>
-    <div id="header-search" class="header-search">
-        <button type="button" class="close">×</button>
-
-        <form role="search" method="get" class="search-form"
-              action="https://radiustheme.com/demo/wordpress/themes/ranna/">
-            <div class="row custom-search-input">
-                <div class="input-group col-md-12">
-                    <input type="text" class="search-query form-control" placeholder="Search here ..." value=""
-                           name="s"/>
-                    <span class="input-group-btn">
-					<button class="btn" type="submit">
-						<i class="fa fa-search" aria-hidden="true"></i>
-					</button>
-				</span>
-                </div>
-            </div>
-        </form>
-    </div>
-
     <div id="content" class="site-content">
         @yield('content')
     </div>
 
     <footer>
-        <div id="footer-1" class="footer-area">
+        <div class="footer-area">
             <div class="footer-top-area">
                 <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12 col-sm-12 col-12">
-                            <div id="media_image-2" class="widget widget_media_image"><a
-                                    href="https://radiustheme.com/demo/wordpress/themes/ranna/"><img width="199"
-                                                                                                     height="58"
-                                                                                                     src="https://radiustheme.com/demo/wordpress/themes/ranna/wp-content/uploads/2019/07/logo-light.png"
-                                                                                                     class="image wp-image-172  attachment-full size-full"
-                                                                                                     alt=""
-                                                                                                     loading="lazy"
-                                                                                                     style="max-width: 100%; height: auto;"/></a>
-                            </div>
-                            <div id="apsc_widget-2" class="widget widget_apsc_widget">
-                                <div class="apsc-icons-wrapper clearfix apsc-theme-4 ">
-                                    <div class="apsc-each-profile">
-                                        <a class="apsc-facebook-icon clearfix" href="https://facebook.com/"
-                                           target="_blank">
-                                            <div class="apsc-inner-block">
-                                                <span class="social-icon"><i
-                                                        class="fab fa-facebook-f apsc-facebook"></i><span
-                                                        class="media-name">Facebook</span></span>
-                                                <span class="apsc-count">0</span><span
-                                                    class="apsc-media-type">Fans</span>
-                                            </div>
-                                        </a>
+                    <div class="row gutters-60">
+                        <div class="col-12 col-sm-4">
+                            <div class="widget rt_footer_social_widget">
+                                <h3>About Company</h3>
+                                <div class="rt-about-widget">
+                                    <div class="footer-about">
+                                        <span>You can find all of the recipes on our site. This is the best Recipe WordPress Theme.</span>
                                     </div>
-                                    <div class="apsc-each-profile">
-                                        <a class="apsc-twitter-icon clearfix" href="https://twitter.com/"
-                                           target="_blank">
-                                            <div class="apsc-inner-block">
-                                                <span class="social-icon"><i
-                                                        class="fab fa-twitter apsc-twitter"></i><span
-                                                        class="media-name">Twitter</span></span>
-                                                <span class="apsc-count">0</span><span
-                                                    class="apsc-media-type">Followers</span>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="apsc-each-profile">
-                                        <a class="apsc-instagram-icon clearfix" href="https://instagram.com/"
-                                           target="_blank">
-                                            <div class="apsc-inner-block">
-                                                <span class="social-icon"><i
-                                                        class="apsc-instagram fab fa-instagram"></i><span
-                                                        class="media-name">Instagram</span></span>
-                                                <span class="apsc-count">0</span><span
-                                                    class="apsc-media-type">Followers</span>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="apsc-each-profile">
-                                        <a class="apsc-youtube-icon clearfix" href="" target="_blank">
-                                            <div class="apsc-inner-block">
-                                                <span class="social-icon"><i
-                                                        class="apsc-youtube fab fa-youtube"></i><span
-                                                        class="media-name">Youtube</span></span>
-                                                <span class="apsc-count">0</span><span class="apsc-media-type">Subscriber</span>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="apsc-each-profile">
-                                        <a class="apsc-soundcloud-icon clearfix" href="https://soundcloud.com/"
-                                           target="_blank">
-                                            <div class="apsc-inner-block">
-                                                <span class="social-icon"><i
-                                                        class="apsc-soundcloud fab fa-soundcloud"></i><span
-                                                        class="media-name">Soundcloud</span></span>
-                                                <span class="apsc-count"></span><span
-                                                    class="apsc-media-type">Followers</span>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="apsc-each-profile">
+                                    <ul class="footer-social">
+                                        <li class="facebook">
+                                            <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
+                                        </li>
+                                        <li class="twitter">
+                                            <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
+                                        </li>
+                                        <li class="linkedin">
+                                            <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
+                                        </li>
+                                        <li class="youtube">
+                                            <a href="#" target="_blank"><i class="fa fa-youtube"></i></a>
+                                        </li>
+                                        <li class="vimeo">
+                                            <a href="#" target="_blank"><i class="fab fa-vimeo-v"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
 
-                                        <a class="apsc-dribble-icon clearfix" href="https://dribbble.com/"
-                                           target="_blank">
-                                            <div class="apsc-inner-block">
-                                                <span class="social-icon"><i
-                                                        class="apsc-dribbble fab fa-dribbble"></i><span
-                                                        class="media-name">dribble</span></span>
-                                                <span class="apsc-count"></span><span
-                                                    class="apsc-media-type">Followers</span>
-                                            </div>
-                                        </a>
-                                    </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-4">
+                            <div class="widget widget_nav_menu">
+                                <h3 class="widgettitle">Useful Link</h3>
+                                <div class="menu-top-bar-container">
+                                    <ul id="menu-top-bar" class="menu">
+                                        <li class="menu-item">
+                                            <a href="{{ route('main.index') }}">Blog</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="{{ route('main.index') }}">About</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="{{ route('main.index') }}">Shop</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="{{ route('main.index') }}">Submit Recipe</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href={{ route('main.index') }}>Contact</a>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
-                        <div class="copyright">&copy; 2020 Ranna. All Rights Reserved.</div>
+                        <div class="col-12 col-sm-4">
+                            <div class="widget widget_mc4wp_form_widget">
+                                <h3 class="widgettitle">Newsletter</h3>
+                                <form class="mc4wp-form" method="post">
+                                    <div class="mc4wp-form-fields">
+                                        <div class="widget-newsletter-subscribe">
+                                            <div class="original">
+                                                <p>Newsletter Subscribe</p>
+                                                <div class="form-group">
+                                                    <input type="email" placeholder="Your e-mail address" class="form-control" name="email" required="">
+                                                </div>
+                                                <div class="form-group mb-none">
+                                                    <button type="submit" class="item-btn text-uppercase">Subscribe</button>
+                                                </div>
+                                            </div>
+                                            <div class="original-2">
+                                                <input type="email" placeholder="your e-mail address" class="form-control" name="email" required="">
+                                                <button type="submit" class="item-btn text-uppercase">Subscribe</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom-area">
+                <div class="container">
+                    <div class="row">
+                        <div class="copyright">© 2022 Ranna. All Rights Reserved.</div>
                     </div>
                 </div>
             </div>
@@ -308,8 +289,8 @@
 <script src="{{ asset('assets/main/js/elementor/frontend-modules.min.js') }}"></script>
 <script type="text/javascript">
     const elementorFrontendConfig = {
-        "environmentMode": { "edit": false, "wpPreview": false, "isScriptDebug": false },
-        "breakpoints": { "xs": 0, "sm": 480, "md": 768, "lg": 991, "xl": 1440, "xxl": 1600 },
+        "environmentMode": {"edit": false, "wpPreview": false, "isScriptDebug": false},
+        "breakpoints": {"xs": 0, "sm": 480, "md": 768, "lg": 991, "xl": 1440, "xxl": 1600},
         "responsive": {
             "breakpoints": {
                 "mobile": {
@@ -365,8 +346,8 @@
             "favorite-widgets": true,
             "admin-top-bar": true
         },
-        "urls": { "assets": '' },
-        "settings": { "page": [], "editorPreferences": [] },
+        "urls": {"assets": ''},
+        "settings": {"page": [], "editorPreferences": []},
         "kit": {
             "global_image_lightbox": "yes",
             "viewport_tablet": 990,

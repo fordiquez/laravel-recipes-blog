@@ -39,6 +39,7 @@ class StoreRequest extends FormRequest
         return [
             'title' => ['required', 'string', 'max:50'],
             'slug' => ['required', 'string', 'max:50', 'unique:categories'],
+            'photo' => ['file'],
             'parent_id' => ['exists:categories,id']
         ];
     }

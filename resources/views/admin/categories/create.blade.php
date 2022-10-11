@@ -6,7 +6,7 @@
     <div class="container-fluid py-4">
         <div class="row">
             <div class="col-12">
-                <form action="{{ route('admin.categories.store') }}" method="post">
+                <form action="{{ route('admin.categories.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="card">
                         <div class="card-header pb-0">
@@ -51,6 +51,20 @@
                                         @enderror
                                     </div>
                                 @endif
+                                <div class="col-md-6 mt-3">
+                                    <div class="card card-plain">
+                                        <div class="position-relative">
+                                            <img src="{{ asset('assets/admin/img/image-not-found.svg') }}" class="shadow border-radius-lg w-sm-50" id="photo-preview" alt="Category photo" title="Category photo">
+                                        </div>
+                                        <div class="card-body px-1 pt-3">
+                                            <label class="form-label" for="photo">Photo</label>
+                                            <input class="form-control @error('photo') is-invalid @enderror" type="file" name="photo" id="photo" accept="image/*">
+                                            @error('photo')
+                                            <div class="invalid-feedback d-inline-block" role="alert">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -59,3 +73,7 @@
         </div>
     </div>
 @endsection
+
+@pushonce('scripts')
+    <script src="{{ asset('assets/admin/js/plugins/photo-preview.js') }}"></script>
+@endpushonce

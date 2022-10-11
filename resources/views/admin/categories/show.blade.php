@@ -5,6 +5,15 @@
 @section('content')
     <div class="mx-3 mx-lg-5 my-7">
         <div class="card card-profile">
+            <div class="row justify-content-center">
+                <div class="col-4 col-lg-4 order-lg-2">
+                    <div class="mt-n4 mt-lg-n6 mb-4 mb-lg-0">
+                        <img src="{{ asset($category->getPhoto()) }}"
+                             class="rounded-circle img-fluid border border-2 border-white"
+                             alt="{{ $category->title }}" title="{{ $category->title }}">
+                    </div>
+                </div>
+            </div>
             <div class="card-header text-center py-3">
                 <div class="d-flex justify-content-between">
                     <a href="{{ route('admin.categories.index') }}" class="btn btn-sm btn-primary mb-0 d-flex align-items-center">

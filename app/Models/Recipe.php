@@ -14,6 +14,7 @@ class Recipe extends Model
         'title',
         'slug',
         'cuisine_id',
+        'user_id',
         'cooking_time',
         'servings',
         'level',

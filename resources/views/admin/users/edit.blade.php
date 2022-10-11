@@ -2,11 +2,6 @@
 
 @section('title', 'Admin – Users – ' . $user->getFullName() . ' – Edit')
 
-@pushonce('styles')
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.0/css/fileinput.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.min.css" />
-@endpushonce
-
 @section('content')
     <div class="card shadow-lg mx-4 card-profile-bottom">
         <div class="card-body p-3">
@@ -86,12 +81,19 @@
                                         <div class="invalid-feedback d-inline-block" role="alert">{{ $message }}</div>
                                     @enderror
                                 </div>
-                                <div class="col-md-6">
-                                    <label class="form-label" for="photo">Photo</label>
-                                    <input class="form-control @error('photo') is-invalid @enderror" type="file" name="photo" id="photo" accept="image/*" data-browse-on-zone-click="true">
-                                    @error('photo')
-                                        <div class="invalid-feedback d-inline-block" role="alert">{{ $message }}</div>
-                                    @enderror
+                                <div class="col-md-6 mt-3">
+                                    <div class="card card-plain">
+                                        <div class="position-relative">
+                                            <img src="{{ asset($user->getPhoto()) }}" @class(['shadow border-radius-lg', 'w-100' => $user->photo, 'w-sm-50' => !$user->photo]) id="photo-preview" alt="{{ $user->title }}" title="{{ $user->title }}">
+                                        </div>
+                                        <div class="card-body px-1 pt-3">
+                                            <label class="form-label" for="photo">Photo</label>
+                                            <input class="form-control @error('photo') is-invalid @enderror" type="file" name="photo" id="photo" accept="image/*">
+                                            @error('photo')
+                                            <div class="invalid-feedback d-inline-block" role="alert">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -117,11 +119,5 @@
 @endsection
 
 @pushonce('scripts')
-    <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.0/js/plugins/buffer.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.0/js/plugins/filetype.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.0/js/plugins/piexif.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.0/js/fileinput.min.js"></script>
-    <script>
-        $("#photo").fileinput({ 'showUpload': false }).attr('name', 'photo');
-    </script>
+    <script src="{{ asset('assets/admin/js/plugins/photo-preview.js') }}"></script>
 @endpushonce

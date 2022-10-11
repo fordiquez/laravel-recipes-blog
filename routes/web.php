@@ -17,6 +17,10 @@ use Illuminate\Support\Facades\Route;
 Auth::routes(['verify' => true]);
 
 Route::get('/', [\App\Http\Controllers\Main\IndexController::class, 'index'])->name('main.index');
+Route::prefix('categories')->controller(\App\Http\Controllers\Main\CategoryController::class)->group(function () {
+    Route::get('/', 'index')->name('main.categories.index');
+});
+
 Route::prefix('blog')->controller(\App\Http\Controllers\Main\BlogController::class)->group(function () {
     Route::get('/', 'index')->name('main.blog.index');
     Route::get('/{post}', 'show')->name('main.blog.show');

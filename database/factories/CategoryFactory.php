@@ -22,6 +22,9 @@ class CategoryFactory extends Factory
             'slug' => function (array $attributes) {
                 return Str::slug($attributes['title']);
             },
+            'photo' => function (array $attributes) {
+                return $this->faker->loremflickr('categories', $attributes['slug']);
+            },
         ];
     }
 }

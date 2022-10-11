@@ -21,7 +21,7 @@ class CategoryController extends Controller
 
     public function store(StoreRequest $request) {
         $data = $request->validated();
-        Category::create($data);
+        Category::create(Category::setPhoto($data));
 
         return redirect()->route('admin.categories.index');
     }
@@ -40,7 +40,7 @@ class CategoryController extends Controller
      */
     public function update(UpdateRequest $request, Category $category) {
         $data = $request->validated();
-        $category->updateOrFail($data);
+        $category->updateOrFail(Category::setPhoto($data));
 
         return view('admin.categories.show', compact('category'));
     }

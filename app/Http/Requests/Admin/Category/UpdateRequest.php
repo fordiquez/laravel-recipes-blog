@@ -40,6 +40,7 @@ class UpdateRequest extends FormRequest
         return [
             'title' => ['required', 'string', 'max:50'],
             'slug' => ['required', 'string', 'max:50', Rule::unique('categories')->ignore($this->category->id)],
+            'photo' => ['file'],
             'parent_id' => ['integer', 'nullable']
         ];
     }

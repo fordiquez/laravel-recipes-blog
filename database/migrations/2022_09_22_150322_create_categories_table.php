@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('title', 255);
             $table->string('slug')->unique();
+            $table->string('photo')->nullable();
             $table->foreignId('parent_id')->nullable()->constrained('categories')->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();
             $table->softDeletes();

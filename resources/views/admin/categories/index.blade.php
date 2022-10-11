@@ -35,6 +35,9 @@
                                             </td>
                                             <td class="d-flex">
                                                 <a href="{{ route('admin.categories.show', $category) }}" class="d-flex px-2 py-1">
+                                                    <div>
+                                                        <img src="{{ asset($category->getPhoto()) }}" class="avatar avatar-sm me-3" alt="{{ $category->title }}" title="{{ $category->title }}">
+                                                    </div>
                                                     <div class="d-flex flex-column justify-content-center">
                                                         <h6 class="mb-0 text-sm">{{ $category->title }}</h6>
                                                         <p class="text-xs text-secondary mb-0">{{ $category->slug }}</p>

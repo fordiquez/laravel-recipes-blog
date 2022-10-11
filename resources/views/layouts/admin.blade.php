@@ -15,9 +15,10 @@
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" />
     <!-- Vite styles -->
-    @vite(['resources/css/overlay-scrollbars.css', 'resources/sass/app.scss'])
+    @vite(['resources/css/overlay-scrollbars.css', 'resources/sass/font-awesome.scss'])
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('assets/admin/css/argon-dashboard.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/admin/css/style.css') }}" />
     <!-- Custom styles -->
     @stack('styles')
 </head>
@@ -47,8 +48,6 @@
 <!-- Vite scripts -->
 @vite(['resources/js/app.js', 'resources/js/overlay-scrollbars.js'])
 <!-- Core Scripts -->
-<script src="{{ asset('assets/admin/js/popper.min.js') }}"></script>
-<script src="{{ asset('assets/admin/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('assets/admin/js/jquery-3.6.1.js') }}"></script>
 <script src="{{ asset('assets/admin/js/perfect-scrollbar.min.js') }}"></script>
 <script src="{{ asset('assets/admin/js/smooth-scrollbar.min.js') }}"></script>
@@ -61,8 +60,8 @@
         Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
     }
     document.addEventListener("DOMContentLoaded", function() {
-        //The first argument are the elements to which the plugin shall be initialized
-        //The second argument has to be at least an empty object or an object with your desired options
+        // The first argument are the elements to which the plugin shall be initialized
+        // The second argument has to be at least an empty object or an object with your desired options
         OverlayScrollbars(document.querySelectorAll("body"), { });
     });
 </script>

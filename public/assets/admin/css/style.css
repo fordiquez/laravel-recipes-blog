@@ -37,4 +37,8 @@
     min-width: 75px;
 }
 
+.ck-editor__editable[role="textbox"] {
+    min-height: 200px;
+}
+
 
