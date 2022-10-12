@@ -1,4 +1,4 @@
-/*-------------------------------------    
+/*-------------------------------------
 CSS INDEX
 ===================================
 #. EL: Default
@@ -436,13 +436,13 @@ CSS INDEX
 .recipe-slider-style6.rt-owl-nav-1.slider-nav-enabled .owl-carousel .owl-nav > div {
     height: 45px;
     width: 45px;
-    line-height: 47px;	
+    line-height: 47px;
     top: 30%;
 }
 .elementor-widget-container .recipe-slider-style6.rt-owl-nav-1.slider-nav-enabled .owl-carousel .owl-nav > div {
     height: 45px;
     width: 45px;
-    line-height: 47px;	
+    line-height: 47px;
     top: 22%;
 }
 .recipe-slider-style6.rt-owl-nav-1.slider-nav-enabled .owl-carousel .owl-nav .owl-prev {
@@ -1290,7 +1290,7 @@ CSS INDEX
 	background: #ffffff;
     padding: 22px 25px 10px;
     overflow: hidden;
-	
+
 }
 .post-grid-style2 .rtin-single-post .post-footer {
 	padding-bottom: 15px;
@@ -1608,7 +1608,7 @@ CSS INDEX
 	margin-bottom: 0;
 	padding-bottom: 0;
 }
-/*Post list 3*/    
+/*Post list 3*/
 .post-list-style3 .rtin-single-post {
 	margin-bottom: 40px;
     display: flex;
@@ -1765,7 +1765,7 @@ CSS INDEX
 }
 .post-box-default .rtin-single-post .rtin-img {
     overflow: hidden;
-    position: relative;	
+    position: relative;
 }
 .post-box-default .rtin-single-post .rtin-content {
 	color: #ffffff;
@@ -1810,7 +1810,7 @@ CSS INDEX
     transition: all 0.3s ease-in-out;
 	border-radius: 0 0 5px 5px;
 }
-.post-box-default .rtin-single-post:hover img {	
+.post-box-default .rtin-single-post:hover img {
     -webkit-transform: scale(1.1) rotate(2deg);
     -ms-transform: scale(1.1) rotate(2deg);
     transform: scale(1.1) rotate(2deg);
@@ -1881,7 +1881,7 @@ CSS INDEX
 }
 .post-box-default.post-box-style6 .rtin-single-post .rtin-content {
 	padding: 10px 20px 30px 30px;
-	bottom: -114px;	
+	bottom: -114px;
 	-webkit-transition: all 0.3s ease-in-out;
 	-moz-transition: all 0.3s ease-in-out;
 	-ms-transition: all 0.3s ease-in-out;
@@ -1891,17 +1891,17 @@ CSS INDEX
 @media ( max-width:1024px ){
 	.post-box-default.post-box-style6 .rtin-single-post .rtin-content {
 		bottom: -162px;
-	}	
+	}
 }
 @media ( max-width:768px ){
 	.post-box-default.post-box-style6 .rtin-single-post .rtin-content {
 		bottom: -168px;
-	}	
+	}
 }
 @media ( max-width:475px ){
 	.post-box-default.post-box-style6 .rtin-single-post .rtin-content {
 		bottom: -150px;
-	}	
+	}
 }
 .post-box-default.post-box-style6 .rtin-single-post .rtin-content:hover {
 	bottom: -25px;
@@ -2140,7 +2140,7 @@ CSS INDEX
   color: #ff4a52;
   display: block;
   margin-bottom: 1px;
-  font-weight: 600;  
+  font-weight: 600;
 font-size: 16px;
 line-height: 1.6;
 }
@@ -2243,7 +2243,7 @@ line-height: 1.6;
     line-height: 1.2;
     margin-bottom: 14px;
 }
-.post-slider-default.post-slider-style4 .rtin-single-post .rtin-content h3 {	
+.post-slider-default.post-slider-style4 .rtin-single-post .rtin-content h3 {
 	line-height: 1.2;
     margin-bottom: 8px;
     margin-top: 3px;
@@ -2284,7 +2284,7 @@ line-height: 1.6;
 	padding-right: 3px;
 }
 .post-slider-style4.post-slider-default .post-meta ul li i {
-	padding-right: 7px;	
+	padding-right: 7px;
 }
 .post-slider-default .post-meta ul li:last-child {
     margin-right: 0;
@@ -2301,7 +2301,7 @@ line-height: 1.6;
     margin-top: 10px;
 }
 .post-slider-default .post-meta ul { margin-bottom: 5px; }
-.post-slider-style5 .rtin-single-post .rtin-content .sub-title {	
+.post-slider-style5 .rtin-single-post .rtin-content .sub-title {
 	font-weight: 600;
 }
 .related-recipe .owl-theme .owl-nav .owl-prev {
@@ -2499,9 +2499,9 @@ line-height: 1.6;
 }
 .in-sidebar .post-slider-style4 .rtin-single-post .rtin-content .sub-title {
     font-size: 16px;
-	font-weight: 600;	
+	font-weight: 600;
 }
-.in-sidebar .post-slider-default .post-meta ul {	
+.in-sidebar .post-slider-default .post-meta ul {
     padding: 0px;
 }
 .in-sidebar .rt-owl-nav-1.slider-nav-enabled .owl-carousel .owl-nav .owl-prev {
@@ -2510,7 +2510,7 @@ line-height: 1.6;
 .in-sidebar .rt-owl-nav-1.slider-nav-enabled .owl-carousel .owl-nav .owl-next {
     right: 23px;
 }
-.in-sidebar .rt-owl-nav-1.slider-nav-enabled .owl-carousel .owl-nav > div {    
+.in-sidebar .rt-owl-nav-1.slider-nav-enabled .owl-carousel .owl-nav > div {
     height: 40px;
     width: 40px;
     line-height: 35px;
@@ -2643,7 +2643,7 @@ line-height: 1.6;
 	z-index: 9;
 	margin: 0 auto;
 	padding: 35px 50px 15px;
-	text-align: center;	
+	text-align: center;
 	-webkit-transition: all 0.3s ease-in-out;
 	-moz-transition: all 0.3s ease-in-out;
 	-ms-transition: all 0.3s ease-in-out;
@@ -2664,7 +2664,7 @@ line-height: 1.6;
 	}
 }
 @media (max-width: 991px) {
-	.ranna-slider-content-layout1 .item-content {		
+	.ranna-slider-content-layout1 .item-content {
 		position: inherit;
 		width: auto;
 		padding: 20px 30px 15px;
@@ -2773,12 +2773,12 @@ line-height: 1.6;
 .ranna-slider-content-layout1 .item-content .entry-meta li a:hover span {
 	color: #ff4a52;
 }
-/*Slider 2*/ 
+/*Slider 2*/
 .featured-box-layout1 .item-content {
 	text-align: center;
 	width: 85%;
 	margin: 0 auto;
-	position: relative;	
+	position: relative;
 	left: 0;
 	right: 0;
 	z-index: 5;
@@ -2892,7 +2892,7 @@ line-height: 1.6;
 }
 .page-template-ranna-search-result .product-box-layout3 .item-content {
 	width: 65%;
-}	
+}
 @media only screen and (max-width: 1199px) {
 	.product-box-layout3 .item-content {
 		margin-left: 0;
@@ -2904,7 +2904,7 @@ line-height: 1.6;
 	}
 }
 @media ( max-width: 480px ){
-	.product-box-layout3 .item-content {	
+	.product-box-layout3 .item-content {
 		text-align: center;
 	}
 }
@@ -2968,7 +2968,7 @@ line-height: 1.6;
 	-o-transition: all 0.3s ease-out;
 	transition: all 0.3s ease-out;
 }
-.product-box-layout3 .item-content .entry-meta li i {	
+.product-box-layout3 .item-content .entry-meta li i {
 	color: #ff4a52;
 	font-size: 14px;
 	margin-right: 5px;
@@ -3047,7 +3047,7 @@ line-height: 1.6;
 }
 .recipe-box-style4 .product-box-layout7 .item-content .item-title {
 	font-weight: 700;
-	margin-bottom: 10px; 
+	margin-bottom: 10px;
 }
 .recipe-box-style4 .product-box-layout7 .item-content .item-title a {
 	color: #ffffff;
@@ -3320,11 +3320,11 @@ line-height: 1.6;
 	margin-bottom: 3px;
 	line-height: 1.4;
 }
-.product-box-layout1.recipe-grid-style5 .item-content .sub-title {	
+.product-box-layout1.recipe-grid-style5 .item-content .sub-title {
 	margin-bottom: 0px;
-} 
+}
 .product-box-layout1 .item-content .item-title {
-	margin-bottom: 8px;	
+	margin-bottom: 8px;
 }
 .product-box-layout1 .item-content .item-title a {
 	color: #111111;
@@ -3569,7 +3569,7 @@ line-height: 1.6;
 .product-box-layout1.post-single-style4 {
 }
 .recipe-grid-style4 img,
-.product-box-layout1.post-single-style4 img {	
+.product-box-layout1.post-single-style4 img {
 	border-radius: 5px;
   -webkit-transform: rotate(0) scale(1);
   -ms-transform: rotate(0) scale(1);
@@ -3786,7 +3786,7 @@ line-height: 1.6;
 .post-grid-default.recipe-grid-style4 .rtin-single-post .rtin-img {
 	border-radius: 5px;
 }
-.post-grid-default.recipe-grid-style4 .rtin-img img {	
+.post-grid-default.recipe-grid-style4 .rtin-img img {
 	border-radius: 5px;
   -webkit-transform: rotate(0) scale(1);
   -ms-transform: rotate(0) scale(1);
@@ -3819,7 +3819,7 @@ line-height: 1.6;
 	text-align: left;
 }
 .recipe-grid-style5.right .item-content.rtin-content {
-	text-align: right; 
+	text-align: right;
 }
 .post-grid-default.recipe-grid-style5 .rtin-single-post .rtin-img img {
 	overflow: hidden;
@@ -3831,7 +3831,7 @@ line-height: 1.6;
   -moz-transition: all 0.3s ease-in-out;
   -ms-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;	
+  transition: all 0.3s ease-in-out;
 }
 .post-grid-default.recipe-grid-style5 .rtin-single-post .rtin-img img:hover {
 	-webkit-transform: rotate(5deg) scale(1.15);
@@ -4794,7 +4794,7 @@ ul.about-list li:before {
 	left: 50%;
     transform: translateY(-50%) translateX(-50%);
 }
-#sb_instagram #sbi_load .sbi_load_btn, 
+#sb_instagram #sbi_load .sbi_load_btn,
 #sb_instagram .sbi_follow_btn a,
 .ig-block .instagallery-actions .igact-instalink {
 	padding: 14px 20px;
@@ -4811,7 +4811,7 @@ ul.about-list li:before {
     -o-transition: all 0.3s ease-out;
     transition: all 0.3s ease-out;
 }
-#sb_instagram .sbi_follow_btn a:focus, 
+#sb_instagram .sbi_follow_btn a:focus,
 #sb_instagram .sbi_follow_btn a:hover {
     outline: 0;
     box-shadow: none;
@@ -4844,7 +4844,7 @@ ul.about-list li:before {
     max-width: 33% !important;
     margin-bottom: 10px !important;
 }
-#sbi_images .sbi_photo_wrap a {	
+#sbi_images .sbi_photo_wrap a {
 	position: relative;
     -webkit-transition: all 0.5s ease-out;
     -moz-transition: all 0.5s ease-out;
@@ -4852,7 +4852,7 @@ ul.about-list li:before {
     -o-transition: all 0.5s ease-out;
     transition: all 0.5s ease-out;
 }
-#sbi_images .sbi_photo_wrap a:after {	
+#sbi_images .sbi_photo_wrap a:after {
 	content: "";
     position: absolute;
     height: 100%;
@@ -4991,7 +4991,7 @@ ul.about-list li:before {
 	font-size: 26px;
 	margin-bottom: 5px;
 }
-.category-box-layout1 .item-content .item-title a {
+.category-box-layout1 .item-content .item-title {
 	color: #ffffff;
 	-webkit-transition: all 0.3s ease-in-out;
 	-moz-transition: all 0.3s ease-in-out;
@@ -5040,7 +5040,7 @@ ul.about-list li:before {
 	border-radius: 5px;
 	padding: 23px 15px 16px;
 	box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1);
-	transition: all 0.3s ease-in-out;	
+	transition: all 0.3s ease-in-out;
 }
 .category-box-layout-1 a.es-min-height {
 	min-height: 196px;
@@ -5055,7 +5055,7 @@ ul.about-list li:before {
 }
 .category-box-layout-1 .item-icon i {
   line-height: 1;
-  display: inline-block;  
+  display: inline-block;
 }
 .category-box-layout-1 .item-icon i:before {
   font-size: 50px;
@@ -5204,7 +5204,7 @@ ul.about-list li:before {
 	color: #ff4a52;
 	display: block;
 	font-weight: 600;
-	line-height: 1; 
+	line-height: 1;
 }
 .height-fix .product-box-layout10 figure.item-figure {
     width: 72%;
@@ -5212,7 +5212,7 @@ ul.about-list li:before {
 .ranna-slider-content-layout1,
 .ranna-slider-content-layout1 .rtin-img img,
 .post-grid-default .rtin-single-post .rtin-img,
-.post-single-default .rtin-single-post .rtin-img, 
+.post-single-default .rtin-single-post .rtin-img,
 .post-box-default .rtin-single-post .rtin-img,
 .product-box-layout3 .item-figure,
 .post-slider-default .featured-box-layout1 .item-img img,
@@ -5220,7 +5220,7 @@ ul.about-list li:before {
 .product-box-layout4,
 .product-box-layout4:before,
 .product-box-layout4:after,
-.mc4wp-form { 
+.mc4wp-form {
 	border-radius: 4px;
 }
 @media(max-width: 1199px) {
@@ -5262,7 +5262,7 @@ ul.about-list li:before {
 .radius-5 .adv-search-wrap input.form-control {
     border-radius: 5px;
 }
-.adv-search-wrap .btn-group .input-group-btn button.btn-adv-serch {
+.adv-search-wrap .btn-group .input-group-btn button.btn-adv-search {
     border-radius: 5px 0 0 5px;
 }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\Admin;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\View\Component;
@@ -51,6 +51,6 @@ class Breadcrumb extends Component
      */
     public function render()
     {
-        return view('admin.components.breadcrumb');
+        return view('components.admin.breadcrumb');
     }
 }

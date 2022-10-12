@@ -1,5 +1,9 @@
 @extends('layouts.main')
 
+@pushonce('styles')
+    @vite(['resources/sass/mdb.scss'])
+@endpushonce
+
 @section('content')
     <div class="elementor">
         <div class="elementor-inner">
@@ -1790,3 +1794,7 @@
         </div>
     </div>
 @endsection
+
+@pushonce('scripts')
+    @vite(['resources/js/mdb.js'])
+@endpushonce

@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="{{ asset('assets/main/fonts/roboto-x-roboto-slab.css') }}">
 
     <!-- Vite styles -->
-    @vite(['resources/sass/app.scss', 'resources/sass/mdb.scss'])
+    @vite(['resources/sass/app.scss'])
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('assets/main/css/recipe-rating.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/main/css/elementor/custom-frontend-legacy.min.css') }}">
@@ -55,7 +55,7 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-5">
                             <div id="site-navigation" class="main-navigation">
                                 <nav class="menu-main-menu-container">
                                     <ul id="menu-main-menu" class="menu">
@@ -75,7 +75,7 @@
                                             </ul>
                                         </li>
                                         <li class="menu-item menu-item-has-children">
-                                            <a href="recipes.index">Recipes</a>
+                                            <a href="{{ route('main.recipes.index') }}">Recipes</a>
                                             <ul class="sub-menu">
                                                 @foreach($categories as $category)
                                                     <li @class(['menu-item', 'menu-item-has-children' => count($category->subcategories)])>
@@ -98,11 +98,27 @@
                                 </nav>
                             </div>
                         </div>
-                        <div class="col-lg-3 d-flex justify-content-center nav-action-elements-layout">
+                        <div class="col-lg-4 d-flex justify-content-center nav-action-elements-layout">
                             <ul>
-                                <li>
-                                    <a href="{{ route('login') }}" class="login-btn">Login</a>
-                                </li>
+                                @guest
+                                    <li>
+                                        <a href="{{ route('login') }}" class="login-btn">
+                                            <i class="fa-solid fa-right-to-bracket"></i>
+                                            <span>Login</span>
+                                        </a>
+                                    </li>
+                                @endguest
+                                @auth
+                                    <li>
+                                        <form action="{{ route('logout') }}" method="post">
+                                            @csrf
+                                            <button class="logout-btn bg-transparent">
+                                                <i class="fa-solid fa-right-from-bracket"></i>
+                                                <span>Logout</span>
+                                            </button>
+                                        </form>
+                                    </li>
+                                @endauth
                                 <li>
                                     <a href="submit" class="fill-btn">
                                         <i class="fa fa-plus" aria-hidden="true"></i>
@@ -154,16 +170,18 @@
                             </ul>
                         </li>
                         <li class="menu-item menu-item-has-children">
-                            <a href="recipes.index">Recipes</a>
+                            <a href="{{ route('main.recipes.index') }}">Recipes</a>
                             <ul class="sub-menu">
                                 @foreach($categories as $category)
                                     <li @class(['menu-item', 'menu-item-has-children' => count($category->subcategories)])>
-                                        <a href="">{{ $category->title }}</a>
+                                        <a href="{{ route('admin.categories.show', $category) }}">
+                                            {{ $category->title }}
+                                        </a>
                                         @if(count($category->subcategories))
                                             <ul class="sub-menu">
                                                 @foreach($category->subcategories as $subcategory)
                                                     <li class="menu-item">
-                                                        <a href="">
+                                                        <a href="{{ route('admin.categories.show', $subcategory) }}">
                                                             {{ $subcategory->title }}
                                                         </a>
                                                     </li>
@@ -182,7 +200,16 @@
     </div>
 
     <div id="content" class="site-content">
-        @yield('content')
+        <x-main.breadcrumb></x-main.breadcrumb>
+        <div id="primary" class="content-area">
+            <div class="container">
+                <div class="row gutters-60">
+                    <main id="main" class="site-main">
+                        @yield('content')
+                    </main>
+                </div>
+            </div>
+        </div>
     </div>
 
     <footer>
@@ -281,7 +308,7 @@
 </div>
 <a href="" class="scrollToTop"><i class="fa fa-arrow-up"></i></a>
 <!-- Vite scripts -->
-@vite(['resources/js/app.js', 'resources/js/mdb.js'])
+@vite(['resources/js/app.js'])
 <!-- Scripts -->
 <script src="{{ asset('assets/main/js/jquery.min.js') }}"></script>
 <script src="{{ asset('assets/main/js/main.js') }}"></script>

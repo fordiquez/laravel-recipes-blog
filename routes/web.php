@@ -21,6 +21,11 @@ Route::prefix('categories')->controller(\App\Http\Controllers\Main\CategoryContr
     Route::get('/', 'index')->name('main.categories.index');
 });
 
+Route::prefix('recipes')->controller(\App\Http\Controllers\Main\RecipeController::class)->group(function () {
+    Route::get('/', 'index')->name('main.recipes.index');
+    Route::get('/{recipe}', 'show')->name('main.recipes.show');
+});
+
 Route::prefix('blog')->controller(\App\Http\Controllers\Main\BlogController::class)->group(function () {
     Route::get('/', 'index')->name('main.blog.index');
     Route::get('/{post}', 'show')->name('main.blog.show');

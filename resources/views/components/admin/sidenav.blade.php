@@ -9,13 +9,13 @@
     <hr class="horizontal dark mt-0">
     <div class="collapse navbar-collapse w-auto" id="sidenav-collapse-main">
         <ul class="navbar-nav">
-            <x-nav-item route="admin.index" icon="fa-solid fa-desktop text-primary">Dashboard</x-nav-item>
-            <x-nav-item route="admin.users.index" icon="fa-solid fa-users-gear text-info">Users</x-nav-item>
-            <x-nav-item route="admin.cuisines.index" icon="fa-solid fa-utensils text-success">Cuisines</x-nav-item>
-            <x-nav-item route="admin.categories.index" icon="fa-regular fa-rectangle-list text-warning">Categories</x-nav-item>
-            <x-nav-item route="admin.recipes.index" icon="fa-solid fa-kitchen-set text-danger">Recipes</x-nav-item>
-            <x-nav-item route="admin.tags.index" icon="fa-solid fa-bookmark text-secondary">Tags</x-nav-item>
-            <x-nav-item route="admin.posts.index" icon="fa-solid fa-clipboard text-dark">Posts</x-nav-item>
+            <x-admin.nav-item route="admin.index" icon="fa-solid fa-desktop text-primary">Dashboard</x-admin.nav-item>
+            <x-admin.nav-item route="admin.users.index" icon="fa-solid fa-users-gear text-info">Users</x-admin.nav-item>
+            <x-admin.nav-item route="admin.cuisines.index" icon="fa-solid fa-utensils text-success">Cuisines</x-admin.nav-item>
+            <x-admin.nav-item route="admin.categories.index" icon="fa-regular fa-rectangle-list text-warning">Categories</x-admin.nav-item>
+            <x-admin.nav-item route="admin.recipes.index" icon="fa-solid fa-kitchen-set text-danger">Recipes</x-admin.nav-item>
+            <x-admin.nav-item route="admin.tags.index" icon="fa-solid fa-bookmark text-secondary">Tags</x-admin.nav-item>
+            <x-admin.nav-item route="admin.posts.index" icon="fa-solid fa-clipboard text-dark">Posts</x-admin.nav-item>
         </ul>
     </div>
     <div class="sidenav-footer mx-3">

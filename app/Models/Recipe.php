@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use App\Traits\Filterable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 
 class Recipe extends Model
 {
-    use HasFactory;
+    use HasFactory, Filterable;
 
     protected $fillable = [
         'title',
@@ -69,5 +70,9 @@ class Recipe extends Model
     {
         if (isset($data['photo'])) $data['photo'] = Storage::disk('public')->put('/recipes', $data['photo']);
         return $data;
+    }
+
+    public function getLevelStarClass(): string {
+        return $this->level == self::LEVELS[0] ? 'fa-regular fa-star' : ($this->level == self::LEVELS[1] ? 'fa-regular fa-star-half-stroke' : 'fa-solid fa-star');
     }
 }

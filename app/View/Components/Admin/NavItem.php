@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\Admin;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\View\Component;
@@ -30,6 +30,6 @@ class NavItem extends Component
      */
     public function render()
     {
-        return view('admin.components.nav-item');
+        return view('components.admin.nav-item');
     }
 }

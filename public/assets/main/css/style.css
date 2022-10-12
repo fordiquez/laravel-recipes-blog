@@ -1896,14 +1896,16 @@ code {
     float: right;
 }
 
-.header-style-2 .nav-action-elements-layout ul li .login-btn {
+.header-style-2 .nav-action-elements-layout ul li .login-btn,
+.header-style-2 .nav-action-elements-layout ul li .logout-btn {
     font-size: 16px;
     font-weight: 600;
     line-height: 26px;
     color: #111111;
 }
 
-.header-style-2 .nav-action-elements-layout ul li .login-btn:hover {
+.header-style-2 .nav-action-elements-layout ul li .login-btn:hover,
+.header-style-2 .nav-action-elements-layout ul li .logout-btn:hover{
     color: #ff4a52;
 }
 
@@ -4439,7 +4441,7 @@ form.search-form button:hover,
 }
 
 .entry-banner .entry-banner-content {
-    padding: 90px 0 95px;
+    padding: 70px 0;
     text-align: center;
     position: relative;
     z-index: 2;
@@ -5122,7 +5124,7 @@ form.post-password-form input {
 #. Single Content
 ---------------------------------------*/
 .content-area {
-    padding: 80px 0;
+    padding: 40px 0;
 }
 
 #primary.content-area {
@@ -5137,11 +5139,15 @@ form.post-password-form input {
     border-radius: 0;
 }
 
-.no-banner .breadcrumb-area .entry-breadcrumb span a,
-.no-banner .breadcrumb-area .entry-breadcrumb span a i {
-    color: #111111;
+.no-banner .breadcrumb-area .entry-breadcrumb a,
+.no-banner .breadcrumb-area .entry-breadcrumb a i {
+    color: #DFFDFF;
     font-size: 15px;
     padding-right: 5px;
+}
+
+.no-banner .breadcrumb-area .entry-breadcrumb a:hover {
+    color: #E5E1EE;
 }
 
 .no-banner .entry-breadcrumb .delimiter {
@@ -5149,12 +5155,12 @@ form.post-password-form input {
 }
 
 .no-banner .entry-breadcrumb .current {
-    color: #111111;
+    color: #DFFDFF;
     font-size: 15px;
     padding-left: 5px;
 }
 
-.no-banner .entry-header .breadcrumb-area .entry-breadcrumb span a:hover {
+.no-banner .entry-header .breadcrumb-area .entry-breadcrumb a:hover {
     color: #ff4a52;
 }
 
