@@ -69,8 +69,8 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="password_confirmation" class="form-control-label">Password Confirm</label>
-                                    <input class="form-control @error('password_confirmation') is-invalid @enderror" type="password" name="password_confirmation" id="password_confirmation" value="{{ old('password_confirmation') }}" placeholder="Confirm password">
-                                    @error('password_confirmation')
+                                    <input class="form-control @error('password') is-invalid @enderror" type="password" name="password_confirmation" id="password_confirmation" value="{{ old('password_confirmation') }}" placeholder="Confirm password">
+                                    @error('password')
                                         <div class="invalid-feedback d-inline-block" role="alert">{{ $message }}</div>
                                     @enderror
                                 </div>

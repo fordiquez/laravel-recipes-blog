@@ -25,6 +25,6 @@ class Step extends Model
 
     public function getPhoto(): string
     {
-        return $this->photo ? 'storage/' . $this->photo : 'assets/img/admin.jpg';
+        return $this->photo ? 'storage/' . $this->photo : 'assets/admin/img/image-not-found.svg';
     }
 }

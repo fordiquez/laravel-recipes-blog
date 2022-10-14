@@ -44,14 +44,10 @@
                         <div class="col-lg-3 d-flex justify-content-center">
                             <div class="site-branding">
                                 <a class="dark-logo" href="{{ route('main.index') }}">
-                                    <img src="{{ asset('assets/main/images/logo-dark.png') }}"
-                                         alt="{{ config('app.name') }}" title="{{ config('app.name') }}" width="199"
-                                         height="58">
+                                    <img src="{{ asset('assets/main/images/logo-dark.png') }}" alt="{{ config('app.name') }}" title="{{ config('app.name') }}">
                                 </a>
                                 <a class="light-logo" href="{{ route('main.index') }}">
-                                    <img src="{{ asset('assets/main/images/logo-light.png') }}"
-                                         alt="{{ config('app.name') }}" title="{{ config('app.name') }}" width="199"
-                                         height="58">
+                                    <img src="{{ asset('assets/main/images/logo-light.png') }}" alt="{{ config('app.name') }}" title="{{ config('app.name') }}">
                                 </a>
                             </div>
                         </div>
@@ -63,11 +59,11 @@
                                             <a href="{{ route('main.index') }}" aria-current="page">Home</a>
                                         </li>
                                         <li class="menu-item">
-                                            <a href="cuisines.index">Cuisines</a>
+                                            <a href="{{ route('main.cuisines.index') }}">Cuisines</a>
                                             <ul class="sub-menu">
                                                 @foreach($cuisines as $cuisine)
                                                     <li class="menu-item">
-                                                        <a href="{{ route('admin.cuisines.show', $cuisine) }}">
+                                                        <a href="{{ route('main.recipes.index', ['cuisine_id' => [0 => $cuisine->id]]) }}">
                                                             <span>{{ $cuisine->title }}</span>
                                                         </a>
                                                     </li>
@@ -79,12 +75,12 @@
                                             <ul class="sub-menu">
                                                 @foreach($categories as $category)
                                                     <li @class(['menu-item', 'menu-item-has-children' => count($category->subcategories)])>
-                                                        <a href="{{ route('admin.categories.show', $category) }}">{{ $category->title }}</a>
+                                                        <a href="{{ route('main.recipes.index', ['category_id' => [0 => $category->id]]) }}">{{ $category->title }}</a>
                                                         @if(count($category->subcategories))
                                                             <ul class="sub-menu">
                                                                 @foreach($category->subcategories as $subcategory)
                                                                     <li class="menu-item">
-                                                                        <a href="{{ route('admin.categories.show', $subcategory) }}">{{ $subcategory->title }}</a>
+                                                                        <a href="{{ route('main.recipes.index', ['category_id' => [0 => $subcategory->id]]) }}">{{ $subcategory->title }}</a>
                                                                     </li>
                                                                 @endforeach
                                                             </ul>
@@ -93,7 +89,9 @@
                                                 @endforeach
                                             </ul>
                                         </li>
-                                        <li class="menu-item"><a href="#">Advices</a></li>
+                                        <li class="menu-item">
+                                            <a href="{{ route('main.posts.index') }}">Posts</a>
+                                        </li>
                                     </ul>
                                 </nav>
                             </div>
@@ -158,11 +156,11 @@
                             <a href="{{ route('main.index') }}" aria-current="page">Home</a>
                         </li>
                         <li class="menu-item menu-item-has-children">
-                            <a href="cuisines.index">Cuisines</a>
+                            <a href="{{ route('main.cuisines.index') }}">Cuisines</a>
                             <ul class="sub-menu">
                                 @foreach($cuisines as $cuisine)
                                     <li class="menu-item">
-                                        <a href="{{ route('admin.cuisines.show', $cuisine) }}">
+                                        <a href="{{ route('main.recipes.index', ['cuisine_id' => [0 => $cuisine->id]]) }}">
                                             <span>{{ $cuisine->title }}</span>
                                         </a>
                                     </li>
@@ -174,14 +172,14 @@
                             <ul class="sub-menu">
                                 @foreach($categories as $category)
                                     <li @class(['menu-item', 'menu-item-has-children' => count($category->subcategories)])>
-                                        <a href="{{ route('admin.categories.show', $category) }}">
+                                        <a href="{{ route('main.recipes.index', ['category_id' => [0 => $category->id]]) }}">
                                             {{ $category->title }}
                                         </a>
                                         @if(count($category->subcategories))
                                             <ul class="sub-menu">
                                                 @foreach($category->subcategories as $subcategory)
                                                     <li class="menu-item">
-                                                        <a href="{{ route('admin.categories.show', $subcategory) }}">
+                                                        <a href="{{ route('main.recipes.index', ['category_id' => [0 => $subcategory->id]]) }}">
                                                             {{ $subcategory->title }}
                                                         </a>
                                                     </li>
@@ -192,7 +190,9 @@
                                 @endforeach
                             </ul>
                         </li>
-                        <li class="menu-item"><a href="#">Advices</a></li>
+                        <li class="menu-item">
+                            <a href="{{ route('main.posts.index') }}">Posts</a>
+                        </li>
                     </ul>
                 </nav>
             </div>
@@ -204,9 +204,7 @@
         <div id="primary" class="content-area">
             <div class="container">
                 <div class="row gutters-60">
-                    <main id="main" class="site-main">
-                        @yield('content')
-                    </main>
+                    @yield('content')
                 </div>
             </div>
         </div>
@@ -251,41 +249,35 @@
                                 <div class="menu-top-bar-container">
                                     <ul id="menu-top-bar" class="menu">
                                         <li class="menu-item">
-                                            <a href="{{ route('main.index') }}">Blog</a>
+                                            <a href="{{ route('main.index') }}">Home</a>
                                         </li>
                                         <li class="menu-item">
-                                            <a href="{{ route('main.index') }}">About</a>
+                                            <a href="{{ route('main.cuisines.index') }}">Cuisines</a>
                                         </li>
                                         <li class="menu-item">
-                                            <a href="{{ route('main.index') }}">Shop</a>
+                                            <a href="{{ route('main.categories.index') }}">Categories</a>
                                         </li>
                                         <li class="menu-item">
-                                            <a href="{{ route('main.index') }}">Submit Recipe</a>
+                                            <a href="{{ route('main.recipes.index') }}">Recipes</a>
                                         </li>
                                         <li class="menu-item">
-                                            <a href={{ route('main.index') }}>Contact</a>
+                                            <a href={{ route('main.posts.index') }}>Posts</a>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                         <div class="col-12 col-sm-4">
-                            <div class="widget widget_mc4wp_form_widget">
+                            <div class="widget">
                                 <h3 class="widgettitle">Newsletter</h3>
                                 <form class="mc4wp-form" method="post">
-                                    <div class="mc4wp-form-fields">
-                                        <div class="widget-newsletter-subscribe">
-                                            <div class="original">
-                                                <p>Newsletter Subscribe</p>
-                                                <div class="form-group">
-                                                    <input type="email" placeholder="Your e-mail address" class="form-control" name="email" required="">
-                                                </div>
-                                                <div class="form-group mb-none">
-                                                    <button type="submit" class="item-btn text-uppercase">Subscribe</button>
-                                                </div>
+                                    <div class="widget-newsletter-subscribe">
+                                        <div class="original">
+                                            <p>Newsletter Subscribe</p>
+                                            <div class="form-group">
+                                                <input type="email" placeholder="Your e-mail address" class="form-control" name="email" required="">
                                             </div>
-                                            <div class="original-2">
-                                                <input type="email" placeholder="your e-mail address" class="form-control" name="email" required="">
+                                            <div class="form-group mb-none">
                                                 <button type="submit" class="item-btn text-uppercase">Subscribe</button>
                                             </div>
                                         </div>

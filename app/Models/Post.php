@@ -25,17 +25,9 @@ class Post extends Model
         return $this->belongsTo(Category::class, 'category_id', 'id');
     }
 
-    public function tags() {
-        return $this->belongsToMany(Tag::class, 'post_tags', 'post_id', 'tag_id');
-    }
-
-    public function likedUsers() {
-        return $this->belongsToMany(User::class, 'post_users', 'post_id', 'user_id');
-    }
-
     public function getPhoto(): string
     {
-        return $this->photo ? 'storage/' . $this->photo : 'assets/img/admin.jpg';
+        return $this->photo ? 'storage/' . $this->photo : 'assets/admin/img/image-not-found.svg';
     }
 
     public static function setPhoto(array $data): array

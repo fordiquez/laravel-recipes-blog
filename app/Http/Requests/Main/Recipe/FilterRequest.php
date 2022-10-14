@@ -18,24 +18,25 @@ class FilterRequest extends FormRequest
         return true;
     }
 
+    /**
+     * Prepare the data for validation.
+     *
+     * @return void
+     */
     protected function prepareForValidation()
     {
-        if ($this->query('category_id') && count($this->query('category_id'))) {
-            $this->merge([
-                'category_id' => array_map('intval', $this->query('category_id', []))
-            ]);
-        }
-        if ($this->query('cuisine_id') && count($this->query('cuisine_id'))) {
-            $this->merge([
-                'cuisine_id' => array_map('intval', $this->query('cuisine_id', []))
-            ]);
-        }
-        if ($this->query('tag_id') && count($this->query('tag_id'))) {
-            $this->merge([
-                'tag_id' => array_map('intval', $this->query('tag_id', []))
-            ]);
-        }
+        $this->mergeArrayValues('category_id');
+        $this->mergeArrayValues('cuisine_id');
+        $this->mergeArrayValues('tag_id');
+    }
 
+    public function mergeArrayValues(string $key)
+    {
+        if ($this->query($key) && count($this->query($key))) {
+            $this->merge([
+                $key => array_map('intval', $this->query($key), [])
+            ]);
+        }
     }
 
     /**
@@ -54,7 +55,7 @@ class FilterRequest extends FormRequest
             'tag_id' => ['nullable', 'array'],
             'tag_id.*' => ['nullable', 'integer', Rule::exists('tags', 'id')],
             'level' => ['nullable', 'array'],
-            'level.*' => ['nullable', Rule::in(Recipe::LEVELS)],
+            'level.*' => ['nullable', 'string', Rule::in(Recipe::LEVELS)],
         ];
     }
 }

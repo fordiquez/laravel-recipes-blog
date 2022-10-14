@@ -1,22 +1,14 @@
 <?php
-
-use App\Http\Controllers\Main\PersonalController;
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Auth::routes(['verify' => true]);
 
 Route::get('/', [\App\Http\Controllers\Main\IndexController::class, 'index'])->name('main.index');
+
+Route::prefix('cuisines')->controller(\App\Http\Controllers\Main\CuisineController::class)->group(function () {
+    Route::get('/', 'index')->name('main.cuisines.index');
+});
+
 Route::prefix('categories')->controller(\App\Http\Controllers\Main\CategoryController::class)->group(function () {
     Route::get('/', 'index')->name('main.categories.index');
 });
@@ -26,13 +18,9 @@ Route::prefix('recipes')->controller(\App\Http\Controllers\Main\RecipeController
     Route::get('/{recipe}', 'show')->name('main.recipes.show');
 });
 
-Route::prefix('blog')->controller(\App\Http\Controllers\Main\BlogController::class)->group(function () {
-    Route::get('/', 'index')->name('main.blog.index');
-    Route::get('/{post}', 'show')->name('main.blog.show');
-});
-Route::prefix('personal')->middleware(['auth', 'verified'])->controller(PersonalController::class)->group(function () {
-    Route::get('/liked-posts', 'likedPosts')->name('main.personal.liked-posts');
-    Route::delete('/{post}', 'dislikePost')->name('main.personal.dislike-post');
+Route::prefix('posts')->controller(\App\Http\Controllers\Main\PostController::class)->group(function () {
+    Route::get('/', 'index')->name('main.posts.index');
+    Route::get('/{post}', 'show')->name('main.posts.show');
 });
 
 Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin', 'verified'])->group(function () {

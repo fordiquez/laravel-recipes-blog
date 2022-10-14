@@ -16,16 +16,22 @@
                                                     <div class="elementor-element elementor-widget">
                                                         <div class="elementor-widget-container">
                                                             <div class="row">
-                                                                @foreach($categories as $category)
+                                                                @foreach($cuisines as $cuisine)
                                                                     <div class="ranna-recipe-category col-xl-3 col-lg-4 col-sm-6">
                                                                         <div class="category-box-layout1">
                                                                             <figure class="item-figure">
-                                                                                <a class="over-link" href="{{ route('main.recipes.index', ['category_id' => [0 => $category->id]]) }}"></a>
-                                                                                <img src="{{ $category->getPhoto() }}" alt="{{ $category->title }}" title="{{ $category->title }}">
+                                                                                <a class="over-link" href="{{ route('main.recipes.index', ['cuisine_id' => [0 => $cuisine->id]]) }}"></a>
+                                                                                <img src="{{ $cuisine->getPhoto() }}"
+                                                                                     alt="{{ $cuisine->title }}"
+                                                                                     title="{{ $cuisine->title }}">
                                                                             </figure>
                                                                             <div class="item-content">
-                                                                                <h3 class="item-title">{{ $category->title }}</h3>
-                                                                                <span class="sub-title">{{ $category->recipes()->count() }} Recipes</span>
+                                                                                <h3 class="item-title">
+                                                                                    {{ $cuisine->title }}
+                                                                                </h3>
+                                                                                <span class="sub-title">
+                                                                                {{ $cuisine->recipes()->count() }} Recipes
+                                                                            </span>
                                                                             </div>
                                                                         </div>
                                                                     </div>

@@ -16,7 +16,7 @@ class RecipeController extends Controller
     {
         $data = $request->validated();
         $filter = new RecipeFilter(array_filter($data));
-        $recipes = Recipe::filter($filter)->paginate(10);
+        $recipes = Recipe::filter($filter)->paginate(10)->withQueryString();
         $categories = Category::all();
         $cuisines = Cuisine::all();
         $tags = Tag::all();

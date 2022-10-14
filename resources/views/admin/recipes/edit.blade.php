@@ -4,19 +4,7 @@
 
 @pushonce('styles')
     <link rel="stylesheet" href="{{ asset('assets/admin/css/select2.min.css') }}" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.0/css/fileinput.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.min.css" />
-    <link rel="stylesheet" href="{{ asset('assets/admin/css/custom.css') }}" />
-    <style>
-        .ck-editor__editable[role="textbox"] {
-            min-height: 200px;
-        }
-    </style>
-    <style>
-        .ck-editor__editable[role="textbox"] {
-            min-height: 200px;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ asset('assets/admin/css/style.css') }}" />
 @endpushonce
 
 @section('content')
@@ -159,12 +147,19 @@
                                     <div class="invalid-feedback d-inline-block" role="alert">{{ $message }}</div>
                                     @enderror
                                 </div>
-                                <div class="col-md-6">
-                                    <label class="form-label" for="photo">Photo</label>
-                                    <input class="form-control @error('photo') is-invalid @enderror" type="file" name="photo" id="photo" accept="image/*" data-browse-on-zone-click="true">
-                                    @error('photo')
-                                    <div class="invalid-feedback d-inline-block" role="alert">{{ $message }}</div>
-                                    @enderror
+                                <div class="col-md-6 mt-3">
+                                    <div class="card card-plain">
+                                        <div class="position-relative">
+                                            <img src="{{ asset($recipe->getPhoto()) }}" @class(['shadow border-radius-lg', 'w-100' => $recipe->photo, 'w-sm-50' => !$recipe->photo]) id="photo-preview" alt="{{ $recipe->title }}" title="{{ $recipe->title }}">
+                                        </div>
+                                        <div class="card-body px-1 pt-3">
+                                            <label class="form-label" for="photo">Photo</label>
+                                            <input class="form-control @error('photo') is-invalid @enderror" type="file" name="photo" id="photo" accept="image/*">
+                                            @error('photo')
+                                            <div class="invalid-feedback d-inline-block" role="alert">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -274,12 +269,5 @@
     <script src="{{ asset('assets/admin/js/plugins/ckeditor.js') }}"></script>
     <script src="{{ asset('assets/admin/js/plugins/recipe-ingredients.js') }}"></script>
     <script src="{{ asset('assets/admin/js/plugins/recipe-steps.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.0/js/plugins/buffer.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.0/js/plugins/filetype.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.0/js/plugins/piexif.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.0/js/fileinput.min.js"></script>
-    <script>
-        $("#photo").fileinput({ 'showUpload': false,  }).attr('name', 'photo');
-        $("#step-photo").fileinput({ 'showUpload': false,  }).attr('name', 'photo');
-    </script>
+    <script src="{{ asset('assets/admin/js/plugins/photo-preview.js') }}"></script>
 @endpushonce
