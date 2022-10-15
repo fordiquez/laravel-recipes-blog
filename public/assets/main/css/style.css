@@ -169,7 +169,7 @@ p {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: Oxygen;
+    font-family: Oxygen, sans-serif;
     margin: 0 0 20px 0;
     color: #111111;
 }
@@ -323,7 +323,7 @@ blockquote {
     padding: 30px 50px;
     font-size: 20px;
     color: #5c5c5c;
-    font-family: Oxygen;
+    font-family: Oxygen, sans-serif;
     font-weight: 700;
     font-style: italic;
     position: relative;
@@ -588,8 +588,8 @@ code {
     padding-left: 0;
 }
 
-/*@media only screen and (min-width: 1024px) {*/
-@media only screen and (max-width: 1024px) {
+/*@media only screen and (min-width: 1025px) {*/
+@media only screen and (max-width: 1025px) {
     .row.gutters-40 {
         padding-left: 0;
         padding-right: 0;
@@ -1905,7 +1905,7 @@ code {
 }
 
 .header-style-2 .nav-action-elements-layout ul li .login-btn:hover,
-.header-style-2 .nav-action-elements-layout ul li .logout-btn:hover{
+.header-style-2 .nav-action-elements-layout ul li .logout-btn:hover {
     color: #ff4a52;
 }
 
@@ -2431,7 +2431,7 @@ code {
 .scrollToTop {
     background-color: #444444;
     border: 2px solid #444444;
-    bottom: 5px;
+    bottom: 20px;
     color: #ffffff;
     display: block;
     font-size: 20px;
@@ -2462,7 +2462,7 @@ code {
     padding: 100px 0 60px;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1025px) {
     .footer-top-area {
         padding: 70px 0 30px;
     }
@@ -4596,7 +4596,7 @@ form.search-form button:hover,
     border-top: 10px solid #111111;
 }
 
-@media ( min-width: 1024px ) {
+@media ( min-width: 1025px ) {
     .hide-desktop {
         display: none;
     }
@@ -6620,7 +6620,6 @@ form.post-password-form input {
 
 .ingridients-wrap .checkbox input[type="checkbox"]:focus + label::before {
     outline: thin dotted;
-    outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px;
 }
 
@@ -8255,7 +8254,6 @@ form.post-password-form input {
 
 .single-recipe-layout2 .making-elements-wrap .ingridients-wrap .checkbox input[type="checkbox"]:focus + label::before {
     outline: thin dotted;
-    outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px;
 }
 
@@ -13153,7 +13151,7 @@ blockquote.wp-block-quote.is-large cite {
     padding: 30px 50px;
     font-size: 20px;
     color: #5c5c5c;
-    font-family: Oxygen;
+    font-family: Oxygen, sans-serif;
     font-weight: 700;
     font-style: italic;
     position: relative;
@@ -13808,52 +13806,22 @@ blockquote.wp-block-quote[style="text-align:right"] cite {
 
 /*menu login icon*/
 
-@media ( min-width: 991px ) {
-    .header-login-icon-mobile,
-    .header-submit-icon-mobile {
-        display: none;
-    }
-}
-
-@media ( max-width: 990px ) {
-    .header-login-icon-mobile {
-        display: block;
-        position: absolute;
-        top: 12px;
-        right: 40px;
-        z-index: 999999;
+@media ( max-width: 1025px ) {
+    .header-logout-button-mobile {
+        border-radius: 30px;
+        padding: 6px 12px;
     }
 
     .header-submit-icon-mobile {
-        font-size: 16px;
-        display: block;
-        position: absolute;
-        z-index: 999999;
-        top: 7px;
-        right: 100px;
         border: 2px solid;
         border-radius: 38px;
         padding: 4px 12px;
-    }
-
-    .admin-bar .header-login-icon-mobile {
-        top: 57px;
-    }
-
-    .admin-bar .header-submit-icon-mobile {
-        top: 52px;
     }
 }
 
 @media (max-width: 768px) {
 
     .header-submit-icon-mobile {
-        font-size: 15px;
-        display: block;
-        position: absolute;
-        z-index: 999999;
-        top: 7px;
-        right: 64px;
         border: 2px solid;
         border-radius: 38px;
         padding: 0 10px;
@@ -13880,17 +13848,10 @@ blockquote.wp-block-quote[style="text-align:right"] cite {
 }
 
 @media print {
-    header,
-    .related-post,
-    #comments,
-    #footer,
-    .header-submit-icon-mobile,
-    .header-login-icon.header-login-icon-mobile,
-    .single-recipe-layout1 .direction-wrap-layout1 .serial-number:after,
-    .scrollToTop,
-    .leave-review.single-blog-bottom,
-    .tag-share,
-    .sidebar-widget-area {
+    header, .related-post, #comments, #footer,
+    .header-submit-icon-mobile, .header-logout-form-mobile,
+    .single-recipe-layout1 .direction-wrap-layout1 .serial-number:after, .scrollToTop,
+    .leave-review.single-blog-bottom, .tag-share, .sidebar-widget-area {
         visibility: hidden;
         display: none;
     }
@@ -14248,7 +14209,7 @@ blockquote.wp-block-quote[style="text-align:right"] cite {
     }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1025px) {
     .post-box-default.post-box-style6 .rtin-single-post .rtin-content {
         padding: 10px 18px 30px 18px;
     }
@@ -14755,10 +14716,6 @@ blockquote.wp-block-quote[style="text-align:right"] cite {
 }
 
 .mean-bar .sidebarBtn {
-    position: absolute;
-    font-size: 20px;
-    right: 15px;
-    top: 10px;
     cursor: pointer;
 }
 
@@ -14788,4 +14745,15 @@ blockquote.wp-block-quote[style="text-align:right"] cite {
 
 body.slidemenuon {
     overflow: hidden;
+}
+
+.mean-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-items {
+    display: flex;
+    align-items: center;
 }

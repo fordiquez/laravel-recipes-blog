@@ -28,6 +28,12 @@ class Breadcrumb extends Component
                 ]]);
 
             }
+        } elseif (count($exploded) === 1) {
+            $this->title = $exploded[0];
+            $this->routes = collect([[
+                'name' => $exploded[0],
+                'title' => $exploded[0]
+            ]]);
         } else {
             $this->isHome = true;
         }

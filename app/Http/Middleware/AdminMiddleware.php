@@ -10,15 +10,14 @@ class AdminMiddleware
 {
     /**
      * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
-     * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
+     * @param Request $request
+     * @param Closure $next
+     * @return \Illuminate\Http\Response|mixed
      */
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next): mixed
     {
         if ((int) auth()->user()->role !== User::ROLE_ADMIN) {
-            abort(404);
+            return response()->view('components.main.404');
         }
         return $next($request);
     }

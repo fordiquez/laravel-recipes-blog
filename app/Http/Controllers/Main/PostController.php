@@ -14,11 +14,7 @@ class PostController extends Controller
 {
     public function index() {
         $posts = Post::paginate(10);
-        $randomRecipes = Recipe::all()->random(3);
-        $cuisines = Cuisine::withCount('recipes')->orderBy('recipes_count', 'DESC')->get()->take(10);
-        $categories = Category::withCount('recipes')->orderBy('recipes_count', 'DESC')->get()->take(10);
-        $tags = Tag::withCount('recipes')->orderBy('recipes_count', 'DESC')->get()->take(10);
-        return view('main.posts.index', compact('posts', 'randomRecipes', 'cuisines', 'categories', 'tags'));
+        return view('main.posts.index', compact('posts'));
     }
 
     public function show(Post $post) {

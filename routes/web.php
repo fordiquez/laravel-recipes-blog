@@ -36,5 +36,5 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin', 'verified']
 });
 
 Route::fallback(function () {
-    dd(404);
+    return view('components.main.404');
 });
