@@ -23,8 +23,8 @@ class Step extends Model
         return $data;
     }
 
-    public function getPhoto(): string
+    public function getPhoto(): bool|string
     {
-        return $this->photo ? 'storage/' . $this->photo : 'assets/admin/img/image-not-found.svg';
+        return $this->photo ? "storage/$this->photo" : false;
     }
 }

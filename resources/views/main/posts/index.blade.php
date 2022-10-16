@@ -10,7 +10,7 @@
                             <div class="blog-img-holder">
                                 <div class="blog-img">
                                     <a href="{{ route('main.posts.show', $post) }}">
-                                        <img src="{{ $post->getPhoto() }}" alt="{{ $post->title }}" title="{{ $post->title }}">
+                                        <img src="{{ asset($post->getPhoto()) }}" alt="{{ $post->title }}" title="{{ $post->title }}">
                                     </a>
                                 </div>
                             </div>

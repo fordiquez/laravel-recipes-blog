@@ -21,7 +21,7 @@ class Header extends Component
         $this->categories = $categories;
     }
 
-    public function isActive(string $route)
+    public function isActive(string $route): bool
     {
         return $route === Route::currentRouteName();
     }

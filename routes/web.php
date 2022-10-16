@@ -4,14 +4,8 @@ use Illuminate\Support\Facades\Route;
 Auth::routes(['verify' => true]);
 
 Route::get('/', [\App\Http\Controllers\Main\IndexController::class, 'index'])->name('main.index');
-
-Route::prefix('cuisines')->controller(\App\Http\Controllers\Main\CuisineController::class)->group(function () {
-    Route::get('/', 'index')->name('main.cuisines.index');
-});
-
-Route::prefix('categories')->controller(\App\Http\Controllers\Main\CategoryController::class)->group(function () {
-    Route::get('/', 'index')->name('main.categories.index');
-});
+Route::get('/cuisines', [\App\Http\Controllers\Main\CuisineController::class, 'index'])->name('main.cuisines.index');
+Route::get('/categories', [\App\Http\Controllers\Main\CategoryController::class, 'index'])->name('main.categories.index');
 
 Route::prefix('recipes')->controller(\App\Http\Controllers\Main\RecipeController::class)->group(function () {
     Route::get('/', 'index')->name('main.recipes.index');

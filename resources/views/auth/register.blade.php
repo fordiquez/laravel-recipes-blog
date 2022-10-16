@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <label class="mb-2" for="first_name">First Name</label>
-                    <input type="text" name="first_name" id="first_name" class="input main-input-box" value="{{ old('first_name') }}">
+                    <input type="text" name="first_name" id="first_name" class="input main-input-box" value="{{ old('first_name') }}" autofocus>
                     @error('first_name')
                     <span class="invalid-feedback d-inline-flex" role="alert">
                         <strong>{{ $message }}</strong>

@@ -54,14 +54,14 @@
                                     @enderror
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="last_name" class="form-control-label">First name</label>
+                                    <label for="last_name" class="form-control-label">Last Name</label>
                                     <input class="form-control @error('last_name') is-invalid @enderror" type="text" name="last_name" id="last_name" value="{{ old('last_name', $user->last_name) }}" placeholder="User last name">
                                     @error('last_name')
                                         <div class="invalid-feedback d-inline-block" role="alert">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="email" class="form-control-label">First name</label>
+                                    <label for="email" class="form-control-label">Email</label>
                                     <input class="form-control @error('email') is-invalid @enderror" type="email" name="email" id="email" value="{{ old('email', $user->email) }}" placeholder="User email">
                                     @error('email')
                                         <div class="invalid-feedback d-inline-block" role="alert">{{ $message }}</div>

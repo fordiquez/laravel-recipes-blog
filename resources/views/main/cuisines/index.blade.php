@@ -21,7 +21,7 @@
                                                                         <div class="category-box-layout1">
                                                                             <figure class="item-figure">
                                                                                 <a class="over-link" href="{{ route('main.recipes.index', ['cuisine_id' => [0 => $cuisine->id]]) }}"></a>
-                                                                                <img src="{{ $cuisine->getPhoto() }}"
+                                                                                <img src="{{ asset($cuisine->getPhoto()) }}"
                                                                                      alt="{{ $cuisine->title }}"
                                                                                      title="{{ $cuisine->title }}">
                                                                             </figure>

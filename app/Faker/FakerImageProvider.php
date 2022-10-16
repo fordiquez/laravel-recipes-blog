@@ -8,8 +8,10 @@ use Illuminate\Support\Str;
 
 final class FakerImageProvider extends Base
 {
-    public function loremflickr(string $dir = '', string $name = '', int $width = 500, int $height = 500): string
+    public function loremflickr(string $dir = '', string $name = ''): string
     {
+        $width = $dir === 'recipes' ? 1280 : 500;
+        $height = $dir === 'recipes' ? 720 : 500;
         $filename = !empty($name) ? $name : Str::random(8);
         $path = $dir . '/' . $filename . '.jpg';
         $imageURL = "https://loremflickr.com/$width/$height";

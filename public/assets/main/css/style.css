@@ -6442,8 +6442,6 @@ form.post-password-form input {
 
 .single-recipe-layout1 .item-feature ul li {
     margin-top: 2px;
-    max-width: 25%;
-    flex: 0 0 25%;
     padding-left: 1px;
     padding-right: 1px;
 
@@ -6498,9 +6496,11 @@ form.post-password-form input {
 }
 
 .single-recipe-layout1 .item-feature ul li .media {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     height: 100%;
     padding: 12px 5px;
-    align-items: center;
 }
 
 .single-recipe-layout1 .item-feature ul li .feature-icon {
@@ -6508,14 +6508,15 @@ form.post-password-form input {
     line-height: 1;
 }
 
-.single-recipe-layout1 .item-feature ul li .space-sm {
-    margin-left: 20px;
+.single-recipe-layout1 .item-feature ul li .media-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .single-recipe-layout1 .item-feature ul li .feature-icon i,
 .single-recipe-layout1 .item-feature ul li .feature-icon i:before {
     font-size: 30px;
-    font-weight: 400;
     color: #ff4a52;
 }
 
@@ -6581,6 +6582,7 @@ form.post-password-form input {
     margin-top: 0;
     margin-bottom: 0;
     color: #444444;
+    cursor: pointer;
 }
 
 .ingridients-wrap .checkbox label:before {
@@ -6688,12 +6690,6 @@ form.post-password-form input {
     border-radius: 4px;
     padding: 25px 15px;
     background-color: #ffffff;
-}
-
-.ingredient-list {
-    -webkit-box-shadow: 0 27px 0 rgba(0, 0, 0, 0.13);
-    -moz-box-shadow: 0 27px 0 rgba(0, 0, 0, 0.13);
-    box-shadow: 0 27px 0 rgba(0, 0, 0, 0.13);
 }
 
 .nutrition-wrap .nutrition-list {

@@ -34,12 +34,12 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function getFullName(): string
     {
-        return $this->first_name . ' ' . $this->last_name;
+        return "$this->first_name $this->last_name";
     }
 
     public function getPhoto(): string
     {
-        return $this->photo && $this->id != 1 ? 'storage/' . $this->photo : 'assets/admin/img/image-not-found.svg';
+        return $this->photo && $this->id != 1 ? "storage/$this->photo" : ($this->id == 1 ? $this->photo : 'assets/admin/img/image-not-found.svg');
     }
 
     public static function setPhoto(array $data): array

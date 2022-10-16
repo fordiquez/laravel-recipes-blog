@@ -1,115 +1,92 @@
-<div class="elementor-column-wrap elementor-element-populated">
-    <div class="elementor-widget-wrap">
-        <div class="elementor-element elementor-widget">
-            <div class="elementor-widget-container">
-                <div class="sec-title style1 left barshow">
-                    <div class="sec-title-holder">
-                        <h2 class="rtin-title">
-                            About Me<span class="title-bar"></span>
-                        </h2>
-                    </div>
-                </div>
-            </div>
+<aside class="sidebar-widget-area">
+    <div id="rt-recent-recipe-5" class="widget rt_widget_recent_recipe_with_image">
+        <div class="rt-widget-title-holder">
+            <h3>Latest Recipe</h3>
         </div>
-        <div class="elementor-element elementor-widget">
-            <div class="elementor-widget-container">
-                <div class="about-info-text about-info-style1">
-                    <div class="content-wrap">
-                        <img width="250" height="250" src="{{ asset('assets/admin/img/admin.jpg') }}" class="attachment-full size-full" alt="Admin" title="Admin">
-                        <div class="about-content">
-                            <div class="rtin-content">
-                                <h4 class="h3">Richard Ford</h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, aliquid blanditiis deserunt et explicabo laudantium neque praesentium rem repellendus reprehenderit!</p>
+        <div class="widget-latest">
+            <ul class="block-list">
+                @foreach($latestRecipes as $recipe)
+                    <li class="single-item">
+                        <div class="item-img">
+                            <a href="{{ route('main.recipes.show', $recipe->slug) }}" title="{{ $recipe->title }}"
+                               class="rt-wid-post-img">
+                                <img width="150" height="150" class="rt-lazy" src="{{ asset($recipe->getPhoto()) }}" alt="{{ $recipe->title }}" title="{{ $recipe->title }}">
+                            </a>
+                            <div class="count-number">{{ $loop->iteration }}</div>
+                        </div>
+                        <div class="item-content">
+                            <div class="item-ctg">
+                                <span class="styles">
+                                    <span class="ctg-name">
+                                        <a href="{{ route('main.recipes.index', ['cuisine_id' => [0 => $recipe->cuisine->id]]) }}">
+                                            {{ $recipe->cuisine->title }}
+                                        </a>
+                                    </span>
+                                </span>
+                            </div>
+
+                            <h4 class="item-title">
+                                <a href="{{ route('main.recipes.show', $recipe->slug) }}">{{ $recipe->title }}</a>
+                            </h4>
+                            <div class="posted-date">
+                                <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                {{ $recipe->created_at }}
+                            </div>
+                            <div class="item-post-by">
+                                <i class="fa fa-user"></i>
+                                <span>
+                                    <a href="{{ route('admin.users.show', $recipe->user->id) }}" title="Recipes by {{ $recipe->user->getFullName() }}">
+                                        {{ $recipe->user->getFullName() }}
+                                    </a>
+                                </span>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
+                    </li>
+                @endforeach
+            </ul>
         </div>
-        <div class="elementor-element element-sidebar-title elementor-widget">
-            <div class="elementor-widget-container">
-                <h3 class="fw-bold">Latest Recipes</h3>
-                <div class="widget-latest">
-                    <ul class="block-list">
-                        @foreach($latestRecipes as $recipe)
-                        <li class="single-item">
-                            <div class="item-img">
-                                <a href="{{ route('main.recipes.show', $recipe) }}" title="{{ $recipe->title }}" class="rt-wid-post-img">
-                                    <img src="{{ $recipe->getPhoto() }}" alt="{{ $recipe->title }}" title="{{ $recipe->title }}">
-                                </a>
-                                <div class="count-number">{{ $loop->iteration }}</div>
-                            </div>
-                            <div class="item-content">
-                                <div class="item-ctg">
-                                    <span class="styles">
-                                        <span class="ctg-name">
-                                            <a href="{{ route('main.recipes.index', ['cuisine_id' => [0 => $recipe->cuisine_id]]) }}">
-                                                {{ $recipe->cuisine->title }}
-                                            </a>
-                                        </span>
-                                    </span>
-                                </div>
 
-                                <h4 class="item-title">
-                                    <a href="{{ route('main.recipes.show', $recipe) }}">
-                                        {{ $recipe->title }}
-                                    </a>
-                                </h4>
-                                <div class="posted-date">
-                                    <i class="fa fa-clock-o" aria-hidden="true"></i>
-                                    {{ $recipe->created_at }}
-                                </div>
-                            </div>
-                        </li>
-                        @endforeach
-                    </ul>
-                </div>
-            </div>
+    </div>
+    <div id="categories-4" class="widget recipe_categories">
+        <div class="rt-widget-title-holder">
+            <h3 class="widgettitle">Popular cuisines</h3>
         </div>
-        <div class="elementor-element element-sidebar-title elementor-widget elementor-widget-wp-widget-categories">
-            <div class="elementor-widget-container">
-                <h3 class="fw-bold">Popular cuisines</h3>
-                <ul>
-                    @foreach($cuisines as $cuisine)
-                    <li>
-                        <a href="{{ route('main.recipes.index', ['cuisine_id' => [0 => $cuisine->id]]) }}">
-                            {{ $cuisine->title }}
-                        </a>
-                        <span>({{ $cuisine->recipes_count }})</span>
-                    </li>
-                    @endforeach
-                </ul>
-            </div>
+        <ul>
+            @foreach($cuisines as $cuisine)
+                <li class="cat-item d-flex justify-content-between">
+                    <a href="{{ route('main.recipes.index', ['cuisine_id' => [0 => $cuisine->id]]) }}">
+                        {{ $cuisine->title }}
+                    </a>
+                    {{ "($cuisine->recipes_count)" }}
+                </li>
+            @endforeach
+        </ul>
+    </div>
+    <div id="categories-4" class="widget recipe_categories">
+        <div class="rt-widget-title-holder">
+            <h3 class="widgettitle">Popular categories</h3>
         </div>
-        <div class="elementor-element element-sidebar-title elementor-widget elementor-widget-wp-widget-categories">
-            <div class="elementor-widget-container">
-                <h3 class="fw-bold">Popular categories</h3>
-                <ul>
-                    @foreach($categories as $category)
-                    <li>
-                        <a href="{{ route('main.recipes.index', ['category_id' => [0 => $category->id]]) }}">
-                            {{ $category->title }}
-                        </a>
-                        <span>({{ $category->recipes_count }})</span>
-                    </li>
-                    @endforeach
-                </ul>
-            </div>
+        <ul>
+            @foreach($categories as $category)
+                <li class="cat-item d-flex justify-content-between">
+                    <a href="{{ route('main.recipes.index', ['category_id' => [0 => $category->id]]) }}">
+                        {{ $category->title }}
+                    </a>
+                    {{ "($category->recipes_count)" }}
+                </li>
+            @endforeach
+        </ul>
+    </div>
+    <div id="tag_cloud-4" class="widget widget_tag_cloud">
+        <div class="rt-widget-title-holder">
+            <h3 class="widgettitle">Popular Tags</h3>
         </div>
-        <div class="elementor-widget-wrap">
-            <div
-                class="elementor-element element-sidebar-title elementor-widget">
-                <div class="elementor-widget-container">
-                    <h3 class="fw-bold">Popular Tags</h3>
-                    <div class="tagcloud">
-                        @foreach($tags as $tag)
-                        <a href="{{ route('main.recipes.index', ['tag_id' => [0 => $tag->id]]) }}">
-                            {{ $tag->title }}
-                        </a>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
+        <div class="tagcloud">
+            @foreach($tags as $tag)
+                <a href="{{ route('main.recipes.index', ['tag_id' => [0 => $tag->id]]) }}" title="{{ "$tag->recipes_count recipes" }}">
+                    {{ $tag->title }}
+                </a>
+            @endforeach
         </div>
     </div>
-</div>
+</aside>

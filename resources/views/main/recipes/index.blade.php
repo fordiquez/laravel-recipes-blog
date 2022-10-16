@@ -140,7 +140,7 @@
                                                                             <div class="rtin-single-post">
                                                                                 <div class="rtin-img">
                                                                                     <a href="{{ route('main.recipes.show', $recipe->slug) }}">
-                                                                                        <img class="wp-post-image" src="{{ $recipe->getPhoto() }}" alt="{{ $recipe->title }}" title="{{ $recipe->title }}">
+                                                                                        <img class="wp-post-image" src="{{ asset($recipe->getPhoto()) }}" alt="{{ $recipe->title }}" title="{{ $recipe->title }}">
                                                                                     </a>
                                                                                 </div>
                                                                                 <div class="item-content rtin-content">

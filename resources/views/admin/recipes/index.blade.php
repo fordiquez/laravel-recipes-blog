@@ -42,10 +42,10 @@
                                                     </div>
                                                     <div class="d-flex flex-column justify-content-center">
                                                         <h6 class="mb-0 text-sm" style="white-space: normal">
-                                                            {{ substr($recipe->title, 0, 50) }}
+                                                            {{ $recipe->title }}
                                                         </h6>
                                                         <p class="text-xs text-secondary mb-0" style="white-space: normal">
-                                                            {{ substr($recipe->slug, 0, 50) }}
+                                                            {{ $recipe->slug }}
                                                         </p>
                                                     </div>
                                                 </a>

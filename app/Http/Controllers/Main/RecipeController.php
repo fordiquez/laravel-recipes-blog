@@ -27,6 +27,8 @@ class RecipeController extends Controller
 
     public function show(string $slug)
     {
-        dd($slug);
+        $recipe = Recipe::where('slug', $slug)->first();
+
+        return view('main.recipes.show', compact('recipe'));
     }
 }

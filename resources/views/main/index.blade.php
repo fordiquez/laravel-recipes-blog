@@ -22,14 +22,14 @@
                                 <div class="carousel-inner">
                                     @foreach($carousel as $item)
                                         <div @class(['carousel-item ranna-slider-content-layout1 center', 'active' => $loop->first])>
-                                            <img src="{{ $item->getPhoto() }}" class="d-block w-100" alt="{{ $item->title }}" title="{{ $item->title }}" />
+                                            <img src="{{ asset($item->getPhoto()) }}" class="d-block w-100" alt="{{ $item->title }}" title="{{ $item->title }}" />
                                             <div class="carousel-caption d-none d-md-block">
                                                 <div class="item-content">
                                                     <span class="sub-title">
                                                         <a href="{{ route('main.recipes.index', ['cuisine_id' => [0 => $item->cuisine->id ]]) }}" rel="cuisine">{{ $item->cuisine->title }}</a>
                                                     </span>
                                                     <h2 class="item-title">
-                                                        <a href="{{ route('main.recipes.show', $item) }}">
+                                                        <a href="{{ route('main.recipes.show', $item->slug) }}">
                                                             {{ $item->title }}
                                                         </a>
                                                     </h2>
@@ -84,7 +84,7 @@
                                                                 <div class="col-lg-4 col-md-4 col-sm-2 col-12">
                                                                     <div class="rtin-single-post">
                                                                         <div class="rtin-img">
-                                                                            <a href="{{ route('main.recipes.show', $recipe) }}">
+                                                                            <a href="{{ route('main.recipes.show', $recipe->slug) }}">
                                                                                 <img src="{{ asset($recipe->getPhoto()) }}" class="wp-post-image" alt="{{ $recipe->title }}" title="{{ $recipe->title }}">
                                                                             </a>
                                                                         </div>
@@ -95,7 +95,7 @@
                                                                             </a>
                                                                         </span>
                                                                             <h3 class="item-title">
-                                                                                <a href="{{ route('main.recipes.show', $recipe) }}">
+                                                                                <a href="{{ route('main.recipes.show', $recipe->slug) }}">
                                                                                     {{ $recipe->title }}
                                                                                 </a>
                                                                             </h3>
@@ -152,8 +152,8 @@
                                                             <div class="col-12">
                                                                 <div class="rtin-single-post">
                                                                     <div class="rtin-img">
-                                                                        <a href="{{ route('main.recipes.show', $singleRecipe) }}">
-                                                                            <img src="{{ $singleRecipe->getPhoto() }}" class="wp-post-image" alt="{{ $singleRecipe->title }}" title="{{ $singleRecipe->title }}">
+                                                                        <a href="{{ route('main.recipes.show', $singleRecipe->slug) }}">
+                                                                            <img src="{{ asset($singleRecipe->getPhoto()) }}" class="wp-post-image" alt="{{ $singleRecipe->title }}" title="{{ $singleRecipe->title }}">
                                                                         </a>
                                                                     </div>
 
@@ -164,7 +164,7 @@
                                                                             </a>
                                                                         </span>
                                                                         <h3 class="item-title">
-                                                                            <a href="{{ route('main.recipes.show', $singleRecipe) }}">
+                                                                            <a href="{{ route('main.recipes.show', $singleRecipe->slug) }}">
                                                                                 {{ $singleRecipe->title }}
                                                                             </a>
                                                                         </h3>
@@ -194,9 +194,9 @@
                                                                 <div class="col-lg-6 col-md-6 col-sm-2 col-12">
                                                                     <div class="rtin-single-post">
                                                                         <div class="rtin-img">
-                                                                            <a href="{{ route('main.recipes.show', $trending) }}">
+                                                                            <a href="{{ route('main.recipes.show', $trending->slug) }}">
                                                                                 <img class="wp-post-image"
-                                                                                     src="{{ $trending->getPhoto() }}"
+                                                                                     src="{{ asset($trending->getPhoto()) }}"
                                                                                      alt="{{ $trending->title }}" title="{{ $trending->title }}">
                                                                             </a>
                                                                         </div>
@@ -205,7 +205,7 @@
                                                                             <a href="{{ route('main.recipes.index', ['cuisine_id' => [0 => $trending->cuisine_id]]) }}">{{ $trending->cuisine->title }}</a>
                                                                         </span>
                                                                             <h3 class="item-title">
-                                                                                <a href="{{ route('main.recipes.show', $trending) }}">
+                                                                                <a href="{{ route('main.recipes.show', $trending->slug) }}">
                                                                                     {{ $trending->title }}
                                                                                 </a>
                                                                             </h3>
@@ -266,8 +266,8 @@
                                                                 <div class="col-sm-6 col-xl-12">
                                                                     <div class="product-box-layout3 justify-content-between">
                                                                         <figure class="item-figure">
-                                                                            <a href="{{ route('main.recipes.show', $recipe) }}">
-                                                                                <img width="420" height="338" src="{{ $recipe->getPhoto() }}" alt="{{ $recipe->title }}" title="{{ $recipe->title }}">
+                                                                            <a href="{{ route('main.recipes.show', $recipe->slug) }}">
+                                                                                <img width="420" height="338" src="{{ asset($recipe->getPhoto()) }}" alt="{{ $recipe->title }}" title="{{ $recipe->title }}">
                                                                             </a>
                                                                         </figure>
                                                                         <div class="item-content">
@@ -279,7 +279,7 @@
                                                                             </span>
                                                                         </span>
                                                                             <h3 class="item-title">
-                                                                                <a href="{{ route('main.recipes.show', $recipe) }}">
+                                                                                <a href="{{ route('main.recipes.show', $recipe->slug) }}">
                                                                                     {{ $recipe->title }}
                                                                                 </a>
                                                                             </h3>
@@ -345,13 +345,13 @@
                                                                 <div class="col-lg-4 col-md-4 col-sm-12 col-12">
                                                                     <div class="rtin-single-post">
                                                                         <div class="rtin-img">
-                                                                            <a href="{{ route('main.recipes.show', $recipe) }}">
-                                                                                <img src="{{ $recipe->getPhoto() }}" alt="{{ $recipe->title }}" title="{{ $recipe->title }}">
+                                                                            <a href="{{ route('main.recipes.show', $recipe->slug) }}">
+                                                                                <img src="{{ asset($recipe->getPhoto()) }}" alt="{{ $recipe->title }}" title="{{ $recipe->title }}">
                                                                             </a>
                                                                         </div>
                                                                         <div class="rtin-content">
                                                                             <h3 class="rtin-title">
-                                                                                <a href="{{ route('main.recipes.show', $recipe) }}">
+                                                                                <a href="{{ route('main.recipes.show', $recipe->slug) }}">
                                                                                     {{ $recipe->title }}
                                                                                 </a>
                                                                             </h3>

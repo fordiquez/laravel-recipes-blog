@@ -8,7 +8,8 @@ use Illuminate\View\View;
 
 class MenuComposer
 {
-    public function compose(View $view) {
+    public function compose(View $view): void
+    {
         $view->with('cuisines', Cuisine::orderby('title', 'asc')->get());
         $view->with('categories', Category::where('parent_id', null)->orderby('title', 'asc')->get());
     }
