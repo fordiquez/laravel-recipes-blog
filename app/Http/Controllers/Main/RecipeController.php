@@ -29,6 +29,8 @@ class RecipeController extends Controller
     {
         $recipe = Recipe::where('slug', $slug)->first();
 
+        if (!$recipe) return view('components.main.404');
+
         return view('main.recipes.show', compact('recipe'));
     }
 }

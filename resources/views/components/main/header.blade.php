@@ -125,7 +125,7 @@
                     @csrf
                     <button class="header-logout-button-mobile">
                         <i class="fa-solid fa-right-from-bracket"></i>
-                        <span>Logout</span>
+                        <span class="d-sm-inline-flex d-none">Logout</span>
                     </button>
                 </form>
             @endauth

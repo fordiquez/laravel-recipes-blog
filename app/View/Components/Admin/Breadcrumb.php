@@ -19,7 +19,7 @@ class Breadcrumb extends Component
         $exploded = explode('.', Route::currentRouteName());
         if (count($exploded) === 3) {
             $this->routes = collect([[
-                'name' => $exploded[0] . '.' . $exploded[1] . '.' . 'index',
+                'name' => "$exploded[0].$exploded[1].index",
                 'title' => $exploded[1]
             ]]);
             switch ($exploded[2]) {
@@ -39,7 +39,7 @@ class Breadcrumb extends Component
     public function concatRoutes(array $exploded, string $route)
     {
         $this->routes = $this->routes->concat([[
-            'name' => $exploded[0] . '.' . $exploded[1] . '.' . $route,
+            'name' => "$exploded[0].$exploded[1].$route",
             'title' => $route
         ]]);
     }

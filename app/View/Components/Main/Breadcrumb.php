@@ -16,20 +16,17 @@ class Breadcrumb extends Component
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(string $title)
     {
+        $this->title = $title;
         $exploded = explode('.', Route::currentRouteName());
         if (count($exploded) === 3) {
-            $this->title = $exploded[1];
-            if ($exploded[2] === 'index') {
-                $this->routes = collect([[
-                    'name' => "$exploded[0].$exploded[1].index",
-                    'title' => $exploded[1]
-                ]]);
-
-            }
+            $this->routes = collect([[
+                'name' => "$exploded[0].$exploded[1].index",
+                'title' => $exploded[1]
+            ]]);
+            if ($exploded[2] === 'show') $this->concatRoutes($exploded, 'show');
         } elseif (count($exploded) === 1) {
-            $this->title = $exploded[0];
             $this->routes = collect([[
                 'name' => $exploded[0],
                 'title' => $exploded[0]
@@ -37,6 +34,13 @@ class Breadcrumb extends Component
         } else {
             $this->isHome = true;
         }
+    }
+
+    public function concatRoutes(array $exploded, string $action) {
+        $this->routes = $this->routes->concat([[
+            'name' => "$exploded[0].$exploded[1].$action",
+            'title' => $this->title
+        ]]);
     }
 
     /**

@@ -5132,7 +5132,7 @@ form.post-password-form input {
 }
 
 .entry-header .entry-thumbnail-area {
-    margin-bottom: 35px;
+    margin-bottom: 10px;
 }
 
 .has-post-thumbnail .entry-thumbnail-area img {
@@ -5878,11 +5878,6 @@ form.post-password-form input {
 
 .post-navigation .text-left .pad-lr-15 {
     padding: 0 15px 0 0;
-}
-
-.post-navigation .text-right {
-    padding-left: 15px;
-    display: initial !important;
 }
 
 .post-navigation .text-right .pad-lr-15 {
@@ -13804,8 +13799,8 @@ blockquote.wp-block-quote[style="text-align:right"] cite {
 
 @media ( max-width: 1025px ) {
     .header-logout-button-mobile {
-        border-radius: 30px;
-        padding: 6px 12px;
+        border-radius: 20px;
+        padding: 2px 10px;
     }
 
     .header-submit-icon-mobile {
@@ -13844,16 +13839,10 @@ blockquote.wp-block-quote[style="text-align:right"] cite {
 }
 
 @media print {
-    header, .related-post, #comments, #footer,
-    .header-submit-icon-mobile, .header-logout-form-mobile,
-    .single-recipe-layout1 .direction-wrap-layout1 .serial-number:after, .scrollToTop,
-    .leave-review.single-blog-bottom, .tag-share, .sidebar-widget-area {
+    header, #comments, footer, .single-recipe-layout1 .direction-wrap-layout1 .serial-number:after, .scrollToTop,
+    .leave-review.single-blog-bottom, .tag-share, .sidebar-widget-area, .entry-banner, .mean-bar, .print-share-button {
         visibility: hidden;
         display: none;
-    }
-
-    .entry-banner .entry-banner-content {
-        padding: 20px 0 20px;
     }
 }
 

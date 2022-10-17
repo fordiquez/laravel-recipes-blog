@@ -20,9 +20,12 @@ class PostFactory extends Factory
     {
         return [
             'title' => fake()->unique()->text(50),
+            'slug' => function (array $attributes) {
+                return Str::slug($attributes['title']);
+            },
             'content' => fake()->paragraph(10),
             'photo' => function (array $attributes) {
-                return $this->faker->loremflickr('posts', Str::slug($attributes['title']));
+                return $this->faker->loremflickr('posts', $attributes['slug']);
             },
             'user_id' => User::query()->inRandomOrder()->value('id')
         ];

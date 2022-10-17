@@ -1,5 +1,9 @@
 @extends('layouts.main')
 
+@section('breadcrumb')
+    <x-main.breadcrumb title="{{ $recipe->title }}"></x-main.breadcrumb>
+@endsection
+
 @section('content')
     <div class="col-lg-8 col-md-12 col-12">
         <main id="main" class="site-main">

@@ -17,8 +17,14 @@ class PostController extends Controller
         return view('main.posts.index', compact('posts'));
     }
 
-    public function show(Post $post) {
-        dd($post);
-        return view('main.posts.show', compact('post'));
+    public function show(string $slug) {
+        $post = Post::where('slug', $slug)->first();
+        if ($post) {
+            $previousPost = Post::find($post->id - 1);
+            $nextPost = Post::find($post->id + 1);
+        } else {
+            return view('components.main.404');
+        }
+        return view('main.posts.show', compact('post', 'previousPost', 'nextPost'));
     }
 }

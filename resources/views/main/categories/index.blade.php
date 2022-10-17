@@ -1,5 +1,9 @@
 @extends('layouts.main')
 
+@section('breadcrumb')
+    <x-main.breadcrumb title="Categories"></x-main.breadcrumb>
+@endsection
+
 @section('content')
     <main id="main" class="site-main">
         <article class="page">

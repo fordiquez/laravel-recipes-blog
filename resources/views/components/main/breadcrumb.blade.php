@@ -15,7 +15,7 @@
                             </em>
                             @if(!$loop->last)
                                 <a href="{{ route($route['name']) }}">
-                                    <span>{{ $route['title'] }}</span>
+                                    <span class="text-capitalize">{{ $route['title'] }}</span>
                                 </a>
                             @else
                                 <div>

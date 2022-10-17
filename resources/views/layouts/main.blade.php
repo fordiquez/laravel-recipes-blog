@@ -37,7 +37,7 @@
 <div id="page" class="site">
     <x-main.header :$cuisines :$categories></x-main.header>
     <div id="content" class="site-content">
-        <x-main.breadcrumb></x-main.breadcrumb>
+        @yield('breadcrumb')
         <div id="primary" class="content-area">
             <div class="container">
                 <div class="row">

@@ -18,7 +18,7 @@ class TagFactory extends Factory
     public function definition()
     {
         return [
-            'title' => fake()->unique()->name(),
+            'title' => fake()->unique()->word,
             'slug' => function (array $attributes) {
                 return Str::slug($attributes['title']);
             },

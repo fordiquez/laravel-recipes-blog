@@ -1,5 +1,9 @@
 @extends('layouts.main')
 
+@section('breadcrumb')
+    <x-main.breadcrumb title="Posts"></x-main.breadcrumb>
+@endsection
+
 @section('content')
     <div class="col-lg-8 col-md-12 col-12">
         <main id="main" class="site-main">
@@ -9,7 +13,7 @@
                         <div class="blog-box">
                             <div class="blog-img-holder">
                                 <div class="blog-img">
-                                    <a href="{{ route('main.posts.show', $post) }}">
+                                    <a href="{{ route('main.posts.show', $post->slug) }}">
                                         <img src="{{ asset($post->getPhoto()) }}" alt="{{ $post->title }}" title="{{ $post->title }}">
                                     </a>
                                 </div>
@@ -28,7 +32,7 @@
                                     </li>
                                 </ul>
                                 <h3 class="text-center">
-                                    <a href="{{ route('main.posts.show', $post) }}">
+                                    <a href="{{ route('main.posts.show', $post->slug) }}">
                                         {{ $post->title }}
                                     </a>
                                 </h3>
