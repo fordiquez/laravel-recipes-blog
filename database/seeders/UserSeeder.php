@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
             'email' => 'fordiquez@gmail.com',
             'email_verified_at' => now(),
             'role' => 1,
-            'photo' => 'assets/admin/img/admin.jpg',
+            'photo' => 'assets/images/admin.jpg',
             'password' => '$2y$10$DoIg1SajrTrLiiO8rFpqQOGLX0u1A6nQjGSoMqU.Zm7i85zXFj/FK', // password
             'remember_token' => Str::random(10),
         ]);

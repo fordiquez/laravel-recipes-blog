@@ -6,11 +6,11 @@
                     <div class="col-lg-3 d-flex justify-content-center">
                         <div class="site-branding">
                             <a class="dark-logo" href="{{ route('main.index') }}">
-                                <img src="{{ asset('assets/main/images/logo-dark.png') }}"
+                                <img src="{{ asset('assets/images/logo-main-dark.png') }}"
                                      alt="{{ config('app.name') }}" title="{{ config('app.name') }}">
                             </a>
                             <a class="light-logo" href="{{ route('main.index') }}">
-                                <img src="{{ asset('assets/main/images/logo-light.png') }}"
+                                <img src="{{ asset('assets/images/logo-main-light.png') }}"
                                      alt="{{ config('app.name') }}" title="{{ config('app.name') }}">
                             </a>
                         </div>
@@ -87,7 +87,7 @@
                                     </form>
                                 </li>
                                 <li>
-                                    <a href="submit" class="fill-btn">
+                                    <a href="{{ route('main.recipes.create') }}" class="fill-btn">
                                         <i class="fa fa-plus"></i>
                                         <span>Submit Recipe</span>
                                     </a>
@@ -104,7 +104,7 @@
 <div class="rt-header-menu mean-container" id="meanmenu">
     <div class="mean-bar mb-3 mb-lg-0">
         <a class="dark-logo" href="{{ route('main.index') }}">
-            <img class="logo-small" src="{{ asset('assets/main/images/logo-dark.png') }}" alt="{{ config('app.name') }}" title="{{ config('app.name') }}">
+            <img class="logo-small" src="{{ asset('assets/images/logo-main-dark.png') }}" alt="{{ config('app.name') }}" title="{{ config('app.name') }}">
         </a>
         <div class="nav-items">
             @guest()
@@ -117,7 +117,7 @@
                 </a>
             @endguest
             @auth()
-                <a class="header-submit-icon-mobile me-2" href="submit.recipe">
+                <a class="header-submit-icon-mobile me-2" href="{{ route('main.recipes.create') }}">
                     <i class="fa-sharp fa-solid fa-plus"></i>
                     <span>Add Recipe</span>
                 </a>

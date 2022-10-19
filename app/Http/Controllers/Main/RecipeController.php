@@ -9,9 +9,15 @@ use App\Models\Category;
 use App\Models\Cuisine;
 use App\Models\Recipe;
 use App\Models\Tag;
+use App\Models\User;
 
 class RecipeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->only('create');
+    }
+
     public function index(FilterRequest $request)
     {
         $data = $request->validated();
@@ -32,5 +38,18 @@ class RecipeController extends Controller
         if (!$recipe) return view('components.main.404');
 
         return view('main.recipes.show', compact('recipe'));
+    }
+
+    public function create() {
+        $cuisines = Cuisine::all();
+        $categories = Category::all();
+        $tags = Tag::all();
+        $levels = Recipe::getLevels();
+
+        return view('main.recipes.create', compact('cuisines', 'categories', 'tags', 'levels'));
+    }
+
+    public function store() {
+        dd(request()->all());
     }
 }

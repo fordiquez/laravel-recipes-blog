@@ -6,7 +6,7 @@ $(document).ready(function () {
     const submitButton = $('#ingredient-submit');
     const url = submitButton.data('url');
 
-    ingredientsList.on('click', '#remove-icon', function() {
+    ingredientsList.on('click', '#remove-icon', function () {
         const removedItem = $(this);
         const id = removedItem.data('id');
         $.ajax({
@@ -16,7 +16,7 @@ $(document).ready(function () {
                 _token,
                 id,
             },
-            success: function({ data }) {
+            success: function ({data}) {
                 console.log(data);
                 removedItem.parent().remove();
                 ingredientsList[0].children.length ? ingredientsTitle.removeClass('d-none') : ingredientsTitle.addClass('d-none');
@@ -25,8 +25,7 @@ $(document).ready(function () {
     });
 
 
-
-    $(submitButton).click(function(e) {
+    $(submitButton).click(function (e) {
         e.preventDefault();
         const recipeId = ingredientInput.data('recipe-id');
         const title = $(this).prevAll(ingredientInput).val();
@@ -39,7 +38,7 @@ $(document).ready(function () {
                 recipe_id: recipeId,
                 title,
             },
-            success: function({ data }) {
+            success: function ({data}) {
                 console.log(data);
                 ingredientsList.append(`<li class="list-group-item d-flex justify-content-between align-items-start">
                                             <div class="ms-2 me-auto">

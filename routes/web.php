@@ -3,18 +3,18 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes(['verify' => true]);
 
-Route::get('/', [\App\Http\Controllers\Main\IndexController::class, 'index'])->name('main.index');
-Route::get('/cuisines', [\App\Http\Controllers\Main\CuisineController::class, 'index'])->name('main.cuisines.index');
-Route::get('/categories', [\App\Http\Controllers\Main\CategoryController::class, 'index'])->name('main.categories.index');
+Route::name('main.')->group(function () {
+    Route::get('/', [\App\Http\Controllers\Main\IndexController::class, 'index'])->name('index');
+    Route::get('/cuisines', [\App\Http\Controllers\Main\CuisineController::class, 'index'])->name('cuisines.index');
+    Route::get('/categories', [\App\Http\Controllers\Main\CategoryController::class, 'index'])->name('categories.index');
 
-Route::prefix('recipes')->controller(\App\Http\Controllers\Main\RecipeController::class)->group(function () {
-    Route::get('/', 'index')->name('main.recipes.index');
-    Route::get('/{recipe}', 'show')->name('main.recipes.show');
-});
 
-Route::prefix('posts')->controller(\App\Http\Controllers\Main\PostController::class)->group(function () {
-    Route::get('/', 'index')->name('main.posts.index');
-    Route::get('/{post}', 'show')->name('main.posts.show');
+    Route::resource('recipes', \App\Http\Controllers\Main\RecipeController::class);
+
+    Route::prefix('posts')->controller(\App\Http\Controllers\Main\PostController::class)->group(function () {
+        Route::get('/', 'index')->name('posts.index');
+        Route::get('/{post}', 'show')->name('posts.show');
+    });
 });
 
 Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin', 'verified'])->group(function () {

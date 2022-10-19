@@ -3,7 +3,7 @@
 @section('title', 'Admin – Recipes – Create')
 
 @pushonce('styles')
-    <link rel="stylesheet" href="{{ asset('assets/admin/css/select2.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/select2.min.css') }}" />
 @endpushonce
 
 @section('content')
@@ -118,7 +118,7 @@
                                 <div class="col-md-6 mt-3">
                                     <div class="card card-plain">
                                         <div class="position-relative">
-                                            <img src="{{ asset('assets/admin/img/image-not-found.svg') }}" class="shadow border-radius-lg w-sm-50" id="photo-preview" alt="Recipe photo" title="Recipe photo">
+                                            <img src="{{ asset('assets/images/image-not-found.svg') }}" class="shadow border-radius-lg w-sm-50" id="photo-preview" alt="Recipe photo" title="Recipe photo">
                                         </div>
                                         <div class="card-body px-1 pt-3">
                                             <label class="form-label" for="photo">Photo</label>
@@ -139,9 +139,9 @@
 @endsection
 
 @pushonce('scripts')
-    <script src="{{ asset('assets/admin/js/select2.min.js') }}"></script>
-    <script src="{{ asset('assets/admin/js/plugins/select2.js') }}"></script>
-    <script src="{{ asset('assets/admin/js/ckeditor.js') }}"></script>
-    <script src="{{ asset('assets/admin/js/plugins/ckeditor.js') }}"></script>
-    <script src="{{ asset('assets/admin/js/plugins/photo-preview.js') }}"></script>
+    <script src="{{ asset('assets/js/select2.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/select2.js') }}"></script>
+    <script src="{{ asset('assets/js/ckeditor.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/ckeditor.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/photo-preview.js') }}"></script>
 @endpushonce

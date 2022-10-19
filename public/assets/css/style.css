@@ -6984,7 +6984,6 @@ form.post-password-form input {
 .single-recipe-layout2 .tag-share ul {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     flex-wrap: wrap;
     list-style: none;
     margin-left: 0;
@@ -14741,4 +14740,15 @@ body.slidemenuon {
 .nav-items {
     display: flex;
     align-items: center;
+}
+
+.ingredient-label {
+    display: flex;
+    align-items: center;
+}
+
+.ingredient-remove {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
 }

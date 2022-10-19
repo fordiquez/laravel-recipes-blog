@@ -1,5 +1,5 @@
 @if(!$isHome)
-    <div class="entry-banner" style="background: url({{ url('assets/main/images/banner.jpg') }}) no-repeat scroll center center / cover">
+    <div class="entry-banner" style="background: url({{ url('assets/images/banner.jpg') }}) no-repeat scroll center center / cover">
         <div class="container">
             <div class="entry-banner-content">
                 <h1 class="entry-title text-capitalize">{{ $title }}</h1>

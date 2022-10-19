@@ -77,7 +77,7 @@
                                 <div class="col-md-6 mt-3">
                                     <div class="card card-plain">
                                         <div class="position-relative">
-                                            <img src="{{ asset('assets/admin/img/image-not-found.svg') }}" class="shadow border-radius-lg w-sm-50" id="photo-preview" alt="User photo" title="User photo">
+                                            <img src="{{ asset('assets/images/image-not-found.svg') }}" class="shadow border-radius-lg w-sm-50" id="photo-preview" alt="User photo" title="User photo">
                                         </div>
                                         <div class="card-body px-1 pt-3">
                                             <label class="form-label" for="photo">Photo</label>
@@ -98,5 +98,5 @@
 @endsection
 
 @pushonce('scripts')
-    <script src="{{ asset('assets/admin/js/plugins/photo-preview.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/photo-preview.js') }}"></script>
 @endpushonce

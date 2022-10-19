@@ -3,8 +3,7 @@
 @section('title', 'Admin – Recipes – ' . $recipe->title . ' – Edit')
 
 @pushonce('styles')
-    <link rel="stylesheet" href="{{ asset('assets/admin/css/select2.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/admin/css/style.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/select2.min.css') }}" />
 @endpushonce
 
 @section('content')
@@ -203,31 +202,31 @@
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label" for="step-photo">Photo</label>
-                                <input class="form-control" type="file" name="photo" id="step-photo" accept="image/*" data-browse-on-zone-click="true">
+                                <input class="form-control" type="file" name="step-photo" id="step-photo" accept="image/*">
                             </div>
                             <div class="my-3">
                                 <button type="submit" class="btn btn-outline-primary">Add step</button>
                             </div>
                         </form>
                         <div class="d-flex align-items-center justify-content-center mb-3">
-                            <img src="{{ asset('assets/main/icons/cooking.svg') }}">
+                            <img src="{{ asset('assets/icons/cooking.svg') }}" alt="Cooking" title="Cooking">
                             <h5 class="mb-0 ms-2">{{ $recipe->title }}: step by step recipe</h5>
                         </div>
                         <div id="steps">
                             @foreach($recipe->steps as $step)
                                 <div id="step-{{ $step->step }}" class="row mb-3">
                                     <div class="offset-lg-1 col-sm-2 d-flex flex-row-reverse flex-sm-column align-items-center">
-                                        <div class="step-number bg-gradient-primary">Step {{ $step->step }}</div>
+                                        <div class="step-number">Step {{ $step->step }}</div>
                                         <div class="step-actions">
-                                            <span class="badge bg-success rounded-pill cursor-pointer" data-id="{{ $step->id }}" id="update-step">
+                                            <span class="badge bg-success rounded-pill" data-id="{{ $step->id }}" id="update-step">
                                                 <i class="fa-solid fa-pen-to-square"></i>
                                             </span>
-                                            <span class="badge bg-danger rounded-pill cursor-pointer" data-id="{{ $step->id }}" id="remove-step">
+                                            <span class="badge bg-danger rounded-pill" data-id="{{ $step->id }}" id="remove-step">
                                                 <i class="fa-solid fa-trash-can"></i>
                                             </span>
                                         </div>
                                     </div>
-                                    <div class="col-lg-8 col-sm-9">
+                                    <div class="col-lg-8 col-sm-9 mt-1">
                                         <div class="step-description">
                                             <p>{!! $step->description !!}</p>
                                         </div>
@@ -263,11 +262,11 @@
 @endsection
 
 @pushonce('scripts')
-    <script src="{{ asset('assets/admin/js/select2.min.js') }}"></script>
-    <script src="{{ asset('assets/admin/js/plugins/select2.js') }}"></script>
-    <script src="{{ asset('assets/admin/js/ckeditor.js') }}"></script>
-    <script src="{{ asset('assets/admin/js/plugins/ckeditor.js') }}"></script>
-    <script src="{{ asset('assets/admin/js/plugins/recipe-ingredients.js') }}"></script>
-    <script src="{{ asset('assets/admin/js/plugins/recipe-steps.js') }}"></script>
-    <script src="{{ asset('assets/admin/js/plugins/photo-preview.js') }}"></script>
+    <script src="{{ asset('assets/js/select2.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/select2.js') }}"></script>
+    <script src="{{ asset('assets/js/ckeditor.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/ckeditor.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/recipe-ingredients.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/recipe-steps.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/photo-preview.js') }}"></script>
 @endpushonce

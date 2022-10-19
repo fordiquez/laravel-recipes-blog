@@ -3,8 +3,13 @@
     height: auto;
 }
 
+.step-image img {
+    border-radius: 2%;
+}
+
 .step-number {
     color: #ffffff;
+    background-image: linear-gradient(310deg, #5e72e4 0%, #825ee4 100%);
     display: inline-block;
     padding: 5px 5px 3px;
     border-radius: 0;
@@ -37,8 +42,15 @@
     min-width: 75px;
 }
 
+.step-actions span {
+    cursor: pointer;
+}
+
 .ck-editor__editable[role="textbox"] {
     min-height: 200px;
 }
 
+.select2-container .select2-search--inline .select2-search__field {
+    height: 25px;
+}
 

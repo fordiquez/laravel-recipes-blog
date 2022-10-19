@@ -108,7 +108,7 @@
 @endsection
 
 @pushonce('scripts')
-    <script src="{{ asset('assets/admin/js/ckeditor.js') }}"></script>
-    <script src="{{ asset('assets/admin/js/plugins/ckeditor.js') }}"></script>
-    <script src="{{ asset('assets/admin/js/plugins/photo-preview.js') }}"></script>
+    <script src="{{ asset('assets/js/ckeditor.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/ckeditor.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/photo-preview.js') }}"></script>
 @endpushonce

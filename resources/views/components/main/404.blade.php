@@ -4,9 +4,9 @@
     <div class="col-lg-12">
         <div class="error-content-box">
             <div class="error-figure-wrap">
-                <img src="{{ asset('assets/main/images/404.png') }}" alt="404" title="404" class="img-fluid">
+                <img src="{{ asset('assets/images/404.png') }}" alt="404" title="404" class="img-fluid">
                 <div class="error-center-figure">
-                    <img src="{{ asset('assets/main/images/404-middle.png') }}" alt="404" title="404" class="img-fluid">
+                    <img src="{{ asset('assets/images/404-middle.png') }}" alt="404" title="404" class="img-fluid">
                 </div>
             </div>
             <h2 class="item-title">Sorry! Page Was Not Found</h2>

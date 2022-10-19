@@ -9,26 +9,26 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Icons -->
-    <script src="{{ asset('assets/main/js/font-awesome.js') }}"></script>
-    <link rel="icon" sizes="32x32" href="{{ asset('assets/main/icons/favicon.png') }}">
-    <link rel="icon" sizes="192x192" href="{{ asset('assets/main/icons/favicon.png') }}">
-    <link rel="apple-touch-icon" href="{{ asset('assets/main/icons/favicon.png') }}">
+    <script src="{{ asset('assets/js/font-awesome.js') }}"></script>
+    <link rel="icon" sizes="32x32" href="{{ asset('assets/icons/favicon.png') }}">
+    <link rel="icon" sizes="192x192" href="{{ asset('assets/icons/favicon.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('assets/icons/favicon.png') }}">
 
     <!-- Fonts -->
-    <link rel="stylesheet" href="{{ asset('assets/main/fonts/source-sans-pro.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/main/fonts/oxygen.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/main/fonts/roboto-x-roboto-slab.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/fonts/source-sans-pro.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/fonts/oxygen.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/fonts/roboto-x-roboto-slab.css') }}">
 
     <!-- Vite styles -->
     @vite(['resources/sass/app.scss'])
     <!-- Styles -->
-    <link rel="stylesheet" href="{{ asset('assets/main/css/recipe-rating.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/main/css/elementor/custom-frontend-legacy.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/main/css/elementor/custom-frontend.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/main/css/default.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/main/css/elementor/elementor.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/main/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/main/css/dynamic-inline.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/recipe-rating.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/elementor/custom-frontend-legacy.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/elementor/custom-frontend.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/default.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/elementor/elementor.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/dynamic-inline.css') }}">
     <!-- Custom styles -->
     @stack('styles')
 </head>
@@ -139,10 +139,11 @@
 <!-- Vite scripts -->
 @vite(['resources/js/app.js'])
 <!-- Scripts -->
-<script src="{{ asset('assets/main/js/jquery.min.js') }}"></script>
-<script src="{{ asset('assets/main/js/main.js') }}"></script>
-<script src="{{ asset('assets/main/js/elementor/webpack.runtime.min.js') }}"></script>
-<script src="{{ asset('assets/main/js/elementor/frontend-modules.min.js') }}"></script>
+{{--<script src="{{ asset('assets/main/js/jquery.min.js') }}"></script>--}}
+<script src="{{ asset('assets/js/jquery-3.6.1.js') }}"></script>
+<script src="{{ asset('assets/js/main.js') }}"></script>
+<script src="{{ asset('assets/js/elementor/webpack.runtime.min.js') }}"></script>
+<script src="{{ asset('assets/js/elementor/frontend-modules.min.js') }}"></script>
 <script type="text/javascript">
     const elementorFrontendConfig = {
         "environmentMode": {"edit": false, "wpPreview": false, "isScriptDebug": false},
@@ -217,7 +218,7 @@
         }
     };
 </script>
-<script src="{{ asset('assets/main/js/elementor/frontend.min.js') }}"></script>
+<script src="{{ asset('assets/js/elementor/frontend.min.js') }}"></script>
 <!-- Custom scripts -->
 @stack('scripts')
 </body>

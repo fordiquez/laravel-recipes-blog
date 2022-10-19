@@ -32,7 +32,7 @@
                 <div class="col-md-6">
                     <div class="checkbox checkbox-primary">
                         <input type="checkbox" id="remember" name="remember" @checked(old('remember'))>
-                        <label for="remember">Remember Me</label>
+                        <label for="remember" class="user-select-none">Remember Me</label>
                     </div>
                 </div>
                 @if(Route::has('password.request'))
