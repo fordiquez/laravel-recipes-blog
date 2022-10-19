@@ -201,8 +201,8 @@
                                 <textarea class="form-control" id="description" name="description" rows="15"></textarea>
                             </div>
                             <div class="col-md-6">
-                                <label class="form-label" for="step-photo">Photo</label>
-                                <input class="form-control" type="file" name="step-photo" id="step-photo" accept="image/*">
+                                <label class="form-label" for="photo">Photo</label>
+                                <input class="form-control" type="file" name="photo" id="photo" accept="image/*">
                             </div>
                             <div class="my-3">
                                 <button type="submit" class="btn btn-outline-primary">Add step</button>

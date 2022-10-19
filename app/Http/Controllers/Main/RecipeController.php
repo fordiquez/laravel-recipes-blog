@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers\Main;
 
+use App\Actions\Recipe\StoreAction;
 use App\Http\Controllers\Controller;
 use App\Http\Filters\RecipeFilter;
 use App\Http\Requests\Main\Recipe\FilterRequest;
+use App\Http\Requests\Main\Recipe\StoreRequest;
 use App\Models\Category;
 use App\Models\Cuisine;
 use App\Models\Recipe;
 use App\Models\Tag;
-use App\Models\User;
 
 class RecipeController extends Controller
 {
@@ -49,7 +50,10 @@ class RecipeController extends Controller
         return view('main.recipes.create', compact('cuisines', 'categories', 'tags', 'levels'));
     }
 
-    public function store() {
-        dd(request()->all());
+    public function store(StoreRequest $request, StoreAction $action) {
+        $data = $request->validated();
+        $action->handle($data);
+
+        return back();
     }
 }

@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Faker;
+namespace App\Services;
 
 use Faker\Provider\Base;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
-final class FakerImageProvider extends Base
+final class FakerImageService extends Base
 {
     public function loremflickr(string $dir = '', string $name = ''): string
     {

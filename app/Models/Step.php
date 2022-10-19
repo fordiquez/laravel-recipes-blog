@@ -17,9 +17,15 @@ class Step extends Model
         'photo'
     ];
 
-    public static function setPhoto(array $data): array
+    public static function setPhoto(array $data, bool $saveMany = false): array
     {
-        if (isset($data['photo'])) $data['photo'] = Storage::disk('public')->put('/steps', $data['photo']);
+        if ($saveMany) {
+            foreach ($data as $key => $step) {
+                if (isset($step['photo'])) $data[$key]['photo'] = Storage::disk('public')->put('/steps', $step['photo']);
+            }
+        } else {
+            if (isset($data['photo'])) $data['photo'] = Storage::disk('public')->put('/steps', $data['photo']);
+        }
         return $data;
     }
 
