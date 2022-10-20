@@ -13687,7 +13687,7 @@ p:last-child img.size-full.alignright {
     text-transform: capitalize;
     color: #fff;
     padding: 4px 7px;
-    background: #FF4A52;
+    background-image: linear-gradient(310deg, #2dce89, #2dcecc);
 }
 
 .post-status.draft {
@@ -13697,7 +13697,7 @@ p:last-child img.size-full.alignright {
     text-transform: capitalize;
     color: #fff;
     padding: 4px 7px;
-    background: #FFE300;
+    background-image: linear-gradient(310deg, #f5365c 0%, #f56036 100%);
 }
 
 .rt-like-modal .btn-primary {

@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Main;
 
 use App\Actions\Recipe\StoreAction;
+use App\Actions\Recipe\UpdateAction;
 use App\Http\Controllers\Controller;
 use App\Http\Filters\RecipeFilter;
 use App\Http\Requests\Main\Recipe\FilterRequest;
 use App\Http\Requests\Main\Recipe\StoreRequest;
+use App\Http\Requests\Main\Recipe\UpdateRequest;
 use App\Models\Category;
 use App\Models\Cuisine;
 use App\Models\Recipe;
@@ -16,7 +18,7 @@ class RecipeController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->only('create');
+        $this->middleware('auth')->except('index', 'show');
     }
 
     public function index(FilterRequest $request)
@@ -53,6 +55,34 @@ class RecipeController extends Controller
     public function store(StoreRequest $request, StoreAction $action) {
         $data = $request->validated();
         $action->handle($data);
+
+        return back();
+    }
+
+    public function edit(string $slug) {
+        $recipe = Recipe::where('slug', $slug)->first();
+
+        if (!$recipe) return view('components.main.404');
+
+        $cuisines = Cuisine::all();
+        $categories = Category::all();
+        $tags = Tag::all();
+        $levels = Recipe::getLevels();
+
+        return view('main.recipes.edit', compact('recipe', 'cuisines', 'categories', 'tags', 'levels'));
+    }
+
+    public function update(UpdateRequest $request, Recipe $recipe, UpdateAction $action) {
+        $data = $request->validated();
+        $action->handle($data, $recipe);
+
+        return back();
+    }
+
+    public function destroy(Recipe $recipe) {
+        if ($recipe->user_id === auth()->user()->id) {
+            $recipe->delete();
+        }
 
         return back();
     }

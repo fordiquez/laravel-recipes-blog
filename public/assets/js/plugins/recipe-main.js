@@ -13,7 +13,6 @@ $(document).ready(function () {
     $(addIngredient).click(function () {
         ingredients.append(`<div class="rn-ingredient-item">
                                         <label for="ingredients[${ingredientsCount}]" class="me-2 ingredient-label">${ingredientsCount + 1}.</label>
-                                        <input type="hidden" id="ingredient-recipe_id" name="ingredients[${ingredientsCount}][recipe_id]" value="">
                                         <input type="text" class="form-control ingredient-title" id="ingredients[${ingredientsCount}]" name="ingredients[${ingredientsCount}][title]" placeholder="Ingredient title">
                                         <span class="text-danger ms-2 ingredient-remove" title="Remove ingredient" id="remove-ingredient">
                                             <i class="fa-solid fa-trash"></i>
@@ -32,9 +31,6 @@ $(document).ready(function () {
                     $(this).attr('for', id)
                     $(this).text(`${i + 1}.`)
                 })
-                $('#ingredient-recipe_id', item).each(function () {
-                    $(this).attr('name', `${id}[recipe_id]`)
-                })
                 $('.ingredient-title', item).each(function () {
                     $(this).attr('id', id).attr('name', `${id}[title]`)
                 })
@@ -52,7 +48,6 @@ $(document).ready(function () {
                             Step ${stepsTabCount}
                         </button>`)
         stepsContent.append(`<div class="tab-pane fade show active" id="step-${stepsContentCount + 1}" role="tabpanel" aria-labelledby="step-${stepsContentCount + 1}-tab" tabindex="0">
-                            <input type="hidden" id="step-recipe_id" name="steps[${stepsContentCount}][recipe_id]" value="">
                                 <input type="hidden" id="step-step" name="steps[${stepsContentCount}][step]" value="${stepsContentCount + 1}">
                             <div class="step-description">
                                 <label for="steps[${stepsContentCount}][description]">Description</label>
@@ -83,9 +78,6 @@ $(document).ready(function () {
                 const contentId = `step-${i + 1}`
                 const id = `steps[${i}]`
                 $(this).attr('id', contentId).attr('aria-labelledby', `${contentId}-tab`)
-                $('#step-recipe_id', item).each(function () {
-                    $(this).attr('name', `${id}[recipe_id]`)
-                })
                 $('#step-step', item).each(function () {
                     $(this).attr('name', `${id}[step]`).val(i + 1)
                 })

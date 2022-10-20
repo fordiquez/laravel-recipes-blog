@@ -19,7 +19,7 @@
                 <div class="col-auto my-auto">
                     <div class="h-100">
                         <h5 class="mb-1">{{ $recipe->title }}</h5>
-                        <p class="mb-0 font-weight-bold text-sm">{{ $recipe->title }}</p>
+                        <p class="mb-0 font-weight-bold text-sm">{{ $recipe->slug }}</p>
                     </div>
                 </div>
             </div>

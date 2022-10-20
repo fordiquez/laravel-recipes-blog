@@ -10,6 +10,13 @@ Route::name('main.')->group(function () {
 
     Route::resource('recipes', \App\Http\Controllers\Main\RecipeController::class);
 
+    Route::prefix('account')->middleware(['auth', 'verified'])->controller(\App\Http\Controllers\Main\AccountController::class)->group(function () {
+        Route::get('/', 'index')->name('account.index');
+        Route::get('/recipes', 'recipes')->name('account.recipes');
+        Route::get('/favorites', 'favorites')->name('account.favorites');
+        Route::get('/details', 'details')->name('account.details');
+    });
+
     Route::prefix('posts')->controller(\App\Http\Controllers\Main\PostController::class)->group(function () {
         Route::get('/', 'index')->name('posts.index');
         Route::get('/{post}', 'show')->name('posts.show');

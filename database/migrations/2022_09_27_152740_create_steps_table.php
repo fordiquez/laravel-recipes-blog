@@ -18,7 +18,8 @@ return new class extends Migration
             $table->foreignId('recipe_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->integer('step');
             $table->text('description');
-            $table->string('photo')->nullable();
+            $table->string('photo')->nullable()->default(null);
+            $table->unique(['recipe_id', 'step']);
             $table->timestamps();
         });
     }

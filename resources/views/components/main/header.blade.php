@@ -15,7 +15,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col-lg-5">
+                    <div class="col-lg-4">
                         <div id="site-navigation" class="main-navigation">
                             <nav class="menu-main-menu-container">
                                 <ul id="menu-main-menu" class="menu">
@@ -60,7 +60,7 @@
                             </nav>
                         </div>
                     </div>
-                    <div class="col-lg-4 d-flex justify-content-center nav-action-elements-layout">
+                    <div class="col-lg-5 d-flex justify-content-end nav-action-elements-layout">
                         <ul>
                             @guest
                                 <li>
@@ -86,6 +86,12 @@
                                         </button>
                                     </form>
                                 </li>
+                                    <li>
+                                        <a href="{{ route('main.account.index') }}" class="logout-btn">
+                                            <i class="fa-solid fa-user-gear"></i>
+                                            <span>Account</span>
+                                        </a>
+                                    </li>
                                 <li>
                                     <a href="{{ route('main.recipes.create') }}" class="fill-btn">
                                         <i class="fa fa-plus"></i>
@@ -119,7 +125,11 @@
             @auth()
                 <a class="header-submit-icon-mobile me-2" href="{{ route('main.recipes.create') }}">
                     <i class="fa-sharp fa-solid fa-plus"></i>
-                    <span>Add Recipe</span>
+                    <span class="d-none d-sm-inline-flex">Add Recipe</span>
+                </a>
+                <a class="header-submit-icon-mobile me-2" href="{{ route('main.account.index') }}">
+                    <i class="fa-solid fa-user-gear"></i>
+                    <span class="d-none d-sm-inline-flex">Account</span>
                 </a>
                 <form action="{{ route('logout') }}" method="post" class="header-logout-form-mobile me-2">
                     @csrf
