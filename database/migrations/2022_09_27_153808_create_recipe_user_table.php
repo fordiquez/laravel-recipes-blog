@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('recipe_users', function (Blueprint $table) {
+        Schema::create('recipe_user', function (Blueprint $table) {
             $table->id();
             $table->foreignId('recipe_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('user_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();

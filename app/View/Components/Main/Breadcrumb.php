@@ -26,6 +26,7 @@ class Breadcrumb extends Component
                 'title' => $exploded[1]
             ]]);
             if ($exploded[2] === 'show') $this->concatRoutes($exploded, 'show');
+            if ($exploded[2] === 'create') $this->concatRoutes($exploded, 'create');
             if ($exploded[2] === 'edit') $this->concatRoutes($exploded, 'edit');
         } elseif (count($exploded) === 1) {
             $this->routes = collect([[

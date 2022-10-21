@@ -2,6 +2,7 @@
 
 @pushonce('styles')
     @vite(['resources/sass/mdb.scss'])
+    <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
 @endpushonce
 
 @section('content')
@@ -41,14 +42,23 @@
                                                             <li class="rt-cook-time">
                                                                 <i class="fa fa-clock-o"></i>{{ $item->cooking_time }}
                                                             </li>
-                                                            <li>
-                                                                <i class="fa fa-comment-o" aria-hidden="true"></i>
-                                                                <a href="{{ route('main.index') }}">{{ rand(0, 1000) }}</a>
-                                                            </li>
+
                                                             <li class="single-meta">
-                                                                <a href="#" data-toggle="modal" data-target="#rt-like-check798" class="like-recipe not-looged-in">
-                                                                    <i class="fa fa-heart-o"></i><span>{{ rand(0, 1000) }}</span>
-                                                                </a>
+                                                                @auth()
+                                                                    <form action="{{ route('main.recipe.likes', $item) }}" method="post">
+                                                                        @csrf
+                                                                        <button class="bg-transparent text-danger p-0">
+                                                                            <i @class(['fa-heart', $item->isLikedRecipe()])></i>
+                                                                            <span>{{ $item->likes_count }}</span>
+                                                                        </button>
+                                                                    </form>
+                                                                @endauth
+                                                                @guest()
+                                                                    <a href="{{ route('login') }}" title="Authorize to like it">
+                                                                        <i class="fa-regular fa-heart"></i>
+                                                                        <span>{{ $item->likes_count }}</span>
+                                                                    </a>
+                                                                @endguest
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -88,6 +98,29 @@
                                                                                 <img src="{{ asset($recipe->getPhoto()) }}" class="wp-post-image" alt="{{ $recipe->title }}" title="{{ $recipe->title }}">
                                                                             </a>
                                                                         </div>
+                                                                        <div class="recipe__data-info">
+                                                                            <div>
+                                                                                <i class="fa-solid fa-calendar-days text-danger"></i>
+                                                                                <span>{{ $recipe->getCreatedAtDate() }}</span>
+                                                                            </div>
+                                                                            <div>
+                                                                                @auth()
+                                                                                    <form action="{{ route('main.recipe.likes', $recipe) }}" method="post">
+                                                                                        @csrf
+                                                                                        <button class="bg-transparent text-danger p-0">
+                                                                                            <i @class(['fa-heart', $recipe->isLikedRecipe()])></i>
+                                                                                            <span>{{ $recipe->likes_count }}</span>
+                                                                                        </button>
+                                                                                    </form>
+                                                                                @endauth
+                                                                                @guest()
+                                                                                    <a href="{{ route('login') }}" title="Authorize to like it">
+                                                                                        <i class="fa-regular fa-heart"></i>
+                                                                                        <span>{{ $recipe->likes_count }}</span>
+                                                                                    </a>
+                                                                                @endguest
+                                                                            </div>
+                                                                        </div>
                                                                         <div class="item-content rtin-content">
                                                                         <span class="sub-title">
                                                                             <a href="{{ route('main.recipes.index', ['cuisine_id' => [0 => $recipe->cuisine_id]]) }}">
@@ -105,12 +138,6 @@
                                                                                 </li>
                                                                                 <li class="rt-cook-time">
                                                                                     <i class="fa fa-clock-o"></i>{{ $recipe->cooking_time }}
-                                                                                </li>
-                                                                                <li class="single-meta">
-                                                                                    <a href="#" class="like-recipe not-looged-in">
-                                                                                        <i class="fa fa-heart-o"></i><span>{{ rand(0, 1000) }}</span>
-                                                                                        Like
-                                                                                    </a>
                                                                                 </li>
                                                                             </ul>
                                                                         </div>
@@ -156,7 +183,29 @@
                                                                             <img src="{{ asset($singleRecipe->getPhoto()) }}" class="wp-post-image" alt="{{ $singleRecipe->title }}" title="{{ $singleRecipe->title }}">
                                                                         </a>
                                                                     </div>
-
+                                                                    <div class="recipe__data-info">
+                                                                        <div>
+                                                                            <i class="fa-solid fa-calendar-days text-danger"></i>
+                                                                            <span>{{ $singleRecipe->getCreatedAtDate() }}</span>
+                                                                        </div>
+                                                                        <div>
+                                                                            @auth()
+                                                                                <form action="{{ route('main.recipe.likes', $singleRecipe) }}" method="post">
+                                                                                    @csrf
+                                                                                    <button class="bg-transparent text-danger p-0">
+                                                                                        <i @class(['fa-heart', $singleRecipe->isLikedRecipe()])></i>
+                                                                                        <span>{{ $singleRecipe->likes_count }}</span>
+                                                                                    </button>
+                                                                                </form>
+                                                                            @endauth
+                                                                            @guest()
+                                                                                <a href="{{ route('login') }}" title="Authorize to like it">
+                                                                                    <i class="fa-regular fa-heart"></i>
+                                                                                    <span>{{ $singleRecipe->likes_count }}</span>
+                                                                                </a>
+                                                                            @endguest
+                                                                        </div>
+                                                                    </div>
                                                                     <div class="item-content">
                                                                         <span class="sub-title">
                                                                             <a href="{{ route('main.recipes.index', ['cuisine_id' => [0 => $singleRecipe->cuisine_id]]) }}">
@@ -168,15 +217,13 @@
                                                                                 {{ $singleRecipe->title }}
                                                                             </a>
                                                                         </h3>
-                                                                        {!! $singleRecipe->description !!}
-                                                                        <ul class="entry-meta d-flex align-items-center justify-content-center mt-2">
-                                                                            <li class="rt-cook-time">
-                                                                                <i class="fa fa-clock-o"></i>
-                                                                                {{ $singleRecipe->cooking_time }}
-                                                                            </li>
+                                                                        <div>{!! $singleRecipe->description !!}</div>
+                                                                        <ul class="entry-meta mt-2">
                                                                             <li class="author-meta">
                                                                                 <i class="fa fa-user" aria-hidden="true"></i>
-                                                                                by {{ $singleRecipe->user->getFullName() }}
+                                                                                by <a href="{{ route('admin.users.show', $singleRecipe->user->id) }}" title="{{ $singleRecipe->user->getFullName() }}">
+                                                                                    {{ $singleRecipe->user->getFullName() }}
+                                                                                </a>
                                                                             </li>
                                                                         </ul>
                                                                     </div>
@@ -200,6 +247,29 @@
                                                                                      alt="{{ $trending->title }}" title="{{ $trending->title }}">
                                                                             </a>
                                                                         </div>
+                                                                        <div class="recipe__data-info">
+                                                                            <div>
+                                                                                <i class="fa-solid fa-calendar-days text-danger"></i>
+                                                                                <span>{{ $trending->getCreatedAtDate() }}</span>
+                                                                            </div>
+                                                                            <div>
+                                                                                @auth()
+                                                                                    <form action="{{ route('main.recipe.likes', $trending) }}" method="post">
+                                                                                        @csrf
+                                                                                        <button class="bg-transparent text-danger p-0">
+                                                                                            <i @class(['fa-heart', $trending->isLikedRecipe()])></i>
+                                                                                            <span>{{ $trending->likes_count }}</span>
+                                                                                        </button>
+                                                                                    </form>
+                                                                                @endauth
+                                                                                @guest()
+                                                                                    <a href="{{ route('login') }}" title="Authorize to like it">
+                                                                                        <i class="fa-regular fa-heart"></i>
+                                                                                        <span>{{ $trending->likes_count }}</span>
+                                                                                    </a>
+                                                                                @endguest
+                                                                            </div>
+                                                                        </div>
                                                                         <div class="item-content rtin-content">
                                                                         <span class="sub-title">
                                                                             <a href="{{ route('main.recipes.index', ['cuisine_id' => [0 => $trending->cuisine_id]]) }}">{{ $trending->cuisine->title }}</a>
@@ -214,12 +284,6 @@
                                                                                     <i class="fa fa-user" aria-hidden="true"></i>
                                                                                     by <a href="{{ route('admin.users.show', $trending->user->id) }}" title="{{ $trending->user->getFullName() }}">
                                                                                         {{ $trending->user->getFullName() }}
-                                                                                    </a>
-                                                                                </li>
-                                                                                <li class="single-meta">
-                                                                                    <a href="#" class="like-recipe not-looged-in">
-                                                                                        <i class="fa fa-heart-o"></i>
-                                                                                        <span>{{ rand(0, 1000) }}</span>
                                                                                     </a>
                                                                                 </li>
                                                                             </ul>
@@ -283,25 +347,32 @@
                                                                                     {{ $recipe->title }}
                                                                                 </a>
                                                                             </h3>
-                                                                            {!! $recipe->description !!}
-                                                                            <ul class="entry-meta">
+                                                                            <div>{!! $recipe->description !!}</div>
+                                                                            <ul class="entry-meta mt-2">
+                                                                                <li>
+                                                                                    <i class="fa-solid fa-calendar-days text-danger"></i>
+                                                                                    <span>{{ $recipe->getCreatedAtDate() }}</span>
+                                                                                </li>
                                                                                 <li class="rt-cook-time">
                                                                                     <i class="fa fa-clock-o"></i>
                                                                                     {{ $recipe->cooking_time }}
                                                                                 </li>
                                                                                 <li>
-                                                                                <span class="meta-views meta-item ">
-                                                                                    <span class="meta-views meta-item very-high">
-                                                                                        <i class="fa fa-eye" aria-hidden="true"></i>
-                                                                                        {{ rand(100, 10000) }}
-                                                                                    </span>
-                                                                                </span>
-                                                                                </li>
-                                                                                <li class="single-meta">
-                                                                                    <a href="" class="like-recipe not-looged-in">
-                                                                                        <i class="fa fa-heart-o"></i>
-                                                                                        <span>{{ rand(0, 1000) }}</span>
-                                                                                    </a>
+                                                                                    @auth()
+                                                                                        <form action="{{ route('main.recipe.likes', $recipe) }}" method="post">
+                                                                                            @csrf
+                                                                                            <button class="bg-transparent text-danger p-0">
+                                                                                                <i @class(['fa-heart', $recipe->isLikedRecipe()])></i>
+                                                                                                <span>{{ $recipe->likes_count }}</span>
+                                                                                            </button>
+                                                                                        </form>
+                                                                                    @endauth
+                                                                                    @guest()
+                                                                                        <a href="{{ route('login') }}" title="Authorize to like it">
+                                                                                            <i class="fa-regular fa-heart"></i>
+                                                                                            <span>{{ $recipe->likes_count }}</span>
+                                                                                        </a>
+                                                                                    @endguest
                                                                                 </li>
                                                                             </ul>
                                                                         </div>
@@ -357,25 +428,33 @@
                                                                             </h3>
                                                                             <div class="post-meta">
                                                                                 <ul>
-                                                                                    <li class="rt-cook-time">
-                                                                                        <i class="fa fa-clock-o"></i>
-                                                                                        {{ $recipe->cooking_time }}
+                                                                                    <li>
+                                                                                        <i class="fa-solid fa-calendar-days text-danger"></i>
+                                                                                        <span>{{ $recipe->getCreatedAtDate() }}</span>
                                                                                     </li>
                                                                                     <li class="author-meta">
                                                                                         <i class="fa fa-user" aria-hidden="true"></i>
                                                                                         by {{ $recipe->user->getFullName() }}
                                                                                     </li>
-
-                                                                                    <li class="single-meta">
-                                                                                        <a href="#" class="like-recipe not-looged-in">
-                                                                                            <i class="fa fa-heart-o"></i>
-                                                                                            <span>{{ rand(0, 1000) }}</span>
-                                                                                        </a>
+                                                                                    <li>
+                                                                                        @auth()
+                                                                                            <form action="{{ route('main.recipe.likes', $recipe) }}" method="post">
+                                                                                                @csrf
+                                                                                                <button class="bg-transparent text-danger p-0">
+                                                                                                    <i @class(['fa-heart', $recipe->isLikedRecipe()])></i>
+                                                                                                    <span>{{ $recipe->likes_count }}</span>
+                                                                                                </button>
+                                                                                            </form>
+                                                                                        @endauth
+                                                                                        @guest()
+                                                                                            <a href="{{ route('login') }}" title="Authorize to like it">
+                                                                                                <i class="fa-regular fa-heart"></i>
+                                                                                                <span>{{ $recipe->likes_count }}</span>
+                                                                                            </a>
+                                                                                        @endguest
                                                                                     </li>
-
                                                                                 </ul>
                                                                             </div>
-
                                                                         </div>
                                                                     </div>
                                                                 </div>

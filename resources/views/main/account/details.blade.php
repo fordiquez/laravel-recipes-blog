@@ -12,7 +12,7 @@
                 <div class="col-lg-8 col-12">
                     <div class="my-account-content tab-content">
                         <div class="account-details listing-form box-padding">
-                            <form class="account-form" action="{{ route('admin.users.update', $user) }}" method="post" enctype="multipart/form-data">
+                            <form class="account-form" action="{{ route('main.account.update', $user) }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 @method('PATCH')
                                 <div class="inner-box">
@@ -61,11 +61,11 @@
                                             @enderror
                                         </div>
                                         <div class="col-sm-6">
-                                            <label for="password_confirm">Password confirm</label>
+                                            <label for="password_confirmation">Password confirm</label>
                                             <div class="form-group">
-                                                <input type="password" class="form-control" id="password_confirm" name="password_confirm" placeholder="Confirm your new password">
+                                                <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Confirm your new password">
                                             </div>
-                                            @error('password_confirm')
+                                            @error('password_confirmation')
                                                 <div class="invalid-feedback d-inline-block" role="alert">{{ $message }}</div>
                                             @enderror
                                         </div>

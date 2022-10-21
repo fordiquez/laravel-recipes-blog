@@ -28,6 +28,7 @@ class StoreRequest extends FormRequest
     {
         $this->merge([
             'slug' => Str::slug($this->title),
+            'published' => $this->boolean('published')
         ]);
     }
 
@@ -46,6 +47,7 @@ class StoreRequest extends FormRequest
             'cooking_time' => ['required', 'string'],
             'servings' => ['required', 'numeric'],
             'level' => ['required', 'string', Rule::in(Recipe::LEVELS)],
+            'published' => ['boolean'],
             'photo' => ['required', 'file'],
             'description' => ['required', 'string', 'max:65535'],
             'categories' => ['nullable', 'array'],

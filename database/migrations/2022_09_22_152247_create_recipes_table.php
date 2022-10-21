@@ -25,7 +25,7 @@ return new class extends Migration
             $table->set('level', Recipe::LEVELS);
             $table->string('photo');
             $table->text('description');
-            $table->boolean('is_published')->default(false);
+            $table->boolean('published')->default(false);
             $table->timestamps();
         });
     }

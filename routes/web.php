@@ -8,6 +8,7 @@ Route::name('main.')->group(function () {
     Route::get('/categories', [\App\Http\Controllers\Main\CategoryController::class, 'index'])->name('categories.index');
 
 
+    Route::post('/recipes/{recipe}/likes', [\App\Http\Controllers\Main\RecipeController::class, 'likes'])->name('recipe.likes');
     Route::resource('recipes', \App\Http\Controllers\Main\RecipeController::class);
 
     Route::prefix('account')->middleware(['auth', 'verified'])->controller(\App\Http\Controllers\Main\AccountController::class)->group(function () {
@@ -15,6 +16,7 @@ Route::name('main.')->group(function () {
         Route::get('/recipes', 'recipes')->name('account.recipes');
         Route::get('/favorites', 'favorites')->name('account.favorites');
         Route::get('/details', 'details')->name('account.details');
+        Route::patch('/{user}', 'update')->name('account.update');
     });
 
     Route::prefix('posts')->controller(\App\Http\Controllers\Main\PostController::class)->group(function () {

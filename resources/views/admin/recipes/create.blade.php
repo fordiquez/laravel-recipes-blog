@@ -29,7 +29,7 @@
                         <div class="card-body">
                             <p class="text-uppercase text-sm">Recipe Information</p>
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-12">
                                     <label for="title" class="form-control-label">Title</label>
                                     <input class="form-control @error('title') is-invalid @enderror" type="text" name="title" id="title" value="{{ old('title') }}" placeholder="Recipe title">
                                     @error('title')
@@ -90,6 +90,15 @@
                                     </div>
                                     @error('level')
                                         <div class="invalid-feedback d-inline-block" role="alert">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-md-6" style="margin-top: 2.3rem">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="published" name="published" @checked(old('published'))>
+                                        <label class="form-check-label" for="published">Published status</label>
+                                    </div>
+                                    @error('published')
+                                    <div class="invalid-feedback d-inline-block" role="alert">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="col-md-6">

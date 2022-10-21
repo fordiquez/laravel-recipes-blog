@@ -25,7 +25,7 @@ class RecipeController extends Controller
     {
         $data = $request->validated();
         $filter = new RecipeFilter(array_filter($data));
-        $recipes = Recipe::filter($filter)->paginate(10)->withQueryString();
+        $recipes = Recipe::filter($filter)->where('published', true)->paginate(10)->withQueryString();
         $categories = Category::all();
         $cuisines = Cuisine::all();
         $tags = Tag::all();
@@ -43,7 +43,8 @@ class RecipeController extends Controller
         return view('main.recipes.show', compact('recipe'));
     }
 
-    public function create() {
+    public function create()
+    {
         $cuisines = Cuisine::all();
         $categories = Category::all();
         $tags = Tag::all();
@@ -52,17 +53,20 @@ class RecipeController extends Controller
         return view('main.recipes.create', compact('cuisines', 'categories', 'tags', 'levels'));
     }
 
-    public function store(StoreRequest $request, StoreAction $action) {
+    public function store(StoreRequest $request, StoreAction $action)
+    {
         $data = $request->validated();
         $action->handle($data);
 
         return back();
     }
 
-    public function edit(string $slug) {
+    public function edit(string $slug)
+    {
         $recipe = Recipe::where('slug', $slug)->first();
 
         if (!$recipe) return view('components.main.404');
+        elseif ($recipe->user_id !== auth()->user()->id) return back();
 
         $cuisines = Cuisine::all();
         $categories = Category::all();
@@ -72,17 +76,27 @@ class RecipeController extends Controller
         return view('main.recipes.edit', compact('recipe', 'cuisines', 'categories', 'tags', 'levels'));
     }
 
-    public function update(UpdateRequest $request, Recipe $recipe, UpdateAction $action) {
-        $data = $request->validated();
-        $action->handle($data, $recipe);
+    public function update(UpdateRequest $request, Recipe $recipe, UpdateAction $action)
+    {
+        if ($recipe->user_id === auth()->user()->id) {
+            $data = $request->validated();
+            $action->handle($data, $recipe);
+        }
 
         return back();
     }
 
-    public function destroy(Recipe $recipe) {
+    public function destroy(Recipe $recipe)
+    {
         if ($recipe->user_id === auth()->user()->id) {
             $recipe->delete();
         }
+
+        return back();
+    }
+
+    public function likes(Recipe $recipe) {
+        auth()->user()->likes()->toggle($recipe->id);
 
         return back();
     }

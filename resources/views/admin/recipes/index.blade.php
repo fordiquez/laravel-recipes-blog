@@ -57,8 +57,8 @@
                                             </td>
                                             <td class="align-middle text-center">
                                                 <p class="text-xs font-weight-bold mb-0">
-                                                    <span @class(['badge', 'bg-gradient-success' => $recipe->is_published, 'bg-gradient-danger' => !$recipe->is_published])>
-                                                        {{ $recipe->is_published ? 'Published' : 'Not published' }}
+                                                    <span @class(['badge', 'bg-gradient-success' => $recipe->published, 'bg-gradient-danger' => !$recipe->published])>
+                                                        {{ $recipe->published ? 'Published' : 'Not published' }}
                                                     </span>
                                                 </p>
                                             </td>

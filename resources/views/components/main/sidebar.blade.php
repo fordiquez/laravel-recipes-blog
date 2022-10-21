@@ -29,8 +29,8 @@
                                 <a href="{{ route('main.recipes.show', $recipe->slug) }}">{{ $recipe->title }}</a>
                             </h4>
                             <div class="posted-date">
-                                <i class="fa fa-clock-o" aria-hidden="true"></i>
-                                {{ $recipe->created_at }}
+                                <i class="fa-solid fa-calendar-days"></i>
+                                <span>{{ $recipe->getCreatedAtDate() }}</span>
                             </div>
                             <div class="item-post-by">
                                 <i class="fa fa-user"></i>

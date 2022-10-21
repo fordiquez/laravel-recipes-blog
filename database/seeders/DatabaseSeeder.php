@@ -12,7 +12,7 @@ class DatabaseSeeder extends Seeder
      * @return void
      * @throws \Exception
      */
-    public function run()
+    public function run(): void
     {
          $this->call([
              UserSeeder::class,
@@ -21,7 +21,8 @@ class DatabaseSeeder extends Seeder
              TagSeeder::class,
              PostSeeder::class,
              RecipeSeeder::class,
-             IngredientSeeder::class
+             IngredientSeeder::class,
+             StepSeeder::class,
          ]);
     }
 }

@@ -28,6 +28,7 @@ class UpdateRequest extends FormRequest
     {
         $this->merge([
             'slug' => Str::slug($this->title),
+            'published' => $this->boolean('published')
         ]);
     }
 
@@ -41,17 +42,18 @@ class UpdateRequest extends FormRequest
         return [
             'title' => ['required', 'string', 'max:255'],
             'slug' => ['required', 'string', 'max:255', Rule::unique('recipes')->ignore($this->recipe->id)],
-            'cuisine_id' => ['required', 'exists:cuisines,id'],
-            'user_id' => ['required', 'exists:users,id'],
+            'cuisine_id' => ['required', Rule::exists('cuisines', 'id')],
+            'user_id' => ['required', Rule::exists('users', 'id')],
             'cooking_time' => ['required', 'string'],
             'servings' => ['required', 'numeric'],
             'level' => ['required', 'string', Rule::in(Recipe::LEVELS)],
+            'published' => ['boolean'],
             'photo' => ['file'],
             'description' => ['required', 'string', 'max:65535'],
             'categories' => ['nullable', 'array'],
-            'categories.*' => ['nullable', 'integer', 'exists:categories,id'],
+            'categories.*' => ['nullable', 'integer', Rule::exists('categories', 'id')],
             'tags' => ['nullable', 'array'],
-            'tags.*' => ['nullable', 'integer', 'exists:tags,id']
+            'tags.*' => ['nullable', 'integer', Rule::exists('tags', 'id')]
         ];
     }
 }

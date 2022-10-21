@@ -33,7 +33,8 @@ class RecipeFactory extends Factory
             'photo' => function (array $attributes) {
                 return $this->faker->loremflickr('recipes', Str::slug($attributes['title']));
             },
-            'description' => fake()->paragraph(10)
+            'description' => fake()->paragraph(10),
+            'published' => true
         ];
     }
 }

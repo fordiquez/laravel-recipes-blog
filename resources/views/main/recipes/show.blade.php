@@ -12,8 +12,8 @@
                     <div class="col-xl-9 col-md-9 col-12">
                         <ul class="entry-meta">
                             <li class="single-meta">
-                                <i class="fa-solid fa-calendar-days"></i>
-                                <span>{{ $recipe->created_at }}</span>
+                                <i class="fa-solid fa-calendar-days text-danger"></i>
+                                <span>{{ $recipe->getCreatedAtDate() }}</span>
                             </li>
                             <li class="single-meta">
                                 <i class="fa-solid fa-user"></i>by
@@ -22,9 +22,21 @@
                                 </a>
                             </li>
                             <li class="single-meta">
-                                <a href="#" class="like-recipe not-looged-in">
-                                    <i class="fa-regular fa-heart"></i><span>{{ rand(0, 1000) }}</span>
-                                </a>
+                                @auth()
+                                    <form action="{{ route('main.recipe.likes', $recipe) }}" method="post">
+                                        @csrf
+                                        <button class="bg-transparent text-danger p-0">
+                                            <i @class(['fa-heart', $recipe->isLikedRecipe()])></i>
+                                            <span>{{ $recipe->likes_count }}</span>
+                                        </button>
+                                    </form>
+                                @endauth
+                                @guest()
+                                    <a href="{{ route('login') }}" title="Authorize to like it">
+                                        <i class="fa-regular fa-heart"></i>
+                                        <span>{{ $recipe->likes_count }}</span>
+                                    </a>
+                                @endguest
                             </li>
                         </ul>
                         <ul class="entry-meta">

@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Ingredient;
 use App\Models\Recipe;
+use App\Models\Step;
 use Illuminate\Database\Seeder;
 
-class IngredientSeeder extends Seeder
+class StepSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,8 +17,8 @@ class IngredientSeeder extends Seeder
     {
         $recipes = Recipe::all();
         $recipes->each(function ($recipe) {
-            Ingredient::factory(rand(1, 5))->create([
-                'recipe_id' => $recipe->id
+            Step::factory(1)->create([
+                'recipe_id' => $recipe->id,
             ]);
         });
     }

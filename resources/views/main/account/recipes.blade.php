@@ -18,8 +18,8 @@
                                         <a href="{{ route('main.recipes.show', $recipe->slug) }}">
                                             <img class="wp-post-image" src="{{ asset($recipe->getPhoto()) }}" alt="{{ $recipe->title }}" title="{{ $recipe->title }}">
                                         </a>
-                                        <div @class(['post-status', 'draft' => !$recipe->is_published, 'publish' => $recipe->is_published])>
-                                            <span>{{ $recipe->is_published ? 'Published' : 'Not published' }}</span>
+                                        <div @class(['post-status', 'draft' => !$recipe->published, 'publish' => $recipe->published])>
+                                            <span>{{ $recipe->published ? 'Published' : 'Not published' }}</span>
                                         </div>
                                     </div>
                                     <div class="item-content">

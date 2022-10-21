@@ -22,7 +22,7 @@ class Sidebar extends Component
      */
     public function __construct()
     {
-        $this->latestRecipes = Recipe::orderBy('created_at', 'DESC')->get()->take(3);
+        $this->latestRecipes = Recipe::where('published', true)->orderBy('created_at', 'DESC')->get()->take(3);
         $this->cuisines = Cuisine::withCount('recipes')->orderBy('recipes_count', 'DESC')->get()->take(10);
         $this->categories = Category::withCount('recipes')->orderBy('recipes_count', 'DESC')->get()->take(10);
         $this->tags = Tag::withCount('recipes')->orderBy('recipes_count', 'DESC')->get()->take(10);
