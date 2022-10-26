@@ -7,9 +7,18 @@ Route::name('main.')->group(function () {
     Route::get('/cuisines', [\App\Http\Controllers\Main\CuisineController::class, 'index'])->name('cuisines.index');
     Route::get('/categories', [\App\Http\Controllers\Main\CategoryController::class, 'index'])->name('categories.index');
 
+    Route::prefix('authors')->controller(\App\Http\Controllers\Main\AuthorController::class)->group(function () {
+        Route::get('/', 'index')->name('authors.index');
+        Route::get('/{author}', 'show')->name('authors.show');
+    });
 
     Route::post('/recipes/{recipe}/likes', [\App\Http\Controllers\Main\RecipeController::class, 'likes'])->name('recipe.likes');
     Route::resource('recipes', \App\Http\Controllers\Main\RecipeController::class);
+
+    Route::prefix('posts')->controller(\App\Http\Controllers\Main\PostController::class)->group(function () {
+        Route::get('/', 'index')->name('posts.index');
+        Route::get('/{post}', 'show')->name('posts.show');
+    });
 
     Route::prefix('account')->middleware(['auth', 'verified'])->controller(\App\Http\Controllers\Main\AccountController::class)->group(function () {
         Route::get('/', 'index')->name('account.index');
@@ -17,11 +26,6 @@ Route::name('main.')->group(function () {
         Route::get('/favorites', 'favorites')->name('account.favorites');
         Route::get('/details', 'details')->name('account.details');
         Route::patch('/{user}', 'update')->name('account.update');
-    });
-
-    Route::prefix('posts')->controller(\App\Http\Controllers\Main\PostController::class)->group(function () {
-        Route::get('/', 'index')->name('posts.index');
-        Route::get('/{post}', 'show')->name('posts.show');
     });
 });
 

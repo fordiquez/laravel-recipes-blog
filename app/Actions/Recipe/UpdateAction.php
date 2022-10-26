@@ -45,12 +45,12 @@ class UpdateAction {
             $recipe->updateOrFail(isset($data['photo']) ? Recipe::setPhoto($data) : $data);
             !empty($categories) ? $recipe->categories()->sync($categories) : $recipe->categories()->detach();
             !empty($tags) ? $recipe->tags()->sync($tags) : $recipe->tags()->detach();
-            if (isset($ingredients) && isset($savedIngredients)) {
-                $recipe->ingredients()->whereNotIn('id', $savedIngredients)->delete();
+            if (isset($ingredients)) {
+                if (!empty($savedIngredients)) $recipe->ingredients()->whereNotIn('id', $savedIngredients)->delete();
                 $recipe->ingredients()->upsert($ingredients, ['id', 'recipe_id', 'title'], ['title']);
             }
-            if (isset($steps) && isset($savedSteps)) {
-                $recipe->steps()->whereNotIn('id', $savedSteps)->delete();
+            if (isset($steps)) {
+                if (!empty($savedSteps)) $recipe->steps()->whereNotIn('id', $savedSteps)->delete();
                 $recipe->steps()->upsert($steps, ['id', 'recipe_id', 'step'], ['description', 'photo']);
             }
             DB::commit();

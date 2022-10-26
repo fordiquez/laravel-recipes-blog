@@ -28,6 +28,7 @@ class FilterRequest extends FormRequest
         $this->mergeArrayValues('category_id');
         $this->mergeArrayValues('cuisine_id');
         $this->mergeArrayValues('tag_id');
+        $this->mergeArrayValues('user_id');
     }
 
     public function mergeArrayValues(string $key)
@@ -54,6 +55,8 @@ class FilterRequest extends FormRequest
             'cuisine_id.*' => ['nullable', 'integer', Rule::exists('cuisines', 'id')],
             'tag_id' => ['nullable', 'array'],
             'tag_id.*' => ['nullable', 'integer', Rule::exists('tags', 'id')],
+            'user_id' => ['nullable', 'array'],
+            'user_id.*' => ['nullable', 'integer', Rule::exists('users', 'id')],
             'level' => ['nullable', 'array'],
             'level.*' => ['nullable', 'string', Rule::in(Recipe::LEVELS)],
         ];

@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Facades\Storage;
 
 class Post extends Model
@@ -18,11 +20,13 @@ class Post extends Model
         'user_id',
     ];
 
-    public function user() {
+    public function user(): BelongsTo
+    {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
-    public function category() {
+    public function category(): BelongsTo
+    {
         return $this->belongsTo(Category::class, 'category_id', 'id');
     }
 
@@ -35,5 +39,12 @@ class Post extends Model
     {
         if (isset($data['photo'])) $data['photo'] = Storage::disk('public')->put('/posts', $data['photo']);
         return $data;
+    }
+
+    public function getCreatedAtDate(): string
+    {
+        $date = Carbon::parse($this->created_at);
+
+        return $date->format('F d, Y');
     }
 }

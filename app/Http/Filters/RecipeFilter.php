@@ -10,6 +10,7 @@ class RecipeFilter extends AbstractFilter
     public const CATEGORY_ID = 'category_id';
     public const CUISINE_ID = 'cuisine_id';
     public const TAG_ID = 'tag_id';
+    public const USER_ID = 'user_id';
     public const LEVEL = 'level';
     public const COOKING_TIME = 'cooking_time';
     public const SERVINGS = 'servings';
@@ -21,6 +22,7 @@ class RecipeFilter extends AbstractFilter
             self::CATEGORY_ID => [$this, 'categoryId'],
             self::CUISINE_ID => [$this, 'cuisineId'],
             self::TAG_ID => [$this, 'tagId'],
+            self::USER_ID => [$this, 'userId'],
             self::LEVEL => [$this, 'level'],
             self::COOKING_TIME => [$this, 'cookingTime'],
             self::SERVINGS => [$this, 'servings'],
@@ -50,6 +52,13 @@ class RecipeFilter extends AbstractFilter
     {
         $builder->whereHas('tags', function ($query) use ($value) {
             $query->whereIn(self::TAG_ID, $value);
+        });
+    }
+
+    public function userId(Builder $builder, array $value)
+    {
+        $builder->whereHas('user', function ($query) use ($value) {
+            $query->whereIn(self::USER_ID, $value);
         });
     }
 

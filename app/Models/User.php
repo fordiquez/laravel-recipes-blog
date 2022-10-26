@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Notifications\SendVerifyWithQueueNotification;
+use App\Traits\Filterable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -15,7 +16,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
+    use HasApiTokens, HasFactory, Notifiable, SoftDeletes, Filterable;
 
     public const ROLE_USER = 0;
     public const ROLE_ADMIN = 1;
@@ -104,6 +105,12 @@ class User extends Authenticatable implements MustVerifyEmail
     public static function setPhoto(array $data): array
     {
         if (isset($data['photo'])) $data['photo'] = Storage::disk('public')->put('/users', $data['photo']);
+        return $data;
+    }
+
+    public static function setPasswordHash(array $data): array
+    {
+        if (!isset($data['password'])) $data['password'] = User::where('email', $data['email'])->first()->value('password');
         return $data;
     }
 }

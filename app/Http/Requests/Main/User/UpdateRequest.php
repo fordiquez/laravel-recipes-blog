@@ -13,7 +13,7 @@ class UpdateRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -29,7 +29,7 @@ class UpdateRequest extends FormRequest
             'first_name' => ['required', 'string', 'max:50'],
             'last_name' => ['required', 'string', 'max:50'],
             'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($this->user->id)],
-            'password' => ['string', 'confirmed', Password::min(8)->letters()->uncompromised()->numbers()->mixedCase()->symbols()],
+            'password' => ['nullable', 'string', 'confirmed', Password::min(8)->letters()->uncompromised()->numbers()->mixedCase()->symbols()],
             'photo' => ['file']
         ];
     }

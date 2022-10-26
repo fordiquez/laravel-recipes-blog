@@ -1,7 +1,7 @@
 <aside class="sidebar-widget-area">
     <div id="rt-recent-recipe-5" class="widget rt_widget_recent_recipe_with_image">
         <div class="rt-widget-title-holder">
-            <h3>Latest Recipe</h3>
+            <h3>Latest Recipes</h3>
         </div>
         <div class="widget-latest">
             <ul class="block-list">
@@ -35,7 +35,7 @@
                             <div class="item-post-by">
                                 <i class="fa fa-user"></i>
                                 <span>
-                                    <a href="{{ route('admin.users.show', $recipe->user->id) }}" title="Recipes by {{ $recipe->user->getFullName() }}">
+                                    <a href="{{ route('main.authors.show', str()->slug($recipe->user->getFullName())) }}" title="Recipes by {{ $recipe->user->getFullName() }}">
                                         {{ $recipe->user->getFullName() }}
                                     </a>
                                 </span>

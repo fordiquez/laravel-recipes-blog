@@ -37,7 +37,10 @@
                                                     <div class="post-meta">
                                                         <ul class="entry-meta">
                                                             <li class="author-meta">
-                                                                <i class="fa fa-user" aria-hidden="true"></i>by {{ $item->user->getFullName() }}
+                                                                <a href="{{ route('main.authors.show', str()->slug($item->user->getFullName())) }}">
+                                                                    <i class="fa fa-user"></i>
+                                                                    <span>by {{ $item->user->getFullName() }}</span>
+                                                                </a>
                                                             </li>
                                                             <li class="rt-cook-time">
                                                                 <i class="fa fa-clock-o"></i>{{ $item->cooking_time }}
@@ -134,7 +137,10 @@
                                                                             </h3>
                                                                             <ul class="entry-meta">
                                                                                 <li class="author-meta">
-                                                                                    <i class="fa fa-user" aria-hidden="true"></i>by {{ $recipe->user->getFullName() }}
+                                                                                    <a href="{{ route('main.authors.show', str()->slug($recipe->user->getFullName())) }}">
+                                                                                        <i class="fa fa-user"></i>
+                                                                                        <span>by {{ $recipe->user->getFullName() }}</span>
+                                                                                    </a>
                                                                                 </li>
                                                                                 <li class="rt-cook-time">
                                                                                     <i class="fa fa-clock-o"></i>{{ $recipe->cooking_time }}
@@ -220,8 +226,8 @@
                                                                         <div>{!! $singleRecipe->description !!}</div>
                                                                         <ul class="entry-meta mt-2">
                                                                             <li class="author-meta">
-                                                                                <i class="fa fa-user" aria-hidden="true"></i>
-                                                                                by <a href="{{ route('admin.users.show', $singleRecipe->user->id) }}" title="{{ $singleRecipe->user->getFullName() }}">
+                                                                                <i class="fa fa-user"></i>
+                                                                                by <a href="{{ route('main.authors.show', str()->slug($singleRecipe->user->getFullName())) }}" title="{{ $singleRecipe->user->getFullName() }}">
                                                                                     {{ $singleRecipe->user->getFullName() }}
                                                                                 </a>
                                                                             </li>
@@ -281,8 +287,8 @@
                                                                             </h3>
                                                                             <ul class="entry-meta">
                                                                                 <li class="author-meta">
-                                                                                    <i class="fa fa-user" aria-hidden="true"></i>
-                                                                                    by <a href="{{ route('admin.users.show', $trending->user->id) }}" title="{{ $trending->user->getFullName() }}">
+                                                                                    <i class="fa fa-user"></i>
+                                                                                    by <a href="{{ route('main.authors.show', str()->slug($trending->user->getFullName())) }}" title="{{ $trending->user->getFullName() }}">
                                                                                         {{ $trending->user->getFullName() }}
                                                                                     </a>
                                                                                 </li>

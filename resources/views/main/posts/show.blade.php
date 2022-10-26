@@ -15,14 +15,14 @@
                     <div class="entry-meta">
                         <ul class="post-light">
                             <li>
-                                <i class="fa fa-user" aria-hidden="true"></i>
-                                <a href="{{ route('admin.users.show', $post->user_id) }}">
-                                    {{ $post->user->getFullName() }}
-                                </a>
+                                <i class="fa-solid fa-calendar-days"></i>
+                                {{ $post->getCreatedAtDate() }}
                             </li>
                             <li>
-                                <i class="fa fa-calendar-o" aria-hidden="true"></i>
-                                <span>{{ $post->created_at }}</span>
+                                <i class="fa-solid fa-user"></i>
+                                <a href="{{ route('main.authors.show', str()->slug($recipe->user->getFullName())) }}" title="Posts by {{ $post->user->getFullName() }}">
+                                    {{ $post->user->getFullName() }}
+                                </a>
                             </li>
                             <li>
                                 <i class="fa fa-comment-o" aria-hidden="true"></i>

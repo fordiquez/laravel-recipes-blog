@@ -35,7 +35,7 @@ class AccountController extends Controller
 
     public function update(UpdateRequest $request, User $user) {
         $data = $request->validated();
-        $user->update(User::setPhoto($data));
+        $user->update(User::setPhoto(User::setPasswordHash($data)));
 
         return view('main.account.details', compact('user'));
     }

@@ -2,8 +2,8 @@
     <div id="header-2" class="header-area header-fixed">
         <div class="masthead-container header-controll">
             <div class="container">
-                <div class="row gutters-10 d-flex justify-content-between align-items-center">
-                    <div class="col-lg-3 d-flex justify-content-center">
+                <div class="row d-flex justify-content-between align-items-center">
+                    <div class="col-lg-2 col-xl-3 d-flex justify-content-center">
                         <div class="site-branding">
                             <a class="dark-logo" href="{{ route('main.index') }}">
                                 <img src="{{ asset('assets/images/logo-main-dark.png') }}"
@@ -15,7 +15,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-5">
                         <div id="site-navigation" class="main-navigation">
                             <nav class="menu-main-menu-container">
                                 <ul id="menu-main-menu" class="menu">
@@ -56,11 +56,14 @@
                                     <li @class(['menu-item', 'current-menu-item' => $isActive('main.posts.index')])>
                                         <a href="{{ route('main.posts.index') }}">Posts</a>
                                     </li>
+                                    <li @class(['menu-item', 'current-menu-item' => $isActive('main.authors.index')])>
+                                        <a href="{{ route('main.authors.index') }}">Authors</a>
+                                    </li>
                                 </ul>
                             </nav>
                         </div>
                     </div>
-                    <div class="col-lg-5 d-flex justify-content-end nav-action-elements-layout">
+                    <div class="col-lg-5 col-xl-4 d-flex justify-content-end nav-action-elements-layout">
                         <ul>
                             @guest
                                 <li>

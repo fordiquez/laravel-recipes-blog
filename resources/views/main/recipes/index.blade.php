@@ -226,7 +226,7 @@
                                                                                         </a>
                                                                                     </h3>
                                                                                     <ul class="list-inline d-flex justify-content-between mt-2 mb-0">
-                                                                                        <li class="rt-cook-time">
+                                                                                        <li class="rt-cook-time" title="Cooking time">
                                                                                             <div class="feature-wrap">
                                                                                                 <div class="media">
                                                                                                     <div
@@ -240,7 +240,7 @@
                                                                                                 </div>
                                                                                             </div>
                                                                                         </li>
-                                                                                        <li class="rt-serving-people">
+                                                                                        <li class="rt-serving-people" title="Servings">
                                                                                             <div class="feature-wrap">
                                                                                                 <div class="media">
                                                                                                     <div
@@ -254,7 +254,7 @@
                                                                                                 </div>
                                                                                             </div>
                                                                                         </li>
-                                                                                        <li class="rt-difficulty">
+                                                                                        <li class="rt-difficulty" title="Level of difficulty">
                                                                                             <div class="feature-wrap">
                                                                                                 <div class="media">
                                                                                                     <div

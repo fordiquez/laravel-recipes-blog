@@ -21,14 +21,14 @@
                             <div class="entry-content">
                                 <ul>
                                     <li>
-                                        <i class="fa fa-user" aria-hidden="true"></i>
-                                        <a href="{{ route('admin.users.show', $post->user_id) }}" title="Posts by {{ $post->user->getFullName() }}">
-                                            {{ $post->user->getFullName() }}
-                                        </a>
+                                        <i class="fa-solid fa-calendar-days"></i>
+                                        {{ $post->getCreatedAtDate() }}
                                     </li>
                                     <li>
-                                        <i class="fa fa-calendar-o" aria-hidden="true"></i>
-                                        {{ $post->created_at }}
+                                        <i class="fa-solid fa-user"></i>
+                                        <a href="{{ route('main.authors.show', str()->slug($recipe->user->getFullName())) }}" title="Posts by {{ $post->user->getFullName() }}">
+                                            {{ $post->user->getFullName() }}
+                                        </a>
                                     </li>
                                 </ul>
                                 <h3 class="text-center">

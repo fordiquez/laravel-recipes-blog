@@ -17,7 +17,7 @@
                             </li>
                             <li class="single-meta">
                                 <i class="fa-solid fa-user"></i>by
-                                <a href="{{ route('admin.users.show', $recipe->user_id) }}">
+                                <a href="{{ route('main.authors.show', str()->slug($recipe->user->getFullName())) }}">
                                     {{ $recipe->user->getFullName() }}
                                 </a>
                             </li>
@@ -105,7 +105,7 @@
                                 <div class="media">
                                     <div class="feature-icon"><i @class([$recipe->getLevelStarClass()])></i></div>
                                     <div class="media-body">
-                                        <div class="feature-title">Difficulty</div>
+                                        <div class="feature-title">Level of difficulty</div>
                                         <div class="feature-sub-title">{{ $recipe->level }}</div>
                                     </div>
                                 </div>
