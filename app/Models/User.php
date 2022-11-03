@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Laravel\Sanctum\HasApiTokens;
 
@@ -110,7 +111,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public static function setPasswordHash(array $data): array
     {
-        if (!isset($data['password'])) $data['password'] = User::where('email', $data['email'])->first()->value('password');
+        $data['password'] = !isset($data['password']) ? User::where('email', $data['email'])->first()->value('password') : Hash::make($data['password']);
         return $data;
     }
 }

@@ -37,6 +37,6 @@ class AccountController extends Controller
         $data = $request->validated();
         $user->update(User::setPhoto(User::setPasswordHash($data)));
 
-        return view('main.account.details', compact('user'));
+        return redirect()->route('main.account.details', compact('user'));
     }
 }
